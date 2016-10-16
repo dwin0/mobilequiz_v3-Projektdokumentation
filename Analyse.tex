@@ -1,14 +1,15 @@
 % !TEX root = Projektdokumentation.tex
 
-\newglossaryentry{Usability-Tests}{name={Usability-Tests},description={Probanden aus der Zielgruppe der Anwendung werden Aufgaben gestellt, welche sie mit der bestehenden Anwendung lösen sollen. Dabei wird untersucht, welcher Weg zur Lösung der Aufgabe eingeschlagen wird und wo dabei Probleme auftauchen.}}
 
-\newacronym{CN1}{CN1}{Computernetze 1}
+\newglossaryentry{Cross-Site-Scripting}{name={Cross-Site-Scripting},description={
+		\todo{David}}}
 
+\newglossaryentry{Vulnerability}{name={Vulnerability},description={
+		\todo{David}}}
 
 
 %Analyse der Aufgabenstellung, Requirements Engineering, Umfeldanalyse (vergleichbare Produkte und Lösungen), Resultate der Literaturrecherche
 %Auch: Ziel und Zweck von Mobile Quiz, wofür und vom wem wird es eingesetzt? Was ist zukünftiges Ziel?
-%Usabilitytests, Umfeldanalyse, etc.
 
 \section{Einleitung}
 % Hier werden alle Erkenntnisse aus den einzelnen Unterkapitel zusammengefasst.
@@ -42,12 +43,18 @@ Was kann Mobile Quiz heute bereits, wo gibt es noch Probleme und wo es Quiz heut
 	%Beispiele hinzufügen
 	
 	\begin{itemize}
-		\item Sicherheitsrelevante Probleme
-		\item Usability
-		\item Probleme/Bugs
-		\item Schreibfehler/Grammatik
-		\item Allgemeine Fragen zum Konzept
-		\item Mobile-Probleme
+		\item Sicherheitsrelevante Probleme \\
+		Beispiel: Wird eine Frage erfasst, so kann darin in Script hinterlegt werden, welches beim Lösen ausgeführt wird. Somit hat Mobile Quiz gegenüber Frage-Erstellern eine \gls{Cross-Site-Scripting} - \gls{Vulnerability}.
+		\item Usability \\
+		Beispiel: In der Lernkontrollen-Übersicht ist der Start-Button zu wenig ersichtlich.
+		\item Probleme/Bugs \\
+		Beispiel: Wird bei einer Lernkontrolle festgelegt, dass sie kein Endzeitpunkt hat, so soll auch kein Enddatum angezeigt werden.
+		\item Schreibfehler/Grammatik \\
+		Der Benutzer wird wird teilweise mit 'Sie' angesprochen, andernorts wird die 'Du'-Form verwendet.
+		\item Allgemeine Fragen zum Konzept \\
+		Beispiel: Muss bei einer Registrierung wirklich die Adresse angegeben werden?
+		\item Mobile-Probleme \\
+		Beispiel: Der Zugriff via Smartphone auf den Profilbereich funktioniert nicht.
 	\end{itemize}
 
 	Die ausführlichen Resultate sind im Dokument 'Ergebnisse eigene Tests.pdf' ersichtlich.
@@ -65,7 +72,7 @@ Was kann Mobile Quiz heute bereits, wo gibt es noch Probleme und wo es Quiz heut
 		
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=0.5\textwidth]{Images/MobileQuiz_StartPage.PNG}
+			\includegraphics[width=0.8\textwidth]{Images/MobileQuiz_StartPage.PNG}
 			\caption{Startseite Mobile Quiz Version 3}
 		\end{figure}
 		
@@ -73,8 +80,8 @@ Was kann Mobile Quiz heute bereits, wo gibt es noch Probleme und wo es Quiz heut
 		
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=0.5\textwidth]{Images/Qzzr_StartPage.PNG}
-			\includegraphics[width=0.5\textwidth]
+			\includegraphics[width=0.7\textwidth]{Images/Qzzr_StartPage.PNG}
+			\includegraphics[width=0.7\textwidth]
 			{Images/Qzzr_StartPage_Statistics.PNG}
 			\caption{Startseite Qzzr}
 		\end{figure}
@@ -87,44 +94,60 @@ Was kann Mobile Quiz heute bereits, wo gibt es noch Probleme und wo es Quiz heut
 		\todo{David: Internetrecherche}
 		http://blog.hubspot.com/blog/tabid/6307/bid/34006/15-examples-of-brilliant-homepage-design.aspx
 		
-		
+		\newpage
 		\item Schritt für Schritt - Erstellung von Quizzes \\
-		Um ein Quiz zu erstellen benötigt es einerseits die Fragen, andererseits das Quiz selbst, welches mehrere Fragen umfasst. In welcher Reihenfolge sollen diese beiden Ressourcen erstellt werden?
+		Um ein Quiz zu erstellen benötigt es einerseits die Fragen, andererseits das Quiz selbst, welches mehrere Fragen umfasst. In welcher Reihenfolge sollen diese beiden Ressourcen erstellt werden? \\
 		Aktuell ist es bei Mobile Quiz so, dass zuerst die Fragen und anschliessend das Quiz separat erstellt wird. Ist man sich dieser Tatsache bewusst, so ist dies kein Problem, aber ist es auch intuitiv? Wie in den durchgeführten Usability-Tests festgestellt war dem nicht so. Die Benutzer, welche alle noch nie ein Quiz erstellt hatten, starteten sofort mit der Erstellung des Quizzes und mussten diese dann abbrechen.
+		Aus diesem Grund ist es sinnvoll, diese Reihenfolge in Mobile Quiz zu ändern. Hier bietet Testmoz \cite{testmoz.com} ein gutes Vorgehen:
+		
+		\begin{enumerate}
+			\item Testnamen eingeben
+			\item Testeinstellungen vornehmen
+			\item Fragen erfassen
+			\item Veröffentlichen
+			\item Reports anschauen
+		\end{enumerate}
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.45\textwidth]{Images/Testmoz2.PNG}
+			\caption{Ablauf Testmoz}
+		\end{figure}
+		
+		Der Ablauf von Mobile Quiz müsste einzig darin geändert werden, dass neue Fragen während der Erstellung eines Quizzes erfasst werden können. Zur Vereinfachung könnte aber auch beitragen, dass der Ablauf wie bei Testmoz \cite{testmoz.com} auf mehrere Seiten verteilt wird, sodass pro Seite weniger Informationen stehen. Somit fände sich der Benutzer schneller zurecht.
 		
 		
-		
-		
-		
+		\newpage
 		\item  Quiz-Einstellungen \\
 		Quizzes können für unterschiedliche Bedürfnisse eingesetzt werden. Die möglichen Einsatzzwecke reichen von Freunden, die zum Zeitvertreib ihr Wissen gegenseitig messen wollen, über Dozenten, die prüfen möchten, ob die Studenten den Unterrichtsstoff verstanden haben, bis zu Dozenten, welche die Quizzes als Prüfung verwenden.
 		Diese Situationen verlangen viele Einstellungsmöglichkeiten, welche für den Benutzer möglichst selbsterklärend sein sollen. Trifft dies jedoch nicht zu, oder ist die Darstellung unverständlich, so wird sich der Quiz-Ersteller möglicherweise nach einer anderen Quiz-Plattform umsehen.
 		
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=0.5\textwidth
+			\includegraphics[width=0.75\textwidth
 			]{Images/MobileQuiz_Quiz-Settings.PNG}
 			\caption{Quiz-Einstellungen Mobile Quiz Version 3}
 		\end{figure}
 		
 		
-		Mobile Quiz bietet zwar derzeit viele Einstellungsmöglichkeiten an, diese sind jedoch so zahlreich, dass sie den Benutzer fast überfordern. Zudem ist die Darstellung zum Teil nicht optimal. 
-		%Beispiel einfügen
+		Mobile Quiz bietet zwar derzeit viele Einstellungsmöglichkeiten an, diese sind jedoch so zahlreich, dass sie den Benutzer fast überfordern. Zudem ist die Darstellung zum Teil nicht optimal, da beispielsweise die 'Auswertung Anzeigen - Optionen' weiter rechts als alle anderen angezeigt wird.
 		
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=0.5\textwidth
-			]{Images/QuizBean_Quiz-Settings.PNG}
-			\caption{Quiz-Einstellungen QuizBean}
+			]{Images/QuizMaker_Quiz-Settings.PNG}
+			\caption{Quiz-Einstellungen Quiz Maker}
 		\end{figure}
+		
+		Aufgeräumter wirken die Einstellungen beispielsweise bei Quiz Maker \cite{quiz-maker}. Zwar gibt es eine Vielzahl von Einstellungen, diese wurden aber übersichtlich dargestellt, indem die Einstellungen Themen zugeordnet und auf Tabs verteilt wurden. Zudem gibt es einen eigenen Tab für erweiterte Optionen. \\
+		Bei Mobile Quiz wären beide Konzepte möglich, wodurch der Quiz-Ersteller mit den Einstellungen weniger überfordert würde.
 		
 		
 		
 		\item Quiz kann vor Veröffentlichung durchgespielt werden \\
-		Wie sieht das erstellte Quiz für den Teilnehmer aus? Gibt es noch Rechtschreibfehler oder werden Inhalte nicht optimal dargestellt? Ein Quiz-Ersteller wird sich all diese Fragen womöglich stellen und die einfache Lösung dazu ist, dass man das Quiz vor Veröffentlichung selbst durchspielt. Die eigene Teilnahme soll jedoch nicht zählen, da sie die Auswertungsstatistik verfälschen kann.
+		Wie sieht das erstellte Quiz für den Teilnehmer aus? Gibt es noch Rechtschreibfehler oder werden Inhalte nicht optimal dargestellt? Ein Quiz-Ersteller wird sich all diese Fragen womöglich stellen und die einfache Lösung dazu ist, dass man das Quiz vor Veröffentlichung selbst durchspielt. Die eigene Teilnahme soll jedoch nicht zählen, da sie die Auswertungsstatistik verfälschen kann. \\
+		Mobile Quiz bietet derzeit an ein Quiz noch nicht zu veröffentlichen und es so auszuprobieren. Dies funktioniert aber nur, wenn man Administrator ist. Zudem zählt die eigene Teilnahme in die Gesamtauswertung mit hinein. Für die saubere Umsetzung müsste also die Funktion für alle Ersteller-Rollen zugänglich sein und die eigene Teilnahme nicht zählen.
 		
-		Mobile Quiz bietet derzeit eine solche Funktion an, diese Funktioniert aber nur .... %Nachprüfen
-		Wird dies korrigiert, so reiht sich Mobile Quiz in diesem Punkt in die vorderen Plätze ein.
 		
 		
 		\item Template für Frage-Import \\
@@ -134,28 +157,5 @@ Was kann Mobile Quiz heute bereits, wo gibt es noch Probleme und wo es Quiz heut
 		
 		Im Rahmen dieser Arbeit soll ebenfalls ein solches Template erstellt werden, welches dann Quiz-Erstellern zum Download angeboten wird.
 		
-		
-		
 	\end{itemize}	
 	
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
