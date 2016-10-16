@@ -1,0 +1,291 @@
+\documentclass[12pt, a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{hyperref}
+\usepackage{a4wide}
+\usepackage{times}
+\usepackage{pdfpages}
+\usepackage{tabularx}
+\usepackage[section]{glossaries}
+\usepackage{todonotes}
+\usepackage{multicol}
+\usepackage{graphicx}
+
+\makeglossaries
+\setcounter{tocdepth}{1} % Inhaltsverzeicnis wird nur bis \section erstellt
+
+
+\date{06.10.2016}
+\title{Studienarbeit Mobile Quiz}
+\author{Andrea Hauser und David Windler}
+
+
+
+\begin{document}
+	
+	\includepdf{Titelblatt}
+	
+		
+	\part{Übersicht}
+	
+	
+	\chapter{Abstract}
+	%Die Kurzzusammenfassung (Abstract) richtet sich an Leute, die den Themenkreis der Arbeit relativ gut kennen. Für diese Leute beschreiben Sie die neuen, eigenen Resultate der Arbeit. Die Kurzzusammenfassung soll nur etwa 200 Worte (etwa 20 Zeilen) lang sein. Bei Studienarbeiten ist das von der HSR Schulleitung vorgegebene Kurzzusammenfassungsformular zu verwenden.
+	
+	\section{Ausgangslage}
+	
+	
+	\section{Vorgehen}
+	
+	
+	\section{Technologien}
+	
+	
+	
+	\section{Ergebnis}
+	
+	
+	
+	
+	
+	\chapter{Änderungsnachweis}
+	\begin{tabularx}{\linewidth}{|c|X|c|c|}
+		\hline
+		\textbf{Version} & \textbf{Änderungsgrund} & \textbf{Kürzel} & \textbf{Datum} \\
+		\hline
+		1.0 & Erstellung des Dokuments & dwi & 08.10.2016 \\
+		\hline
+		1.1 & Ausarbeitung 8.4 Usability & dwi & 09.10.2016 \\
+		\hline
+		1.2 & Titelblatt & dwi & 15.10.2016 \\
+		\hline
+		1.3 & Kapitel 26 Kontaktadressen, \newline Kapitel 21 Risikomanagement & ah & 15.10.2016 \\
+		\hline
+		1.4 & Kapitel 8 Analyse: Einleitung und Eigene Untersuchungen & dwi & 16.10.2016 \\
+		\hline
+	\end{tabularx}
+	
+	\listoftodos
+	
+	
+	\tableofcontents
+	%Im Inhaltsverzeichnis sollen Sie nur die Stufen Kapitel (h.), Unterkapitel (h.i) bzw. im Anhang die Haupt- (X) und Unterabschnitte (X.n) aufführen.
+	
+	
+	\chapter{Aufgabenstellung}
+	%Die unterschriebene Aufgabenstellung des Dozenten.
+	
+	
+	
+	
+	\chapter{Erklärung zur Urheberschaft}
+	%Unterschriebenes Formular "Erklärung zur Urheberschaft" Handelt es sich um eine Fortsetzung einer Studienarbeit, so ist in der HSR_Erklaerung_Urheberschaft klar aufzuzeigen, was im Rahmen der Studienarbeit und was bei der Bachelorarbeit gemacht wurde. In diesem Formular ist auch anzugeben, welche Informationen Copyright geschützt sind und daher nicht ohne Weiteres weitergegeben werden können.
+	
+	
+	
+	
+	\chapter{Vereinbarung zur Verwendung und Weiterentwicklung der Arbeit}
+	%Unterschriebenes Formular "Vereinbarung zur Verwendung und Weiterentwicklung der Arbeit".
+	
+	
+	
+	\chapter{Management Summary (Zusammenfassung)}
+	%Das "Management Summary" bzw. die Zusammenfassung richtet sich in der Praxis an die "Chefs des Chefs", d.h. an die Vorgesetzten des Auftraggebers (diese sind weniger tief in die Thematik involviert als die direkt Beteiligten). Das Management Summary soll maximal 4 Seiten umfassen und mindestens eine Figur enthalten. Die Sprache soll knapp und klar sein.
+	
+	%Im Management Summary braucht es keine Untertitel. Die jetzt erstellten Titel sind eher als Vorgabe für den Ablauf gedacht.
+	
+	
+	%Ausgangslage
+	%	·         Ausgangslage (Warum wurde das Projekt durchgeführt? Was machen andere und welche ähnlichen Arbeiten gibt es zum Thema? Welche Ziele wurden gesteckt (Muss-, Soll-, Nice-to-Have Ziele)
+	
+	
+	%Vorgehen
+	%   ·         Vorgehen (Was wurde gemacht? In welchen Teilschritten? Wer war involviert (Durchführung, Entscheide, Zwischenprüfungen/Feedbacks usw.)? Verwendete Werkzeuge)
+	
+	
+	%Ergebnisse
+	%   ·         Ergebnisse (Was ist das Resultat des Projekts (quantifizierbarer und qualitativer Nutzen)? Was musste man selbst tun, was konnte von anderen verwendet werden? Selbstbeurteilung der  Zielerreichung in Bezug auf die Zielsetzungen der Arbeit. Abweichungen von den Zielsetzungen und Begründung dafür (positiv und negativ). Kosten. Lernpunkte aus der Durchführung des Projekts)
+	
+	
+	%Ausblick
+	%   ·         Ausblick (Verbleibende Probleme, Risiken und Gegenmassnahmen, was würde man anders machen? Wie geht es mit dem Projekt weiter, wer nutzt was? Welche weiteren Schritte, Entwicklungen, Anpassungen etc. werden empfohlen / sind geplant?)
+	
+	
+		
+	
+	
+	
+	
+	
+	\part{Hauptbericht}
+	
+	\chapter{Einleitung}
+	\input{Einleitung.tex}
+	
+	\todo{Andrea}
+	
+	
+	%Die nach der Einleitung folgenden Hauptabschnitte richten sich in der Regel an die Nutzer und Betreiber des realisierten Systems und an die im entsprechenden Fachgebiet tätigen Ingenieure. Die Hauptabschnitte bilden typischerweise die wichtigsten Ergebnisse Ihrer Arbeit ab. Sie beschreiben das realisierte System bzw. die getätigten Untersuchungen. Die Leser sollen die zur Problemlösung getätigten Überlegungen verstehen. Theoretische Grundlagen sind soweit aufzuführen, als dies für die Lösung der Aufgabe nötig ist (keine Lehrbücher oder Wikipedia-Artikel (ab)schreiben). Die Erkenntnisse aus den theoretischen Untersuchungen sind also wenn immer möglich direkt mit der Problemlösung zu verknüpfen (z.B. mit eigenen Messungen oder mit Beispielen aus der schliesslich erstellten Anwendung zu illustrieren).
+	
+	%Sparen Sie nicht mit Diagrammen und Figuren. Diese müssen auch im Text diskutiert sein, d.h. es wird auch in Worten beschrieben, was man mit dem Diagramm oder der Figur zeigen will. Spezielle Details, welche die Kontinuität in den Hauptabschnitten stören, sind im Anhang aufzuführen.
+	
+	%Der Umfang der einzelnen Abschnitte des Berichts entspricht in der Regel dem Arbeitsaufwand, welcher für die entsprechenden Themen eingesetzt wurde.
+	
+	%Je nach Aufgabenstellung können beispielsweise Hauptabschnitte der folgenden Art vorkommen:
+	
+	\chapter{Analyse}
+	\input{Analyse.tex}
+		
+		
+	
+	
+	\chapter{Software Engineering}
+	%Software Engineering: Systembeschreibung, Software-Architektur, Domainmodell, Sequenzdiagramme, etc. (Anhand dieses Teils sollte man genau verstehen, was wie realisiert wurde. Informatiker sollten alle für die Optimierung oder Weiterentwicklung des System nötigen Informationen haben.)
+	%Überarbeitung gewisser Konzepte, Bspw. Teilnahme
+		
+	
+	\chapter{Design}
+	%Design (im Sinne von aussehen, navigieren usw.)
+	%Bezug auf Analyse, Wireframes / Mockups, etc.
+	
+	
+	
+	
+	\chapter{Realisierung}
+	%Realisierung, System- oder Softwarekonzepte
+	%Umsetzung von neuen Konzepten und Desgin
+	
+	
+	
+	\chapter{Qualitätsmanagement}
+	\input{Qualitaetsmanagement.tex}
+	
+	
+	\chapter{Schlussfolgerung}
+	%Die Schlussfolgerungen bilden zusammen mit der Kurzzusammenfassung (Abstract) und der Zusammenfassung (Mgmt Summary, Broschürentext) die wichtigsten Abschnitte eines Berichts und sollen daher am sorgfältigsten ausgearbeitet sein.
+	
+	%·         Die Schlussfolgerungen enthalten eine Zusammenfassung und Beurteilung der Resultate (Vergleich mit anderen Lösungen, was wurde erreicht, was nicht, was bleibt noch zu tun, was würde man nun anders tun).
+	%·         Bei Systementwicklungen kann eine Vergleichstabelle sinnvoll sein, welche die wichtigsten Funktionen im Vergleich zu verschiedenen Lösungen zeigt.
+	%·         In den Schlussfolgerungen soll auch ein Ausblick auf das weitere Vorgehen bzw. auf die Bedeutung der erreichten Ergebnisse gegeben werden.
+	
+	
+	
+	
+	
+	\chapter{Literaturverzeichnis}
+	%Im Literaturverzeichnis sind alle verwendeten Quellen (Bücher, Publikationen, Application Notes, Links (url), sowie Hinweise auf Gespräche mit bestimmten Personen) aufgeführt. Typischerweise werden die Quellenangaben nummeriert (z.B. [1], [2]) und in der Reihenfolge geordnet, wie sie im Bericht vorkommen. Man kann die Quellen auch mit den (abgekürzten) Namen der Autoren und dem Erscheinungsjahr bezeichnen (z.B. [Schueli90], [Shannon49]), wobei die Einträge dann alphabetisch geordnet werden. Jede Referenz ist so anzugeben, dass sie einfach auffindbar ist (evtl. inklusive Seitenzahl, Bibliothek Bestellnummer). Eine Referenz, welche die allgemeine Grundlage für ein ganzes Kapitel bildet, wird im Titel bzw. in einer Fussnote aufgeführt. Für Referenzen aus dem Internet soll ein kommentierter URL angegeben werden.
+	
+	%Beispiele zu Quellenangaben:
+	%[1] C.E.Shannon, Communication in the Presence of Noise, Proceedings IRE, Vol. 37, January, 1949, pp. 10-21.
+	%[2] Telefonat vom 22.5.92 mit Herrn XY, Firma, Adresse, Telefon-Nummer.
+	%[3] 12 Tipps für einen guten Sprach- und Schreibstil  www.redenwelt.de zuletzt besucht am 15.9.2015.
+	
+	\bibliographystyle{plain}
+	\bibliography{zotero}
+	
+	
+	\chapter{Abkürzungsverzeichnis (Glossar)}
+	%Das Abhkürzungsverzeichnis (Glossar) enthält alle im Bericht vorkommenden Abkürzungen in alphabetischer Reihenfolge. Häufig wird hier auch eine Kurzbeschreibung zu den Begriffen angegeben. In diesem Fall nennt man den Abschnitt eher "Glossar".
+	
+	\printglossaries
+	
+	
+	
+	
+	
+	\part{Anhang}
+	%Der Anhang enthält Abschnitte, welche den Rahmen oder die Kontinuität der Hauptkapitel stören, da sie nicht von zentraler Bedeutung für die Endlösung sind. Auch administrative Teile der Arbeit, welche von der Schule gefordert, für das Verständnis des Endergebnisses der Arbeit weniger wichtig sind, sollen im Anhang aufgeführt sein. Die im folgenden hervorgehobenen Punkte müssen in jeder Arbeit enthalten sein, die übrigen Punkte können je nach Situation vorkommen oder nicht.
+	
+	
+	\chapter{Persönliche Berichte zur Arbeit}
+	%Persönliche Berichte zur Arbeit (wie von HSR verlangt)
+	
+	\chapter{Details zu Diagrammen}
+	%Details zu Diagrammen (z.B. detaillierte Klassendiagramme, Sequenzdiagramme, Programmlistings, Use Cases)
+	
+	\chapter{Details zur Lösungsfindung}
+	%Details zur Lösungsfindung (z.B. Analyseschritte, Designschritte, umfangreiche Herleitungen, Tabellen, Messergebnisse, Testauswertungen)
+	
+	\chapter{User Interface Abklärungen, Mockups, Paper Prototypen}
+	%User Interface Abklärungen, Mockups, Paper Prototypen
+	
+	\chapter{Projektmanagementplan}
+	%Projektmanagementplan (kommentierter Arbeitsplan, Zeiterfassung: Durch den Einbezug des Arbeitsplans in den Bericht sollen die Studenten zu einer bewussten Arbeitsplanung animiert werden, sodass sie lernen den Arbeitsaufwand abzuschätzen und die Arbeit optimal zu organisieren.
+	\input{Projektmanagementplan.tex}
+	
+	\todo{David}
+	
+	\chapter{Risikomanagement}
+	%Bezug nehmen auf das Excel.
+	Eine Übersicht aller technischen Risiken befindet sich auf der folgenden Seite. Darin ist der aktuelle Zustand aller uns bekannten Risiken ersichtlich.
+	
+	\section{Umgang mit Risiken}
+	Die Teammitglieder sind bereit, bei unerwarteten oder nicht vorhergesehenen Zwischenfällen das Arbeitspensum für die Studienarbeit zu erhöhen, um den fristgerechten Abschluss der Arbeit zu gewährleisten, solange es sich dabei nicht um einen Dauerzustand handelt. Zusätzlich wird bei der Schätzung der Aufwände immer darauf geachtet, für unerwartetes eine Reserve einzuplanen.
+	Nach jeder Iteration werden die bestehenden Risiken neu evaluiert und falls nötig angepasst oder neue Risiken aufgenommen.
+	
+	\includepdf[landscape=true]{TechnischeRisiken.pdf} 
+
+	\chapter{Verwendete Werkzeuge}
+	%Verwendete Werkzeuge, Komponenten, Tools
+	
+	%Bezugsquellen: Es sollen alle Tools im Anhang beschrieben werden (z.B. Zotero, Codeclimate, …), inklusive Perl oder Miktex. Ziel ist, dass man mit der Beschreibung alles einrichten und direkt loslegen kann.
+	
+	\todo{David, beide kapitel zu 1 Kapitel}
+	
+	\chapter{Bezugsquellen und Versionsnummern von externer Software}
+	%Bezugsquellen und Versionsnummern von externer Software
+	
+	\todo{David}
+	
+	\chapter{Spezielle nicht öffentlich verfügbare Berichte oder Datenblätter}
+	%Spezielle nicht öffentlich verfügbare Berichte oder Datenblätter.
+	
+	\chapter{Passworte/Logins}
+	%Passworte/Logins  (eventuell in speziellem Couvert abgegeben)
+	
+	\chapter{Kontaktadressen}
+	%Kontaktadressen von allen beteiligten Personen (Adressen der Studenten, über welche sie auch nach der Zeit an der HSR erreicht werden können, Industriepartner, Betreuer, weitere Personen)
+	\begin{multicols}{2}
+	\noindent \textbf{Studenten:}
+	\\
+	Andrea Hauser\\
+	Waldheim 1\\
+	8825 Hütten\\
+	E-Mail: andrea.hauser@hotmail.ch\\
+	\\
+	David Windler\\
+	Heid 420\\
+	9502 Braunau\\
+	\columnbreak
+	E-Mail: david.windler@windowslive.com\\
+	\textbf{Betreuer:}\\
+	Peter Heinzmann\\
+	E-Mail: peter.heinzmann@hsr.ch\\
+	\\
+	Patrick Eichler\\
+	E-Mail: patrick.eichler@hsr.ch\\
+	
+	\end{multicols}
+	
+	
+	\chapter{Inhaltsverzeichnis zur mit der Arbeit abgegeben CDROM}
+	%Inhaltsverzeichnis zur mit der Arbeit abgegeben CDROM
+	%Diese kann beispielsweise folgende Teile enthalten:
+	%·         Gesamten Code
+	%·         Alle Dokumente der Arbeit (in Originalformat und als PDF)
+	%·         Alle Präsentationen zur Arbeit (in Originalformat bzw. Powerpoint und/oder PDF)
+	%·         Reviews, Zwischenberichte
+	%·         Sitzungsprotokolle
+	%·         Protokolle zu Telefonaten, spezielle Mails
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
