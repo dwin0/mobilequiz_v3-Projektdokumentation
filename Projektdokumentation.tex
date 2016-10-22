@@ -10,14 +10,18 @@
 \usepackage[section]{glossaries}
 \usepackage{todonotes}
 \usepackage{multicol}
+
+%graphics
+\usepackage{wrapfig}
 \usepackage{graphicx}
 \usepackage{float}
+
 
 \makeglossaries
 \setcounter{tocdepth}{1} % Inhaltsverzeicnis wird nur bis \section erstellt
 
 
-\date{06.10.2016}
+\date{\today}
 \title{Studienarbeit Mobile Quiz}
 \author{Andrea Hauser und David Windler}
 
@@ -25,7 +29,9 @@
 
 \begin{document}
 	
-	\includepdf{Titelblatt}
+	\begin{titlepage}
+		\includepdf{Titelblatt}
+	\end{titlepage}
 	
 		
 	\part{Übersicht}
@@ -188,7 +194,7 @@
 	%[2] Telefonat vom 22.5.92 mit Herrn XY, Firma, Adresse, Telefon-Nummer.
 	%[3] 12 Tipps für einen guten Sprach- und Schreibstil  www.redenwelt.de zuletzt besucht am 15.9.2015.
 	
-	\bibliographystyle{plain}
+	\bibliographystyle{IEEEtran}
 	\bibliography{zotero}
 	
 	
