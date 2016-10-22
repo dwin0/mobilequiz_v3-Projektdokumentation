@@ -1,8 +1,5 @@
 % !TEX root = Projektdokumentation.tex
 
-%Bezugsquellen: Es sollen alle Tools im Anhang beschrieben werden (z.B. Zotero, Codeclimate, …), inklusive Perl oder Miktex. Ziel ist, dass man mit der Beschreibung alles einrichten und direkt loslegen kann.
-
-
 \section{Dokumentenverwaltung}
 
 \begin{description}
@@ -24,7 +21,7 @@
 	\end{itemize}
 	
 	
-	\item [GitHub Desktop] ist ein Programm für Windows und Mac OS X, um GitHub-Repositories zu lokal synchronisieren und verwalten.
+	\item [GitHub Desktop] ist ein Programm für Windows und macOS, um GitHub-Repositories zu lokal synchronisieren und verwalten.
 	\begin{itemize}
 		\item Einsatzzweck: Synchronisation von Code und Latex-Projektdokumentation
 		\item Version: 3.3.1.0
@@ -38,13 +35,12 @@
 \section{Server-Zugriff}
 
 \begin{description}
-	\item [FileZilla Client] ist ein Programm für Windows, Mac OS X und Linux, um mittels FTP (File Transfer Protocol) Daten auf einen Server hoch- und herunterzuladen. \cite{wikipedia_filezilla}
+	\item [FileZilla Client] ist ein Programm für Windows, macOS und Linux, um mittels FTP (File Transfer Protocol) Daten auf einen Server hoch- und herunterzuladen. \cite{wikipedia_filezilla}
 	\begin{itemize}
 		\item Einsatzzweck: Dateien auf HSR-Server hochladen
 		\item Version: 3.22.1
 		\item Bezugsquelle: http://filezilla.de/
 	\end{itemize}
-	
 	
 	
 	\item [PuTTY] ist ein Programm für Windows und Linux, um Verbindungen mittels SSH (Secure Shell), Telnet oder über eine serielle Schnittstelle herzustellen. \cite{wikipedia_putty}
@@ -60,53 +56,60 @@
 \section{Projektverwaltung}
 
 \begin{description}
-	\item [Redmine] ist ein bla
+	\item [Redmine] ist eine web-basierte Projektmanagement-Software.
 	\begin{itemize}
-		\item Einsatzzweck:
-		\item Version:
-		\item Bezugsquelle:
+		\item Einsatzzweck: Projektplanung und Ticketverwaltung
+		\item Version: 3.3.0.stable
+		\item Bezugsquelle: Von Schule vorinstalliert.
 	\end{itemize}
 \end{description}
 
 
-
+\newpage
 \section{Dokumentation}
 
 \begin{description}
-	\item [Microsoft Office (Word, Excel)] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
+	\item [Microsoft Office] ist ein Paket von Büro-Software für Windows, macOS, iOS, Android und Windows Phone. \cite{wikipedia_microsoft-office}
+	\begin{itemize}
+		\item Einsatzzweck: Dokumenten- und Tabellenerstellung, ausser Projektdokumentation
+		\item Version: 1609
+		\item Bezugsquelle: https://products.office.com/
+		\item Beachten: Das Office-Paket kann als HSR-Student kostenlos heruntergeladen werden.
+	\end{itemize}
 	
 	
-	\item [Latex] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
+	\item [TeXstudio] ist ein LaTex-Editor für Windows, macOS und Linux.
+	\begin{itemize}
+		\item Einsatzzweck: Erstellung von LaTex-Dokumenten, vor allem für Projektdokumentation
+		\item Version: 2.11.0
+		\item Bezugsquelle: http://www.texstudio.org/
+		\item Beachten: Für die Erstellung von LaTex-Dokumenten benötigt es eine TeX-Distribution (siehe MiKTeX). Weiter ist ein Perl-Interpreter Voraussetzung, um ein Glossar zu erstellen.
+	\end{itemize}
 	
 	
-	\item [TeXstudio] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
+	\item [MiKTeX] ist eine TeX-Distribution für Windows. \cite{wikipedia_miktex}
+	\begin{itemize}
+		\item Einsatzzweck: Interpretation und Kompilation von LaTex-Dokumenten
+		\item Version: 2.9
+		\item Bezugsquelle: https://miktex.org/download
+	\end{itemize}
 	
 	
-	\item [MikTex] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
+	\item [ActivePerl] ist ein Perl-Interpreter für Windows.
+	\begin{itemize}
+		\item Einsatzzweck: Erstellung von LaTex-Glossaren
+		\item Version: 5.24.0
+		\item Bezugsquelle: http://www.activestate.com/activeperl
+	\end{itemize}
 	
 	
-	\item [Perl] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
-	
-	
-	\item [Zotero] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
+	\item [Zotero] ist eine Quellenverwaltungs-Software für Windows, macOS und Linux.
+	\begin{itemize}
+		\item Einsatzzweck: Quellenverwaltung
+		\item Version: 4.0.29.10
+		\item Bezugsquelle: https://www.zotero.org/download/
+		\item Beachten: Für das Speichern von neuen Quellen eignet sich das Browser-AddOn. Weiter können die Exporteinstellungen des Zotero-Standalone auf BibTeX eingestellt werden, was es ermöglicht, neue Quellen per Drag\&Drop einer .bib-Datei hinzuzufügen. So können neue Quellen schnell und einfach in LaTeX eingebunden werden.
+	\end{itemize}
 \end{description}
 
 
@@ -114,28 +117,45 @@
 \section{Software-Entwicklung}
 
 \begin{description}
-	\item [PHP Eclipse] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
+	\item [PHP Eclipse] ist eine PHP-Entwicklungsumgebung für Windows, macOS und Linux.
+	\begin{itemize}
+		\item Einsatzzweck: PHP-Entwicklung
+		\item Version: Neon.1 Release (4.6.1)
+		\item Bezugsquelle: https://eclipse.org/pdt/
+	\end{itemize}	
 	
 	
-	\item [Selenium Firefox Addon] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
+	\item [XAMPP Control Panel] ist eine PHP-Entwicklungsumgebung für Windows, macOS und Linux. Sie enthält Apache, MariaDB, PHP und Perl.
+	\begin{itemize}
+		\item Einsatzzweck: Lokale PHP-Entwicklung und Debugging. Über phpMyAdmin konnte die Datenbank leicht lokal installiert werden. Weiter ist der Apache-Server schnell eingerichtet. Da der Eclipse-Workspace im htdocs von Apache liegt, können Änderungen sofort nachvollzogen werden. Zudem ermöglicht die Kombination mit easy Xdebug (s. unten) ein einfaches Debugging mit Firefox und Eclipse.
+		\item Version: 3.2.2
+		\item Bezugsquelle: https://www.apachefriends.org/de/index.html
+	\end{itemize}
 	
 	
-	\item [XAMPP Control Panel] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
+	\item [easy Xdebug (with moveable icon)] ist ein Firefox AddOn, um einfaches Debugging mittels Eclipse zu ermöglichen.
+	\begin{itemize}
+		\item Einsatzzweck: Debugging mit Eclipse
+		\item Version: 0.9.4
+		\item Bezugsquelle: https://addons.mozilla.org/de/firefox/addon/easy-xdebug-with-moveable-
+		\item Beachten: Es ist folgendermassen vorzugehen, um PHP mit Eclipse zu debuggen:
+		\begin{enumerate}
+			\item XAMPP Control Panel: Start von MySQL und Apache
+			\item Start von Eclipse und Öffnen des Projekts
+			\item Start von Firefox
+			\item Firefox: Aktivierung des Toggle xdebug (roter Punkt sichtbar)
+			\item Firefox: Navigation zu localhost/\textless Projektname in htdocs\textgreater
+			\item Nun sollte Eclipse aufleuchten und fragen, ob in den Debug-Mode umgestellt werden soll.
+		\end{enumerate}
+	\end{itemize}
 	
 	
-	\item [easy Xdebug] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
+	\item [Selenium IDE] ist ein Firefox AddOn für Web-UI-Tests. Es ermöglicht das Aufnehmen, die Bearbeiten, das Debuggen und das Abspielen von Tests.
+	\begin{itemize}
+		\item Einsatzzweck: Erstellen und Abspielen von Web-UI-Tests
+		\item Version: 2.9.1.1
+		\item Bezugsquelle: https://addons.mozilla.org/de/firefox/addon/selenium-ide/
+	\end{itemize}
 \end{description}
 
 
@@ -143,16 +163,22 @@
 \section{Continuous Integration}
 
 \begin{description}
-	\item [Codeclimate] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
+	\item [Travis] ist ein Online Continuous-Integration Service für GitHub-Projekte.
+	\begin{itemize}
+		\item Einsatzzweck: Builden und Unit-Testen von PHP-Code
+		\item Version: unbekannt
+		\item Webseite: https://travis-ci.org/ und https://travis-ci.com/
+		\item Beachten: Als Student mit dem GitHub Student Developer Pack kann man unter https://travis-ci.com/ Private-Repositories kostenlos builden.
+	\end{itemize}
 	
 	
-	\item [Travis] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
+	\item [Code Climate] ist ein Online Service, um die Code-Qualität und Test-Coverage zu messen.
+	\begin{itemize}
+		\item Einsatzzweck: Qualitätsmessung des PHP-Codes
+		\item Version: 1.0
+		\item Webseite: https://codeclimate.com/
+		\item Beachten: Code Climate kann mit Travis verknüpft werden. Hat Travis alle Tests durchgeführt, so leitet er dann die Ergebnisse direkt weiter. Siehe dazu die Datei '.travis.yml'. Die Konfiguration für die Qualitäts-Tests von Code Climate sind in '.codeclimate.yml' festgelegt.
+	\end{itemize}
 \end{description}
 
 
@@ -160,11 +186,11 @@
 \section{Usability}
 
 \begin{description}
-	\item [myBalsamiq] ist ein bla \\
-	Einsatzzweck: \\
-	Version: \\
-	Bezugsquelle: \\
+	\item [myBalsamiq] ist ein Online Service für die Erstellung von Mockups.
+	\begin{itemize}
+		\item Einsatzzweck: Erstellung von Mockups
+		\item Version: Build \#release/4832 - 4832
+		\item Webseite: https://www.mybalsamiq.com/
+		\item Beachten: Als HSR-Student kann man dem Informatik-Studiengangleiter eine Anfrage schreiben, um kostenlos ein Projekt auf myBalsamiq erstellen zu können.
+	\end{itemize}
 \end{description}
-
-
-\todo{David}
