@@ -1,0 +1,34 @@
+% !TEX root = Projektdokumentation.tex
+
+\section{Verbesserung der bestehenden Lösung}
+
+\subsection{Frage-Template}
+Die Möglichkeit, Fragen offline zu erstellen und anschliessend hochzuladen, bestand bereits. Unterstützt wurde die Erfassung von Singechoice und Multiplechoice-Fragen. Dazu konnten Fragen in eine CSV-Datei geschrieben werden. Alle korrekten Antworten wurden mit einem Asterisk (Stern-Zeichen) versehen. Eine Multiplechoice-Frage lag vor, wenn mehr als eine Antwort mit einem Asterisk versehen war.
+
+In dieser Arbeit wurde das CSV-Template durch ein Excel-Template abgelöst. Die Gründe dazu sind die folgenden:
+\begin{itemize}
+	\item Die Regeln für das Erstellen waren einem kleinen Personenkreis bekannt. Sie wurden auf der Webseite nicht beschrieben. Damit die Funktion aber Verbreitung findet, muss die Vorgehensweise öffentlich zugänglich sein.
+	
+	Es wurde entschieden, ein Excel-Template zum Download auf der Webseite anzubieten. Darin sind alle relevanten Informationen für die Erstellung vorhanden.
+	
+	\item Werden die Fragen in Excel erstellt und anschliessend daraus eine CSV-Datei generiert, so hat man die Wahl zwischen 3 verschiedenen CSV-Varianten.
+	
+	Der Excel-Import hingegen unterstützt alle Excel-Dateien mit der Endung .xlsx. Dieses Format ist ab Excel 2007 das Standardformat und daher weit verbreitet.
+	\cite{microsoft2016}
+	
+	\item Das CSV-Template war auf Singlechoice und Multiplechoice - Fragen beschränkt.
+	
+	Da neue Fragetypen unterstützt werden sollten, wurde eine neue Struktur mittels Excel erarbeitet. Um den Ersteller zu Unterstützen wurde mit Farben und weiteren Funktionen gearbeitet, welche durch CSV nicht unterstützt werden.
+\end{itemize}
+
+Ein Beispiel des ursprünglichen Formats sowie des neuen Excel-Templates ist im Anhang, im Kapitel 19 Details zur Lösungsfindung, ersichtlich.
+
+Der neue Template-Import wurde mit PHPExcel \cite{phpexcel} umgesetzt. Diese PHP-Library war bereits im Projekt eingebunden und wird dazu verwendet, die Rangliste aller Teilnehmenden eines Quiz zu Exportieren. Die neue Logik befindet sich hauptsächlich in der neu erstellen Datei 'importExcel.php'.
+
+\section{Neuerungen}
+
+
+
+
+
+
