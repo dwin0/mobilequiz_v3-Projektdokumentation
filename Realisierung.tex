@@ -27,7 +27,7 @@ Der neue Template-Import wurde mit PHPExcel \cite{phpexcel} umgesetzt. Diese PHP
 
 \section{Neuerungen}
 
-\subsubsection{Fragen mit Bildern}
+\subsection{Fragen mit Bildern}
 Bei jedem Fragetyp ist es neu möglich ein Bild zu hinterlegen. Die Funktion des Bild-Uploads auf den Server bestand bereits, wurde aber erweitert. So wurde zuvor eine Fehlermeldung ausgegeben, wenn ein Bild eine Grösse von über 20 Megabyte aufwies. Diese Limite wurde auf 800 Kilobyte gesenkt und falls das Bild mehr Speicher benötigt, wird es automatisch komprimiert.
 \\
 
@@ -56,15 +56,14 @@ sudo apt-get install php5.6-gd
 ps -ef | grep apache | grep -v grep
 \end{lstlisting}
 
-Ist die Ausgabe
 \begin{lstlisting}
-root      5001     1  0 07:21 ?        00:00:00 /usr/sbin/apache2 -k start
-www-data  5021  5001  0 07:21 ?        00:00:00 /usr/sbin/apache2 -k start
-www-data  5022  5001  0 07:21 ?        00:00:00 /usr/sbin/apache2 -k start
-www-data  5023  5001  0 07:21 ?        00:00:00 /usr/sbin/apache2 -k start
+root      5001     1  0 07:21 ?    00:00:00 /usr/sbin/apache2 -k start
+www-data  5021  5001  0 07:21 ?    00:00:00 /usr/sbin/apache2 -k start
+www-data  5022  5001  0 07:21 ?    00:00:00 /usr/sbin/apache2 -k start
+www-data  5023  5001  0 07:21 ?    00:00:00 /usr/sbin/apache2 -k start
 \end{lstlisting}
 
-so werden die Anfrage von Prozessen der Benutzergruppe 'www-data' beantwortet. Die Schreibrechte an diese Gruppe können wie folgt vergeben werden:
+Ist die Ausgabe wie oben ersichtlich, so werden die Anfragen von Prozessen der Benutzergruppe 'www-data' beantwortet. Die Schreibrechte an diese Gruppe können wie folgt vergeben werden:
 \begin{lstlisting}
 chgrp www-data /path/to/mydir
 chmod g+w /path/to/mydir
