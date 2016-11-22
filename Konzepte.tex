@@ -1,37 +1,43 @@
 % !TEX root = Projektdokumentation.tex
 
+\newacronym{ICTh}{ICTh}{Informatios- und Codierungstheorie}
+
+
 %Einleitung mit Erkenntniss / Zusammenfassung aus allen Unterkapiteln
-In den Konzepten wurde Theorie erarbeitet und dann festgelegt, wie diese Konzepte umgesetzt werden können. Im Bereich des Gruppenmanagements wurden die Rollen sowie das Gruppenmanagement analysiert und erweitert. Im Bereich der neuen Fragetypen wurde zuerst theoretisch neue Fragetypen erarbeitet und dann die Umsetzung nach Schwierigkeit und Nützlichkeit beurteilt. Zudem wurde der Bereich Statistiken untersucht und festgestellt, welche neuen Berechnungen vorgenommen werden sollen.
+Beim Erstellen der neuen Mockups wurde festgestellt, dass nebst dem Aussehen auch grundsätzliche Überlegungen zu gewissen Themen vertieft erarbeitet werden sollen. Diese Konzeptüberlegungen umfassen die Bereiche des Gruppenmanagements, der neuen Fragetypen sowie der Statistiken und den dazugehörigen Auswertungen.
+In diesen Bereichen wurde Theorie erarbeitet und dann festgelegt, wie diese Konzepte umgesetzt werden können. Beim Gruppenmanagements wurden die Rollen sowie das Arbeiten mit Gruppen analysiert und erweitert. Im Bereich der neuen Fragetypen wurde zuerst theoretisch neue Frage-Formen erarbeitet und dann die Umsetzung nach Schwierigkeit und Nützlichkeit beurteilt. Schliesslich wurde bei den Statistiken mögliche neue Auswertungsformen untersucht und aufgezeigt, welche neuen Berechnungen dazu vorgenommen werden sollen.
 
 \section{Gruppenmanagement}
-In diesem Teil wurden die Rollen angeschaut, sowie das bestehende Gruppenmanagement. Zu beiden Themen wurde eine Bestandsaufnahme gemacht, welche dann um sinnvolle Konzepte und Anforderungen erweitert wurde.
+In diesem Teil wurden die Rollen sowie das bestehende Gruppenmanagement angeschaut. Zu beiden Themen wurde eine Bestandsaufnahme gemacht, welche dann um sinnvolle Konzepte und Anforderungen erweitert wurde.
 
 \bigskip
 
-Im Bereich Rollen wurden zusätzliche Rollen definiert. Dabei handelt es sich um den Demo-User sowie um den Assistenten. Die Rolle des Demo-Users ist dazu gedacht, dass jemand sich anonym die Funktionen des MobileQuiz anschauen kann. Nur speziell für den Demo-User gekennzeichnete Quizzes sind für den Demo-User ersichtlich und durchführbar. Die Durchführungen des Demo-Users zählen nicht in die Statistik
+Im Bereich Rollen wurden zusätzliche Rollen definiert. Dabei handelt es sich um den Demo-User sowie um den Assistenten.
 
-Mit der Rolle des Assistenten wird es für einen Ersteller möglich eine oder mehrere Personen zu bestimmen, welche ebenfalls die Quizzes des Ersteller auswerten, bearbeiten und sogar erstellen können. Damit wird der Situation Assistent und Dozent aus der realen Welt Rechnung getragen. 
+Die Rolle des Demo-Users ist dazu gedacht, dass jemand anonym die Funktionen von MobileQuiz ausprobieren kann. Nur speziell für den Demo-User gekennzeichnete Quizzes sind dabei ersichtlich und durchführbar. Eine Quiz-Durchführungen des Demo-Users wird in den Statistiken nicht erfasst.
 
-\bigskip
-
-Die Idee der bereits bestehenden Gruppen wurde so erweitert, dass neu die Zuweisung von mehr als einer Gruppe für einen Teilnehmer möglich ist. Zudem wird neu Gewicht auf die Durchführung gelegt. Die Festlegung des Durchführungszeitraum sowie des Quiz-Typs wird aus dem Quiz in Durchführung verschoben. Damit ist es möglich das Quiz einmal zu erstellen und es dann aufgrund von den gewählten Durchführungszeiträumen und Quiz-Typen mit unterschiedlichen Durchführungen laufen zu lassen. Die Durchführung wird neu so konzipiert, dass ihr entweder eine Gruppe oder ein einzelner Teilnehmer hinzugefügt werden kann. 
+Mit der Rolle des Assistenten wird es für einen Ersteller möglich eine oder mehrere Personen zu bestimmen, welche ebenfalls die Quizzes des Ersteller auswerten, bearbeiten und sogar in seinem Namen erstellen können. Damit wird der Situation Assistent und Dozent aus der realen Welt Rechnung getragen.
 
 \bigskip
 
-Die ausführliche Ausarbeitung aller Ergebnisse ist im Anhang im Dokument 'Strukturierte\_Gruppenadministration\_AnforderungenV2.doxc' ersichtlich. Zudem finden Sie sämtliche Datenbankänderung die notwendig sind für diese Änderungen im Dokument 'DB\_nach\_Änderungen\_Assistant-has-1-CreatorV2.pdf'.
+Die Idee der bereits bestehenden Gruppen wurde so erweitert, dass ein Teilnehmer neu mehr als einer Gruppe zugewiesen werden kann.
+
+Zudem kann ein Quiz neu mehrere Durchführen haben. Die Festlegung des Durchführungszeitraum sowie des Quiz-Typs wird aus dem Quiz in die Durchführung verschoben. Damit ist es möglich, das Quiz einmal zu erstellen und es dann aufgrund der gewählten Durchführungszeiträume und Quiz-Typen als unterschiedliche Durchführungen laufen zu lassen. Die Durchführung wird so konzipiert, dass ihr entweder eine Gruppe oder ein einzelner Teilnehmer hinzugefügt werden kann. 
+
+\bigskip
+
+Die ausführliche Ausarbeitung aller Ergebnisse ist im Anhang im Dokument 'Strukturierte\_Gruppenadministration\_AnforderungenV2.doxc' ersichtlich. Zudem finden Sie sämtliche Datenbankanpassungen, welche für diese Änderungen notwendig sind, im Dokument \\'DB\_nach\_Änderungen\_Assistant-has-1-CreatorV2.pdf'.
 
 
 \section{Neue Fragetypen}
-Für dieses Konzept wurde zuerst die Theorie zu unterschiedlichen Fragetypen erarbeitet. Danach wurde beurteilt, welche neuen Fragetypen wie schwierig umzusetzen sind und wie nützlich sie für das MobileQuiz sind. Zudem wurde ein neues Excel-Template entwickelt, welches einfach zu erweitern ist.
+Für dieses Konzept wurde zuerst die Theorie zu unterschiedlichen Fragetypen erarbeitet. Danach wurde beurteilt, welche neuen Fragetypen wie schwierig umzusetzen sind und wie nützlich sie für MobileQuiz sind. Zudem wurde ein neues Excel-Template entwickelt, dessen detaillierte Beschreibung unter 12.1.1 'Frage-Template' ersichtlich ist.
 
 \bigskip
 
 \noindent Es wurden folgende Fragetypen als mögliche neue Fragetypen angeschaut:
 \begin{itemize}
-	\item Single-Choice Frage mit Bildern als Antwort
-	\item Multiple-Choice Frage mit Bildern als Antwort
-	\item Single-Choice Frage mit Bild in der Frage
-	\item Multiple-Choice Frage mit Bild in der Frage
+	\item Single-Choice und Multiple-Choice - Fragen mit Bildern als Antwort
+	\item Single-Choice und Multiple-Choice - Fragen mit Bild in der Frage
 	\item Freitext
 	\item Lückentext
 	\item Lückentext mit DropDown Auswahl
@@ -42,7 +48,23 @@ Für dieses Konzept wurde zuerst die Theorie zu unterschiedlichen Fragetypen era
 
 \bigskip
 
-Sämtliche Überlegungen zu diesem Kapitel befinden sich in den Dokumenten 'Strukturierte\_Fragetypen\_AnforderungenV2.docx', die dazu notwendigen Datenbankänderungen sind im Dokument 'newQuestions\_MobileQuizDB.mdj' festgehalten.
+Davon wurden die folgenden weiterverfolgt:
+\begin{itemize}
+	\item Single-Choice und Multiple-Choice - Fragen mit Bild in der Frage:
+	Dieser Fragetyp wird beispielsweise bei \acrshort{CN1} verwendet, um Fragen zu einem Netzwerklayout zu stellen.
+	\item Freitext:
+	Dieser Fragetyp nicht implementiert, diente er als Inspiration für ein Feedback-Feld unter jeder Frage. Ist eine Frage für einen Studenten nicht verständlich, so kann er seine Frage über dieses Feld direkt an den Quiz-Ersteller senden.
+	\item Antworten Sortieren:
+	Dieser Fragetyp wäre beispielsweise bei \acrshort{CN1} nützlich, um Netzwerktechnologien nach Geschwindigkeit zu ordnen.
+	\item Drag \& Drop:
+	Dieser Fragetyp wäre für \acrshort{CN1} und \acrshort{ICTh} attraktiv, beispielsweise für die Bezeichnungen von Übertragungsverfahren.
+\end{itemize}
+
+\noindent Für die weiteren Fragetypen besteht derzeit kein Bedarf, worauf auf die Umsetzung verzichtet wird.
+
+\bigskip
+
+Sämtliche Überlegungen zu diesem Kapitel befinden sich im Dokument \\ 'Strukturierte\_Fragetypen\_AnforderungenV2.docx', die dazu notwendigen Datenbankänderungen sind im Dokument 'newQuestions\_MobileQuizDB.mdj' festgehalten.
 Das neu erarbeitete Excel-Template ist unter 'Umsetzungsvorschlag\_Frage\_TemplateV2.xlsx' ersichtlich.
 
 \section{Statistiken und Auswertungen}
@@ -68,7 +90,7 @@ In den Statistiken und Auswertungen wurden neue Auswertungstypen angeschaut und 
 	\item Discrimination Index
 \end{itemize}
 
-Die genaue Erläuterung sowie die Berechnung finden Sie im Dokument 'Strukturierte\_Statistiken\_AnforderungV2.docx'. Die dazu nötigen Datenbankänderungen sind im Dokument 'newStatistiken\_MobileQuizDB.pdf' dokumentiert.
+Die genaue Erläuterung sowie die Berechnung finden Sie im Dokument \\ 'Strukturierte\_Statistiken\_AnforderungV2.docx'. Die dazu nötigen Datenbankänderungen sind im Dokument 'newStatistiken\_MobileQuizDB.pdf' dokumentiert.
 
 
 
