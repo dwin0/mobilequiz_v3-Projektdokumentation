@@ -1,0 +1,87 @@
+% !TEX root = Projektdokumentation.tex
+
+%Einleitung mit Erkenntniss / Zusammenfassung aus allen Unterkapiteln
+In den Konzepten wurde Theorie erarbeitet und dann festgelegt, wie diese Konzepte umgesetzt werden können. Im Bereich des Gruppenmanagements wurden die Rollen sowie das Gruppenmanagement analysiert und erweitert. Im Bereich der neuen Fragetypen wurde zuerst theoretisch neue Fragetypen erarbeitet und dann die Umsetzung nach Schwierigkeit und Nützlichkeit beurteilt. Zudem wurde der Bereich Statistiken untersucht und festgestellt, welche neuen Berechnungen vorgenommen werden sollen.
+
+\section{Gruppenmanagement}
+In diesem Teil wurden die Rollen angeschaut, sowie das bestehende Gruppenmanagement. Zu beiden Themen wurde eine Bestandsaufnahme gemacht, welche dann um sinnvolle Konzepte und Anforderungen erweitert wurde.
+
+\bigskip
+
+Im Bereich Rollen wurden zusätzliche Rollen definiert. Dabei handelt es sich um den Demo-User sowie um den Assistenten. Die Rolle des Demo-Users ist dazu gedacht, dass jemand sich anonym die Funktionen des MobileQuiz anschauen kann. Nur speziell für den Demo-User gekennzeichnete Quizzes sind für den Demo-User ersichtlich und durchführbar. Die Durchführungen des Demo-Users zählen nicht in die Statistik
+
+Mit der Rolle des Assistenten wird es für einen Ersteller möglich eine oder mehrere Personen zu bestimmen, welche ebenfalls die Quizzes des Ersteller auswerten, bearbeiten und sogar erstellen können. Damit wird der Situation Assistent und Dozent aus der realen Welt Rechnung getragen. 
+
+\bigskip
+
+Die Idee der bereits bestehenden Gruppen wurde so erweitert, dass neu die Zuweisung von mehr als einer Gruppe für einen Teilnehmer möglich ist. Zudem wird neu Gewicht auf die Durchführung gelegt. Die Festlegung des Durchführungszeitraum sowie des Quiz-Typs wird aus dem Quiz in Durchführung verschoben. Damit ist es möglich das Quiz einmal zu erstellen und es dann aufgrund von den gewählten Durchführungszeiträumen und Quiz-Typen mit unterschiedlichen Durchführungen laufen zu lassen. Die Durchführung wird neu so konzipiert, dass ihr entweder eine Gruppe oder ein einzelner Teilnehmer hinzugefügt werden kann. 
+
+\bigskip
+
+Die ausführliche Ausarbeitung aller Ergebnisse ist im Anhang im Dokument 'Strukturierte\_Gruppenadministration\_AnforderungenV2.doxc' ersichtlich. Zudem finden Sie sämtliche Datenbankänderung die notwendig sind für diese Änderungen im Dokument 'DB\_nach\_Änderungen\_Assistant-has-1-CreatorV2.pdf'.
+
+
+\section{Neue Fragetypen}
+Für dieses Konzept wurde zuerst die Theorie zu unterschiedlichen Fragetypen erarbeitet. Danach wurde beurteilt, welche neuen Fragetypen wie schwierig umzusetzen sind und wie nützlich sie für das MobileQuiz sind. Zudem wurde ein neues Excel-Template entwickelt, welches einfach zu erweitern ist.
+
+\bigskip
+
+\noindent Es wurden folgende Fragetypen als mögliche neue Fragetypen angeschaut:
+\begin{itemize}
+	\item Single-Choice Frage mit Bildern als Antwort
+	\item Multiple-Choice Frage mit Bildern als Antwort
+	\item Single-Choice Frage mit Bild in der Frage
+	\item Multiple-Choice Frage mit Bild in der Frage
+	\item Freitext
+	\item Lückentext
+	\item Lückentext mit DropDown Auswahl
+	\item Drag \& Drop
+	\item Antworten Sortieren
+	\item Code-Evaluation
+\end{itemize}
+
+\bigskip
+
+Sämtliche Überlegungen zu diesem Kapitel befinden sich in den Dokumenten 'Strukturierte\_Fragetypen\_AnforderungenV2.docx', die dazu notwendigen Datenbankänderungen sind im Dokument 'newQuestions\_MobileQuizDB.mdj' festgehalten.
+Das neu erarbeitete Excel-Template ist unter 'Umsetzungsvorschlag\_Frage\_TemplateV2.xlsx' ersichtlich.
+
+\section{Statistiken und Auswertungen}
+In den Statistiken und Auswertungen wurden neue Auswertungstypen angeschaut und beurteilt, welche davon umgesetzt werden sollen. Zudem wurde ausgearbeitet, wie die neuen Auswertungen zugänglich sein sollen.
+
+\bigskip
+
+\noindent Dabei handelt es sich um folgende neue Statistiken:
+\begin{itemize}
+	\item Anzahl der Teilnahmen
+	\item Mittelwert
+	\begin{itemize}
+		\item für Punkte
+		\item für Zeit
+	\end{itemize}
+	\item Standardabweichung
+	\begin{itemize}
+		\item für Punkte
+		\item für Zeit
+	\end{itemize}
+	\item Aufgabenschwierigkeit
+	\item Risikobereitschaft
+	\item Discrimination Index
+\end{itemize}
+
+Die genaue Erläuterung sowie die Berechnung finden Sie im Dokument 'Strukturierte\_Statistiken\_AnforderungV2.docx'. Die dazu nötigen Datenbankänderungen sind im Dokument 'newStatistiken\_MobileQuizDB.pdf' dokumentiert.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
