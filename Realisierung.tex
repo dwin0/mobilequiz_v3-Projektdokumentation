@@ -1,5 +1,7 @@
 % !TEX root = Projektdokumentation.tex
 
+\newglossaryentry{XML External Entitiy} {name={XML External Entitiy-Attacke},description={}} % TODO Erklären
+
 \section{Verbesserung der bestehenden Lösung}
 
 \subsection{Frage-Template}
@@ -25,12 +27,54 @@ Ein Beispiel des ursprünglichen Formats sowie des neuen Excel-Templates ist im 
 
 Der neue Template-Import wurde mit PHPExcel \cite{phpexcel} umgesetzt. Diese PHP-Library war bereits im Projekt eingebunden und wird dazu verwendet, die Rangliste aller Teilnehmenden eines Quiz zu Exportieren. Die neue Logik befindet sich hauptsächlich in der neu erstellen Datei 'importExcel.php'.
 
+Bei PHPExcel gab es bis zur Version 1.7.9 eine \gls{XML External Entitiy} - \gls{Vulnerability}. Dadurch war es Remote-Angreifern möglich, beliebige Dateien auf dem Server zu lesen oder eine Denial-of-Service - Attacke durchzuführen. \cite{cvedetails_phpexcel} %TODO Remote und Denial-of-Service erklären
+Da bei MobileQuiz allerdings die Version 1.8.0 verwendet wird, ist dies nicht mehr möglich. Es wurde mit dem Wissen von InfSi3 versucht eine solche Attacke durchzuführen, was ebenfalls zum Ergebnis führte, dass diese Sicherheitslücke nicht mehr vorhanden ist. %TODO InfSi3 erklären
+
 \section{Neuerungen}
 
 \subsection{Fragen mit Bildern}
-Bei jedem Fragetyp ist es neu möglich ein Bild zu hinterlegen. Die Funktion des Bild-Uploads auf den Server bestand bereits, wurde aber erweitert. So wurde zuvor eine Fehlermeldung ausgegeben, wenn ein Bild eine Grösse von über 20 Megabyte aufwies. Diese Limite wurde auf 800 Kilobyte gesenkt und falls das Bild mehr Speicher benötigt, wird es automatisch komprimiert.
-\\
 
+\subsubsection{Hochladen und Entfernen eines Bildes}
+Bei jedem Fragetyp ist es neu möglich ein Bild zu hinterlegen. Die Funktion des Bild-Uploads auf den Server bestand bereits, wurde aber erweitert.
+\\
+\\
+Beim Hochladen des Bildes wurde zuvor eine Fehlermeldung ausgegeben, wenn ein Bild eine Grösse von über 20 Megabyte überstieg. Diese Limite wurde herabgesetzt, weil ein Bild von dieser Grösse lange benötigt, bis es heruntergeladen werden kann. Unten ist ein Vergleich von Downloadzeiten aufgeführt, bei verschiedenen Dateigrössen. Die Downloadgeschwindigkeit ist die durchschnittliche Downloadgeschwindigkeit der Swisscom-Kunden, welche anhand von Speedtests der cnlab AG \cite{cnlab_speedtest} ermittelt wurde. Es wurden die Swisscom-Kunden gewählt, weil die Anzahl der User dort am grössten war. \\
+
+\begin{tabular}{|c|c|c|}
+	\hline 
+	Dateigrösse & Downloadgeschwindigkeit & Benötigte Zeit \\ 
+	\hline 
+	20 MB & 33,1 Mbit/s & 4,8 s \\ 
+	\hline 
+	5 MB & 33,1 Mbit/s & 1,2 s \\ 
+	\hline 
+	800 KB & 33,1 Mbit/s & 0,2 s \\ 
+	\hline 
+\end{tabular}\\
+
+Falls ein Bild nun 800 Kilobyte übersteigt, so wird es so lange komprimiert, bis seine Dateigrösse darunterliegt. Dies wird durch die PHP-Funktion 'imagecopyresampled' erreicht. Als Code-Vorlage diente das Beispiel von www.williseiler.ch \cite{willis_php}. \\
+
+Weiter gibt es Grössenbeschränkungen von Apache selbst \cite{stackoverflow_largeFilePHP}. Im File 'php.ini' können folgende drei Werte definiert werden:
+\begin{itemize}
+	\item upload\_max\_filesize: Legt die maximale Dateigrösse für eine Upload-Datei fest. Der Standardwert liegt bei 2 Megabyte.
+	\item post\_max\_size: Legt die maximale Grösse aller POST-Daten zusammen fest. Der Standardwert liegt bei 8 Megabyte.
+	\item max\_file\_uploads: Legt die maximale Anzahl aller Dateien fest, welche auf einmal hochgeladen werden können. Der Standardwert liegt bei 20 Dateien.
+\end{itemize}
+
+%TODO: Ergebnis der Anpassung festhalten
+
+Beim Upload wird das mit folgendem Dateinahmen im Ordner 'uploadedImages' abgelegt: 'question\_Datum(Tag\_Monat\_Jahr\_Stunde\_Minute\_Sekunde\_\_SessionId.Dateityp'.
+\\
+\\
+Das Excel-Template für die Frage-Erstellung wurde ebenfalls erweitert, dass auch Fragen mit Bildern erstellt werden können. Dazu wurde eine neue Spalte eingefügt, bei welcher man den Bildnamen inklusive Endung einträgt. Die Bilder müssen sich dabei im gleichen Ordner wie das Template befinden. Anschliessend wird der gesamte Ordner hochgeladen.
+
+Es war dabei nicht möglich, nur die Excel-Datei alleine hochzuladen und anschliessend die Bilder selbstständig zu holen. Dies wäre bezüglich der Sicherheit höchst bedenklich.
+\\
+\\
+Wird eine Frage gelöscht, so wird nebst dem Datenbankeintrag auch das Bild vom Server entfernt.
+
+
+\subsubsection{Änderungen am Server}
 \textbf{Wichtig:} 
 Für den Server-Upload müssen die folgenden zwei Dinge gegeben sein:
 \begin{itemize}
@@ -72,11 +116,33 @@ chmod g+w /path/to/mydir
 
 
 
+\subsubsection{Anzeige eines Bildes}
+Das Bild sollte beim Anzeigen der Frage gross genug dargestellt werden. Auf dem Computer war dies kein Problem, da ein Browserfenster genug Platz dazu bot, bei einem Smartphone hingegen war dieser beschränkt. Deshalb wurde die Anzeige so umgesetzt, dass das Bild beim Klick darauf auf dem ganzen Bildschirm dargestellt wird. Dies wurde mit Photoswipe \cite{photoswipe} umgesetzt, welches von GitHub \cite{github_photoswipe} bezogen wurde. Photoswipe ist eine JavaScript-Library, welche es ermöglicht, Bildgalerien auf Websites darzustellen. Sie unterstützt unter anderem Touch-Gesten und Zoom. So ist es kein Problem, ein Bild mit vielen Details darzustellen.
+
+Nachfolgend ist zu sehen, wie eine Frage mit Bild in verschieden Situationen angezeigt wird.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{Images/Frage-Bild_Anzeige_PC.PNG}
+	\caption{Anzeige des Frage-Bildes am Computer}
+	Quelle: Mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\textwidth]{Images/Frage-Bild_Anzeige_Mobile.PNG}
+	\caption{Anzeige des Frage-Bildes auf dem Smartphone}
+	Quelle: Mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\textwidth]{Images/Frage-Bild_Anzeige_Mobile_Full.PNG}
+	\caption{Fullscreen-Anzeige des Frage-Bildes auf dem Smartphone}
+	Quelle: Mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
+\end{figure}
 
 
-
-
-
-
+Weiter wurde die Generierung des PDF-Aufgabenblattes und Lösungsblattes ergänzt, damit auch dort die Bilder angezeigt werden. Hat man unterwegs kein Internet, so kann man sich die Fragen damit auch vorgängig herunterladen und im Zug anschauen.
 
 
