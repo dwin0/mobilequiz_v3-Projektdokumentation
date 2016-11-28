@@ -56,12 +56,18 @@ Falls ein Bild nun 800 Kilobyte übersteigt, so wird es so lange komprimiert, bi
 
 Weiter gibt es Grössenbeschränkungen von Apache selbst \cite{stackoverflow_largeFilePHP}. Im File 'php.ini' können folgende drei Werte definiert werden:
 \begin{itemize}
-	\item upload\_max\_filesize: Legt die maximale Dateigrösse für eine Upload-Datei fest. Der Standardwert liegt bei 2 Megabyte.
-	\item post\_max\_size: Legt die maximale Grösse aller POST-Daten zusammen fest. Der Standardwert liegt bei 8 Megabyte.
+	\item upload\_max\_filesize: Legt die maximale Dateigrösse für eine Upload-Datei fest. Der Standardwert liegt bei 2 MB.
+	\item post\_max\_size: Legt die maximale Grösse aller POST-Daten zusammen fest. Der Standardwert liegt bei 8 MB.
 	\item max\_file\_uploads: Legt die maximale Anzahl aller Dateien fest, welche auf einmal hochgeladen werden können. Der Standardwert liegt bei 20 Dateien.
 \end{itemize}
 
-%TODO: Ergebnis der Anpassung festhalten
+Werden via Excel-Template 10 Fragen mit je einem Bild à 1 Megabyte hochgeladen, so ist dies mit der Standardkonfiguration nicht möglich. Diese wurde deshalb folgendermassen angepasst:
+\begin{itemize}
+	\item upload\_max\_filesize: Neu 5 MB. Grössere Dateien benötigen zu lange für den Upload, allerdings soll der Benutzer nicht nur auf kleine Grössen beschränkt sein. Deshalb wurde von der 2MB-Standardgrösse abgewichen.
+	\item post\_max\_size: Neu 25 MB. Bei dieser Grösse beträgt die Uploadzeit bei einer Geschwindigkeit von 15 Mbit/s 13 Sekunden. Dies ist die Durchschnittliche Uploadgeschwindigkeit von Swisscom-Kunden, welche beim Speedtest der cnlab AG \cite{cnlab_speedtest} erreicht wurde. Diese Messungen umfassen jedoch auch Mobile-Messungen mit Smartphones. Da die Uploads der Frage-Templates aber eher von Computern und Laptops erfolgen, welche dank LAN und WLAN eine höhere Uploadgeschwindigkeit aufweisen, ist diese Uploadzeit eher geringer. Der Benutzer sollte sich zudem bewusst sein, dass der Upload bei so vielen Dateien einige Zeit in Anspruch nimmt.
+	Auf der anderen Seite soll der Benutzer aber auch nicht eingeschränkt werden. Es soll möglich sein, gleichzeitig 20 Fragen mit Bildern à 1 MB sowie 1 Frage mit einem grösseren Bild plus Excel-Template hochzuladen.
+	\item max\_file\_uploads: Neu 25 Dateien. Der Standard-Wert wird nur leicht angehoben, da es möglich sein soll 20 Fragen mit Bildern gleichzeitig zu erstellen. Damit würde das Maximum von 20 Dateien nicht ausreichen.
+\end{itemize}
 
 Beim Upload wird das mit folgendem Dateinahmen im Ordner 'uploadedImages' abgelegt: 'question\_Datum(Tag\_Monat\_Jahr\_Stunde\_Minute\_Sekunde\_\_SessionId.Dateityp'.
 \\
