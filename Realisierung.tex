@@ -1,8 +1,52 @@
 % !TEX root = Projektdokumentation.tex
 
 \newglossaryentry{XML External Entitiy} {name={XML External Entitiy-Attacke},description={}} % TODO Erklären
+\newglossaryentry{Refactoring}{name={Refactoring},
+	description={Refactoring bezeichnet die manuelle oder automatisierte Strukturverbesserung von Quelltexten unter Beibehaltung des beobachtbaren Programmverhaltens. Dabei sollen die Lesbarkeit, Verständlichkeit, Wartbarkeit und Erweiterbarkeit verbessert werden, mit dem Ziel, den jeweiligen Aufwand für Fehleranalyse und funktionale Erweiterungen deutlich zu senken. \cite{_refactoring_2016}}
+}
 
 \section{Verbesserung der bestehenden Lösung}
+
+\subsection{\gls{Refactoring} und Fehlerbehebung}
+Aufgrund der im Punkt \ref{subsec:eigeneUntersuchungen} vorgenommenen eigenen Untersuchungen des Mobile Quiz entstand eine Liste von zu behebenden Problemen. Diese detaillierte Liste ist im Dokument 'Ergebnisse eigene Tests.pdf' ersichtlich. In diesem Kapitel werden die wichtigsten vorgenommenen Änderungen angeschaut.
+
+\begin{itemize}
+	\item Es wurden unterschiedliche Fehlermeldungen bei falscher E-Mail Adresse oder falschem Passwort ausgegeben. Dies wurde aus Sicherheitsgründen geändert. Es wird neu bei einer falschen Eingabe von Passwort oder E-Mail folgende generelle Meldung angezeigt:	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\textwidth]
+		{Images/nachher_Email-und-Passwort.PNG}
+		\caption{Neu Umgesetzte Fehlermeldung}
+	\end{figure}
+
+	\item Wenn an einem Quiz Teilgenommen wird und versucht wird, das Quiz durch klicken auf den Abbrechen-Button zu verlassen, führte das teilweise zu keine Aktion. An was dies lag, ist in folgendem Bild gut ersichtlich. Es wurde nur innerhalb der blauen Markierung auf die Klicks von Benutzer reagiert. Dieser Ausschnitt wurde als Korrekturmassnahme direkt über den Abbrechen-Button platziert.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.75\textwidth]
+		{Images/CancelButtonProblem.PNG}
+		\caption{Screenshot des Problems des Abbrechen-Buttons}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.75\textwidth]
+		{Images/CancelButtonFix.PNG}
+		\caption{Screenshot der Lösung für das Problem des Abbrechen-Buttons}
+	\end{figure}
+	
+	\item Es wurden diverse Verbesserungen im HTML vorgenommen. Zum Beispiel waren im Registrierungsformular sämtliche Input-Typen auf 'text' gesetzt. Diese wurden entsprechend dem tatsächlich passenden bzw. erwarteten Datentyp angepasst.
+	
+	Zudem wurde der Doctype-Tag von HTML4 auf HTML5 aktualisiert. Dieser Doctype-Tag teilt dem Browser mit, in welcher Version das HTML geschrieben ist und wie er das Dokument zu interpretieren hat.
+	
+	\item An den wichtigsten Stellen wurde die gefundene \gls{Cross-Site-Scripting} Schwachstelle behoben. Es gibt allerdings noch Stellen im Mobile Quiz wo diese Schwachstelle nicht behoben wurde. Grundsätzlich müsste jedes Element welches von einem Benutzer (sei es Teilnehmer, Ersteller, Assistent oder Administrator) eingegeben wurde bei seiner Ausgabe so codiert werden, dass es nicht mehr ausgeführt werden kann. Wenn dies nicht gemacht ist, kann ein böswilliger Benutzer von ihm erstellten Code ausführen lassen. Dies kann im schlimmsten Fall zum Verlust von Benutzerdaten und Sessions führen. Damit kann ein Angreifer dann im Namen von anderen Benutzer im System agieren.
+	
+	\item Bei der Durchführung eines Quizzes wird oben links im Stil X/Y jeweils angezeigt, bei welcher Frage X der totalen Anzahl zu beantwortenden Fragen Y man sich befindet. Allerdings hatte es einen Fehler in der Logik, es wurde bei Zurück-Navigieren ebenfalls nach oben gezählt, womit die Aussage nicht mehr stimmte.
+	Die Logik wurde so angepasst, dass dieser Zähler nun in jedem Fall stimmt. 
+	
+\end{itemize}
+
+Die Festhaltung der restlichen Fehlerbehandlung und des Refactorings können sie im Ordner "Coding-vorher-nachher" nachschauen.
+\todo{Andrea} %Umformulieren und korrekten Ordner angeben, wenn Struktur für Schlussabgabe erstellt wurde
 
 \subsection{Frage-Template}
 Die Möglichkeit, Fragen offline zu erstellen und anschliessend hochzuladen, bestand bereits. Unterstützt wurde die Erfassung von Singechoice und Multiplechoice-Fragen. Dazu konnten Fragen in eine CSV-Datei geschrieben werden. Alle korrekten Antworten wurden mit einem Asterisk (Stern-Zeichen) versehen. Eine Multiplechoice-Frage lag vor, wenn mehr als eine Antwort mit einem Asterisk versehen war.
