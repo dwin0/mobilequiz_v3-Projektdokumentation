@@ -5,6 +5,8 @@
 	description={Refactoring bezeichnet die manuelle oder automatisierte Strukturverbesserung von Quelltexten unter Beibehaltung des beobachtbaren Programmverhaltens. Dabei sollen die Lesbarkeit, Verständlichkeit, Wartbarkeit und Erweiterbarkeit verbessert werden, mit dem Ziel, den jeweiligen Aufwand für Fehleranalyse und funktionale Erweiterungen deutlich zu senken. \cite{_refactoring_2016}}
 }
 
+%TODO: Verweis auf Anhang 'Änderungen am Server'
+
 \section{Verbesserung der bestehenden Lösung}
 
 \subsection{\gls{Refactoring} und Fehlerbehebung}
@@ -84,6 +86,8 @@ Bei jedem Fragetyp ist es neu möglich ein Bild zu hinterlegen. Die Funktion des
 \\
 Beim Hochladen des Bildes wurde zuvor eine Fehlermeldung ausgegeben, wenn ein Bild eine Grösse von über 20 Megabyte überstieg. Diese Limite wurde herabgesetzt, weil ein Bild von dieser Grösse lange benötigt, bis es heruntergeladen werden kann. Unten ist ein Vergleich von Downloadzeiten aufgeführt, bei verschiedenen Dateigrössen. Die Downloadgeschwindigkeit ist die durchschnittliche Downloadgeschwindigkeit der Swisscom-Kunden, welche anhand von Speedtests der cnlab AG \cite{cnlab_speedtest} ermittelt wurde. Es wurden die Swisscom-Kunden gewählt, weil die Anzahl der User dort am grössten war. \\
 
+
+%TODO: Geschwindigkeiten gemäss hei verwenden
 \begin{tabular}{|c|c|c|}
 	\hline 
 	Dateigrösse & Downloadgeschwindigkeit & Benötigte Zeit \\ 
@@ -175,24 +179,99 @@ Nachfolgend ist zu sehen, wie eine Frage mit Bild in verschieden Situationen ang
 	\centering
 	\includegraphics[width=0.75\textwidth]{Images/Frage-Bild_Anzeige_PC.PNG}
 	\caption{Anzeige des Frage-Bildes am Computer}
-	Quelle: Mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
+	Quelle: mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{Images/Frage-Bild_Anzeige_Mobile.PNG}
 	\caption{Anzeige des Frage-Bildes auf dem Smartphone}
-	Quelle: Mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
+	Quelle: mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{Images/Frage-Bild_Anzeige_Mobile_Full.PNG}
 	\caption{Fullscreen-Anzeige des Frage-Bildes auf dem Smartphone}
-	Quelle: Mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
+	Quelle: mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
+\end{figure}
+
+Da sich eine Frage, bei welcher ein Bild hochgeladen wird, oft auf Inhalte aus dem Bild bezieht, wurde auch für die Auswertungsseite eine Bild-Anzeige implementiert. Somit können die Auswertungen besser nachvollzogen werden.
+
+Ein Beispiel einer solchen Auswertung ist unten dargestellt.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{Images/Quiz-Auswertung_Anzeige.PNG}
+	\caption{Auswertungs-Anzeige des Frage-Bildes am Computer}
+	Quelle: mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
+\end{figure}
+
+Weiter wurde die Generierung des PDF-Aufgabenblattes und Lösungsblattes ergänzt, damit auch dort die Bilder angezeigt werden. Hat man unterwegs kein Internet, so kann man sich die Fragen damit auch vorgängig herunterladen und im Zug anschauen.
+
+
+
+
+
+
+
+
+\newpage
+\subsection{Feedback an Quiz-Ersteller}
+Bei der Ausarbeitung von neuen Fragetypen kam die Idee einer Freitext-Frage auf. Bei diesem Fragetyp sind keine Antwortmöglichkeiten vorgegeben, stattdessen schreibt der Teilnehmer seine Antworten in ein leeres Textfeld. Das Problem dabei ist aber die Korrektur, da eine korrekte Antwort auf viele verschiedene Wege niedergeschrieben werden kann. Aus diesem Grund wurde beschlossen, diesen Fragetyp nicht umzusetzen, aber die Idee andernorts zu verwenden.
+
+Ist eine Frage unklar gestellt, gibt es Schreibfehler oder andere Verbesserungsmöglichkeiten, so musste dies ein Teilnehmer bis anhin selbst notieren und den Quiz-Ersteller, in den meisten Fällen der Dozent, im Unterricht fragen. Dies setzt aber voraus, dass der Quiz-Ersteller für den Teilnehmer immer ansprechbar ist. Erstellt ein Dozent aus Rapperswil ein Quiz, an welchem Teilnehmer der ganzen Schweiz mitmachen, so besteht diese Möglichkeit nicht.
+
+Dieses Problem wurde nun angegangen. Unter jeder Frage gibt es neu die Möglichkeit einen Kommentar direkt an den Quiz-Ersteller zu senden.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{Images/Feedback-Button.PNG}
+	\caption{Feedback-Button}
+	Quelle: mobilequiz.ch
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{Images/Feedback-Feld.PNG}
+	\caption{Feedback-Feld nach Klick auf Feedback-Button}
+	Quelle: mobilequiz.ch
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{Images/Feedback-Frage.PNG}
+	\caption{Beispielfrage an Quiz-Ersteller}
+	Quelle: mobilequiz.ch
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{Images/Feedback-Frage-gesendet.PNG}
+	\caption{Feedback versendet nach Klick auf Senden-Button}
+	Quelle: mobilequiz.ch
 \end{figure}
 
 
-Weiter wurde die Generierung des PDF-Aufgabenblattes und Lösungsblattes ergänzt, damit auch dort die Bilder angezeigt werden. Hat man unterwegs kein Internet, so kann man sich die Fragen damit auch vorgängig herunterladen und im Zug anschauen.
+Nach dem Senden des Feedbacks erhält der Quiz-Ersteller eine E-Mail. Darin ist nicht nur die Frage des Teilnehmers aufgeführt, sondern auch Informationen zum Teilnehmer selbst sowie die gesamte Frage inklusive Antwortmöglichkeiten. Somit hat der Quiz-Ersteller alle Informationen, um auf die Teilnehmer-Frage zu antworten.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Images/Feedback-Mail_Quiz-Ersteller.PNG}
+	\caption{E-Mail an Quiz-Ersteller}
+	Quelle: mobilequiz.ch
+\end{figure}
+
+Der Teilnehmer selbst erhält ein Bestätigungsmail mit den gleichen Informationen, wie sie auch der Quiz-Ersteller erhält.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Images/Feedback-Mail_Teilnehmer.PNG}
+	\caption{Bestätigungs-E-Mail an Teilnehmer}
+	Quelle: mobilequiz.ch
+\end{figure}
+
+
+
 
 
