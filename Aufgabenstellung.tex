@@ -1,0 +1,74 @@
+% !TEX root = Projektdokumentation.tex
+
+
+{\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{l l}
+	Studiengang: & Informatik (I) \\ 
+	\hline
+	Institut: & ITA: Internet-Techn. und Anwendungen \\ 
+	Gruppe: & Andrea Hauser und David Windler \\ 
+	\hline 
+	Betreuer: & Prof. Dr. Peter Heinzmann (Dozent) und Patrick Eichler (Assistent)
+\end{tabular} 
+}
+
+
+\section{Ausgangslage}
+
+In den Modulen Computernetze und Informationssicherheit können die Studierenden nach jeder Vorlesung ihr Wissen zum Vorlesungsstoff mit Hilfe der Webanwendung \url{www.mobilequiz.ch}  überprüfen. Die Studenten A. Hauser und D. Windler haben im Rahmen ihres Software Engineering Projekts ein Lernprogramm zum Thema AES Galois/Counter Mode erstellt. Sie wollten daher ihre Studienarbeit zum Thema Lernkontrollen durchführen.
+
+Die MobileQuiz Lernkontrollen Anwendung wurde in den letzten Jahren im Rahmen von verschiedenen Studienarbeit entwickelt und erweitert. Seit der Überarbeitung durch HSR Assistent P. Eichler funktioniert \url{www.mobilequiz.ch} so stabil, dass es sogar in Prüfungen eingesetzt werden kann.  Dennoch gibt es Verbesserungs- und Erweiterungsmöglichkeiten, welche im Rahmen einer Studienarbeit bearbeitet werden können.
+
+\section{Ziel}
+Bei der bestehenden Anwendung \url{www.mobilequiz.ch} zur Durchführung von Lernkontrollen sollen weitere Fragetypen unterstützt werden. Es sollen ausführliche statistische Auswertungen zur Qualität von Fragen und Antworten möglich sein. Ferner soll mit einer generellen Überarbeitung die Bedienfreundlichkeit verbessert werden.
+
+\section{Aufgaben}
+
+\begin{enumerate}
+	\item Einarbeitung, Analyse
+	\begin{itemize}
+		  \item Evaluation verschiedener Systeme zur Durchführung von Lernkontrollen (Vergleichstabelle)
+		  \item Detaillierte Analyse der existierenden Anwendung \url{www.mobilequiz.ch} zur Durchführung von Lernkontrollen 
+		  \item Durchführung von Usability Tests
+		  \item Studium verschiedener theoretischer Untersuchungen zur computerbasierten Durchführung von Lernkontrollen (Abklärung und Übersicht zu Fragetypen)
+		  \item Inbetriebnahme von Entwicklungs- und Dokumentationswerkzeugen
+	\end{itemize}
+
+	\item Refactoring
+	\begin{itemize}
+		  \item Inbetriebnahme von \url{www.mobilequiz.ch} auf HSR-Plattformen
+		  \item Optimierung der aktuell vorhandenen Funktionen, Behebung von Fehlern (Offline Fragenerstellung und Excel Import/Export von Lernkontrollen, PDF Outputs, Sicherheitsprobleme)
+	\end{itemize}
+
+	\item Realisierung neuer Funktionen
+	\begin{itemize}
+		  \item Vereinfachung und Optimierung des Registrationsprozesses (Interessensgebiete, verbesserte Benutzerführung, Benachrichtigungen über neue Lernkontrollen), Erweiterung zur speziellen Behandlung von Benutzergruppen (Vorlesungsteilnehmende, Praktikumsgruppen)
+		  \item Entwicklung neuer Fragetypen (Fragen mit Bildern)
+		  \item Entwicklung neuer Antwortmöglichkeiten (Drag\&Drop)
+		  \item Erweiterte statistische Auswertungen zu Fragen, Antworten und Resultaten der Teilnehmenden (Antwortzeit, Qualitätsmass für Fragen, Punktevergabe, Qualitätsmass für Antworten) 
+		  \item Erweiterte Durchführungskontrolle (Zeitabstand von Wiederholungen bei mehrfachen Durchführungen)
+	\end{itemize}
+	
+	\item Anpassungen für spezielle Use Cases
+	\begin{itemize}
+		\item Durchführung von Prüfungen
+		\item Durchführung von Umfragen (Polls)
+	\end{itemize}
+
+	\item Dokumentation und Präsentation der Ergebnisse
+  
+\end{enumerate}
+
+\section{Referenzen}
+\begin{enumerate}
+	  \item Hinweise zur Durchführung von Studienarbeiten: \url{https://dl.dropboxusercontent.com/u/4679041/SABA-Web-Anleitungen\_Heinzmann.zip}
+	  \item Aktuelle Anwendung \url{www.mobilquiz.ch}  
+	  \item Manuela Grob, Quiz, HSR Bachelorarbeit, HS2010.
+	  \item Patrik Naef, Khalid Abdul, «Mobile Quiz», HSR Bachelorarbeit, 16.9.2012.
+\end{enumerate}
+
+\bigskip \bigskip
+\parbox{6cm}{Rapperswil, \hrule
+\strut \footnotesize Ort, Datum} \hfill
+\parbox{5cm}{\hrule
+\strut \footnotesize Betreuer}

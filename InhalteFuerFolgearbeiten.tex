@@ -1,0 +1,95 @@
+% !TEX root = Projektdokumentation.tex
+
+\section{Arbeiten für die cnlab AG}
+
+
+
+
+
+
+\section{Inhalte für weitere Studentenarbeiten}
+\label{sec:InhalteFuerStudentenarbeiten}
+
+\begin{itemize}
+	\item Umgestaltung der Willkommensseite \\
+	Wie im Kapitel \ref{subsec:Webuntersuchungen} beschrieben, besteht Verbesserungspotential beim ersten Eindruck von Mobile Quiz. Ein entsprechender Blog-Eintrag zu diesem Thema ist ebenfalls dort aufgeführt.
+	
+	\item Durchspielen vor Veröffentlichung \\
+	Um ein Quiz auf Fehler zu Überprüfen soll es vor Veröffentlichung durchgespielt werden können. Dies ist bereits möglich, indem das Quiz auf privat gesetzt wird. Dies funktioniert aber nur im Administratoren-Modus korrekt.
+	Wird das Quiz anschliessend veröffentlicht, soll der Ersteller gefragt werden, ob er die Quiz-Statistik zurücksetzen will. Ohne die Mitzählung seiner eigenen Teilnahme erhält er schlussendlich eine aussagekräftigere Auswertungsstatistik.
+	
+	\item Anonyme Teilnahme \\
+	Ein Teilnehmer eines Quizzes soll sich nicht anmelden müssen. Eine Anonyme Teilnahme am Quiz soll möglich sein. Speziell daran ist die Handhabung von mehreren Sessions nicht erstellter Benutzer.
+	\todo{Frage: Um Statistiken nicht zu verfälschen soll es die Rolle «Test-User» geben, dessen Teilnahme nicht mitgezählt wird. Wurde wieder verworfen?}
+	
+	\item Sicheres Login und Passwort-Recovery
+	Das Login sowie das Zurücksetzen des Passwortes sollen mittels OWASP Cheat-Sheets umgesetzt werden. Diese sind unter folgenden Links zu finden:
+	\begin{itemize}
+		\item Login \\
+		\url{https://www.owasp.org/index.php/Authentication_Cheat_Sheet}
+		\item Password-Recovery \\ \url{https://www.owasp.org/index.php/Forgot_Password_Cheat_Sheet}
+
+		
+	\end{itemize}
+	
+	\item Speicherung der Filter-Einstellungen \\
+	Wählt der Benutzer eine Einstellung, ein Filter oder ähnliches, welches vom Standard-Fall abweicht, so soll dies in seinen Benutzerdaten gespeichert werden. In dieser Arbeit wurde bereits umgesetzt, dass der Teilnehmer ein oder mehrere Interessengebiete angeben konnte. Wechselte er auf die Ansicht aller Quizzes, so wurde zuerst nach diesen Interessengebieten gefiltert.
+	
+	
+	\todo{Mögliche Arbeiten SA durchgehen}
+	
+	\todo{Konzepte durchgehen}
+	
+	\item Statistiken
+	\begin{itemize}
+		\item Statistiken pro Gruppe
+		\item Der Quiz-Ersteller soll bei einem Testat sehen, wer von der Gruppe das Testat bestanden hat und wer nicht. (z.B. Rot/Grün eingefärbt)
+		\item Die Ergebnisse, welche eine Gruppe über mehrere Quizzes hinweg erreicht hat, sollen als Verlauf dargestellt werden. So kann P. Heinzmann prüfen, wie die CN1-Teilnehmer über das Semester hinweg die Lernhilfen der Vorlesung gelöst haben.
+		
+	\end{itemize}
+	
+	\todo{Mockups durchgehen}
+	\item Mockups umsetzen \\
+	\begin{itemize}
+		\item Quiz-Auswertungs-Ansicht \\
+		In der Ansicht von «Auswertung» die Anzeige der gewählten und richtigen Antwort links vor den Antworttexten stehen. Dies hat den Vorteil, dass die Auswahl und der Antworttext näher beieinander liegen.
+		Ebenfalls soll darin die Funktion vorhanden sein, um die Auswertung als PDF zu speichern.
+		\item Erfassung von Gruppen \\
+		In der Ansicht \glqq Quiz Erstellen – Administration\grqq soll die Möglichkeit bestehen, Gruppen zu erfassen. Wird ein Quiz anschliessend veröffentlicht, so wird diese Gruppe benachrichtigt.
+		\item Anzeige von wichtigen Quizzes \\
+		Ziel ist es, dass einer Gruppe ein Quiz, beispielsweise als Testat, zugewiesen werden kann. Anschliessend sieht der Teilnehmer auf der Quiz-Übersichts-Seite sofort, welche Quizzes seine sofortige Bearbeitung benötigen.
+		Im Optimalfall sieht der Teilnehmer durch diese Option sowie durch das automatische Setzen des Filters nach seinen Interessen bereits alle Quizzes, welche er benötigt.
+	\end{itemize}
+	
+	\item Automatisch Erfassung von Teilnehmern und Gruppen \\
+	Die Erfassung aller Teilnehmer für eine Vorlesung soll durch den Administrator erfolgen können. Dieser zu Beginn des Semesters alle Studenten via einer Excel-Datei ein, welche er von \url{www.unterricht.hsr.ch} generieren liess. Mobile Quiz erstellt automatisch die Teilnehmer. Auf einer Gruppen-Management-Seite weist der Administrator die Teilnehmern dann den Gruppen zu.
+	
+	\item Durchführungsbeschränkungen \\
+	Es soll möglich sein zu unterscheiden, ob nur zugewiesene Gruppen ein Quiz durchführen können oder ob das Quiz allen offenstehen soll.
+	
+	\item Umsetzung von Polls \\
+	Als Vorlage für die bestehende Lösung durch Patrick Eichler diente \glqq Straw Poll\grqq . \cite{straw_poll} 
+	%Email-Content von M. Stolze hinzufügen
+	Dazu sind Grundlegende Abklärungen zu Umfragen zu erarbeiten.
+	
+	\item Session pro Benutzer \\
+	Die Session soll pro Benutzer und nicht pro Gerät erstellt werden. Ist ein Benutzer am Computer angemeldet und meldet sich anschliessend auch auf dem Smartphone an, so soll die Computer-Session beendet werden.
+	
+	\item Schlagwörter \\
+	
+	\item Frage-Einreichung von Teilnehmer \\
+	Es gibt eine neue Funktion, mit der Teilnehmer eigene Vorschläge für Fragen und Antworten an den Quiz-Ersteller senden können. Der Ersteller des Quizzes kann dann die Vorschläge annehmen, ablehnen oder anpassen.
+	
+	\item Ursprungsseite beim Melden von Fehlern feststellen \\
+	Beim Beheben von Fehlern wäre es nützlich zu wissen, auf welcher Seite sich der Benutzer befand, bevor er auf auf «Fehler melden» klickte.
+	
+	\item Status-Konzept überarbeiten \\
+	Konzept der Status soll dabei überarbeitet werden: Welche gibt es genau und was verursacht ein Status-Übergang?
+	Bisherige Status: offen (0\%), in Bearbeitung(1-99\%), erledigt(100\%)
+	\todo{Nachschauen, welche Status vorhanden}
+	
+	
+	
+\end{itemize}
+
+

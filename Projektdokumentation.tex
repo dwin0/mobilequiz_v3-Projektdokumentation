@@ -10,7 +10,6 @@
 \usepackage[section]{glossaries}
 \usepackage{todonotes}
 \usepackage{multicol}
-\usepackage{pdfpages}
 \usepackage{listings}
 
 %graphics
@@ -32,14 +31,14 @@
 \begin{document}
 	
 	\begin{titlepage}
-		\includepdf{Titelblatt}
+	\includepdf{PDFs/Titelblatt}
 	\end{titlepage}
 	
 		
 	\part{Übersicht}
 	
 	
-	\chapter{Abstract}
+	\chapter{Abstract} \todo{Abstract schreiben}
 	%Die Kurzzusammenfassung (Abstract) richtet sich an Leute, die den Themenkreis der Arbeit relativ gut kennen. Für diese Leute beschreiben Sie die neuen, eigenen Resultate der Arbeit. Die Kurzzusammenfassung soll nur etwa 200 Worte (etwa 20 Zeilen) lang sein. Bei Studienarbeiten ist das von der HSR Schulleitung vorgegebene Kurzzusammenfassungsformular zu verwenden.
 	
 	\section{Ausgangslage}
@@ -91,6 +90,8 @@
 		\hline
 		1.13 & Kapitel 8 Umfeldanalyse Institutionen ergänzt & ah & 04.11.2016 \\
 		\hline
+		1.14 & Kapitel 3 Aufgabenstellung erstellt & dwi & 17.12.2016 \\
+		\hline
 	\end{tabularx}
 	
 	\listoftodos
@@ -102,18 +103,30 @@
 	
 	\chapter{Aufgabenstellung}
 	%Die unterschriebene Aufgabenstellung des Dozenten.
+	\input{Aufgabenstellung.tex}
 	
 	
 	
-	
-	\chapter{Erklärung zur Urheberschaft}
+	\chapter{Erklärung zur Urheberschaft} \todo{Erklärung der Urheberschaft Formular HSR}
 	%Unterschriebenes Formular "Erklärung zur Urheberschaft" Handelt es sich um eine Fortsetzung einer Studienarbeit, so ist in der HSR_Erklaerung_Urheberschaft klar aufzuzeigen, was im Rahmen der Studienarbeit und was bei der Bachelorarbeit gemacht wurde. In diesem Formular ist auch anzugeben, welche Informationen Copyright geschützt sind und daher nicht ohne Weiteres weitergegeben werden können.
+	
+	%Mobile Quiz Prototype 1.0
+	%Khalid Abdul, Patrik Naef
+	%Bachelorarbeit «Mobile Quiz - Web-Anwendung für Lernkontrollen»
+	%MobileQuiz.ch Release 2.0
+	%Pascal Artho
+	%Redesign/Erweiterung der Mobile Quiz Anwendung
+	%MobileQuiz.ch Release 3.0
+	%Patrick Eichler
+	%Redesign/Erweiterung der Mobile Quiz Anwendung
+	
 	
 	
 	
 	
 	\chapter{Vereinbarung zur Verwendung und Weiterentwicklung der Arbeit}
 	%Unterschriebenes Formular "Vereinbarung zur Verwendung und Weiterentwicklung der Arbeit".
+	\todo{vereinbarung zur weiterverwendung}
 	
 	
 	
@@ -138,6 +151,7 @@
 	%Ausblick
 	%   ·         Ausblick (Verbleibende Probleme, Risiken und Gegenmassnahmen, was würde man anders machen? Wie geht es mit dem Projekt weiter, wer nutzt was? Welche weiteren Schritte, Entwicklungen, Anpassungen etc. werden empfohlen / sind geplant?)
 	
+	\todo{Management Summary}
 	
 		
 	
@@ -158,6 +172,9 @@
 	
 	%Je nach Aufgabenstellung können beispielsweise Hauptabschnitte der folgenden Art vorkommen:
 	
+	\chapter{Bestehendes Produkt / Inbetriebnahme?}
+	\input{Bestehendes_Produkt.tex}
+	
 	\chapter{Analyse}
 	\input{Analyse.tex}
 		
@@ -171,6 +188,7 @@
 		
 	
 	\chapter{Design}
+	\todo{Beschreibung von einzelnen, wichtigen Mockups und diese in den Anhang}
 	%Design (im Sinne von aussehen, navigieren usw.)
 	%Bezug auf Analyse, Wireframes / Mockups, etc.
 	
@@ -181,7 +199,10 @@
 	%Realisierung, System- oder Softwarekonzepte
 	%Umsetzung von neuen Konzepten und Desgin
 	\input{Realisierung.tex}
+
 	
+	\chapter{Inhalte für Folgearbeiten}
+	\input{InhalteFuerFolgearbeiten.tex}
 	
 	
 	\chapter{Qualitätsmanagement}
@@ -234,8 +255,11 @@
 	
 	\chapter{Details zur Lösungsfindung}
 	%Details zur Lösungsfindung (z.B. Analyseschritte, Designschritte, umfangreiche Herleitungen, Tabellen, Messergebnisse, Testauswertungen)
-	\includepdf[landscape=true]{CSV_Template.pdf}
-	\includepdf[landscape=true]{Excel-Frage-Template.pdf}
+	\includepdf[pages={1-3}, landscape=true]{PDFs/MoeglicheArbeitenSA.pdf}
+	\label{pdf:MoeglicheArbeitenSA}
+	\includepdf[landscape=true]{PDFs/CSV_Template.pdf}
+	\includepdf[landscape=true]{PDFs/Excel-Frage-Template.pdf}
+	
 	
 	\chapter{User Interface Abklärungen, Mockups, Paper Prototypen}
 	%User Interface Abklärungen, Mockups, Paper Prototypen
@@ -256,7 +280,7 @@
 	Die Teammitglieder sind bereit, bei unerwarteten oder nicht vorhergesehenen Zwischenfällen das Arbeitspensum für die Studienarbeit zu erhöhen, um den fristgerechten Abschluss der Arbeit zu gewährleisten, solange es sich dabei nicht um einen Dauerzustand handelt. Zusätzlich wird bei der Schätzung der Aufwände immer darauf geachtet, für unerwartetes eine Reserve einzuplanen.
 	Nach jeder Iteration werden die bestehenden Risiken neu evaluiert und falls nötig angepasst oder neue Risiken aufgenommen.
 	
-	\includepdf[landscape=true]{TechnischeRisiken.pdf} 
+	\includepdf[landscape=true]{PDFs/TechnischeRisiken.pdf} 
 
 	\chapter{Verwendete Werkzeuge}
 	\input{Werkzeuge.tex}

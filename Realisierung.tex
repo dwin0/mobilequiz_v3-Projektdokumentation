@@ -1,11 +1,20 @@
 % !TEX root = Projektdokumentation.tex
 
-\newglossaryentry{XML External Entitiy} {name={XML External Entitiy-Attacke},description={}} % TODO Erklären
+\newglossaryentry{XML External Entitiy} {name={XML External Entitiy-Attacke},description={}}  \todo{Erklären}
 \newglossaryentry{Refactoring}{name={Refactoring},
 	description={Refactoring bezeichnet die manuelle oder automatisierte Strukturverbesserung von Quelltexten unter Beibehaltung des beobachtbaren Programmverhaltens. Dabei sollen die Lesbarkeit, Verständlichkeit, Wartbarkeit und Erweiterbarkeit verbessert werden, mit dem Ziel, den jeweiligen Aufwand für Fehleranalyse und funktionale Erweiterungen deutlich zu senken. \cite{_refactoring_2016}}
 }
 
-%TODO: Verweis auf Anhang 'Änderungen am Server'
+\todo{Verweis auf Anhang 'Änderungen am Server'}
+\todo{Beschreibung der Angabe des Interessen-Gebietes sowie multiselect-filter}
+%Der Teilnehmer soll angeben können, für welche Fächer/Interessen er sich im Mobile Quiz anmeldet. Anschliessend soll der Filter nach den angegebenen Kriterien gesetzt werden. Die Möglichkeit alles anzeigen zu lassen, bleibt bestehen.
+
+	
+\todo{Frage-Erstellung beschreiben / Quiz-Erstellung mit Durchführung und DB-Änderung beschreiben. Wichtig: Vorteile und Gründe aufzeigen}
+%Wird eine Lernkontrolle einer Gruppe zugeordnet, so soll ein Enddatum nur für diese Gruppe festgelegt werden können. Dies wird beispielsweise in CN1 benötigt, bei dem die eine Gruppe1 das Praktikum 1 Woche früher besucht als Gruppe2.
+
+\todo{Beschreibung der Default-Einstellungen für Lernhilfe, etc.}
+\todo{Beschreien: Person kann neu mehr als 1 Gruppe zugewiesen werden}
 
 \section{Verbesserung der bestehenden Lösung}
 
@@ -51,6 +60,7 @@ Die Festhaltung der restlichen Fehlerbehandlung und des Refactorings können sie
 \todo{Andrea} %Umformulieren und korrekten Ordner angeben, wenn Struktur für Schlussabgabe erstellt wurde
 
 \subsection{Frage-Template}
+\label{subsec:FrageTemplate}
 Die Möglichkeit, Fragen offline zu erstellen und anschliessend hochzuladen, bestand bereits. Unterstützt wurde die Erfassung von Singechoice und Multiplechoice-Fragen. Dazu konnten Fragen in eine CSV-Datei geschrieben werden. Alle korrekten Antworten wurden mit einem Asterisk (Stern-Zeichen) versehen. Eine Multiplechoice-Frage lag vor, wenn mehr als eine Antwort mit einem Asterisk versehen war.
 
 In dieser Arbeit wurde das CSV-Template durch ein Excel-Template abgelöst. Die Gründe dazu sind die folgenden:
@@ -273,5 +283,8 @@ Der Teilnehmer selbst erhält ein Bestätigungsmail mit den gleichen Information
 
 
 
+
+
+\section{Schlussprodukt}
 
 
