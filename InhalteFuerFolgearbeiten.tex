@@ -1,7 +1,51 @@
 % !TEX root = Projektdokumentation.tex
 
-\section{Arbeiten für die cnlab AG}
+\newacronym{SE1}{SE1}{Software-Engineering 1}
 
+
+\section{Arbeiten für die HSR}
+
+\subsection{Nicht fertiggestellte Arbeiten}
+
+\begin{itemize}
+	\item Implementierung der Durchführung\\
+	Damit ein Quiz wieder komplett erstellt werden kann, muss die Erstellung der Durchführung fertig implementiert werden. Für die Umsetzung ist einerseits die Datei \glqq createEditExecution \grqq für die Darstellung und Benutzerinteraktion, andererseits \glqq action\_execution\grqq für die Logik auf dem Server mit der Datenbankkommunikation wichtig.
+	\todo{Andrea: Genauer beschreiben}
+	\item Erstellung aller Interessengruppen\\
+	Ein Teilnehmer kann derzeit angeben für welche Themenbereiche er sich interessiert. Es wurde jedoch noch nicht zu allen bestehenden Themen eine entsprechende Interessengruppe in der Datenbank erstellt. Diese Datenbankbefehle müssen von Hand gemacht werden, da jede Gruppe ein eindeutiges Token benötigt. Ein Beispiel der Umsetzung ist nur für die Gruppe \glqq interest\_group\_Informationssicherheit\grqq vorhanden, welches in der Zusammenstellung aller Datenbank-Änderungen im Anhang vorhanden ist. \todo{Erstellen und verweis auf Anhang}
+	Der Rest der Logik wurde komplett implementiert. Die Eintragung des Interesse am Themengebiet, das Setzen des Filters gemäss Interesse sowie das nachträgliche Verändern der Interessen funktionieren.
+\end{itemize}
+
+
+
+\subsection{Weiterentwicklung}
+
+\begin{itemize}
+	\item Fehlermeldung bei zu grossem Bild\\
+	Wird ein Bild über 5 MB  hochgeladen, wird es von Apache nicht angenommen, da dies in der Datei \glqq php.ini\grqq so festgelegt wurde. Der Benutzer erhält nur einen allgemeinen Fehlercode. Das Übersteigen der Bildgrösse soll abgefangen und dem Benutzer ein spezifischer Fehlercode ausgegeben werden.
+
+	\item Optimierung der Datenbank\\
+	Allenfalls Änderung des Speichermodells, da beispielsweise das Abspeichern jeder eingegebenen Antwort in «an\_qu\_user» sehr viele Datenbankeinträge generiert.
+
+	\item Aufräumen und Vereinheitlichung des Programm-Codes\\
+	Es gibt einige Code-Stellen, welche gar nie aufgerufen werden, oder welche leserlicher geschrieben werden könnten. Zudem sind sehr viele verschiedene Programmierstile aufzufinden.
+
+	\item Vereinheitlichung der Error-Codes\\
+	Derzeit sind alle Error-Codes in der Datei \glqq errorCodeHandler.php\grqq abgelegt. Ein Code (-1) kann bei jeder Seite etwas komplett anderes bedeuten. Allenfalls könnten 3-Stellige Codes verwendet werden, bei denen alle 1XX für Datenbank-Fehler stehen, alle 2XX für Berechtigungs-Fehler, usw.
+
+	\item Language-Support\\
+	Der Language-Support ist mit 2 Language-Files etwas unhandlich. Allenfalls kann eine bessere Methode gefunden werden, um MobileQuiz leichter in verschiedenen Sprachen anzubieten.\\
+	In \acrfull{SE1} wird für Java der Umgang mit Sprachfiles in Form von \glqq Resource Bundles\grqq vorgestellt, was ebenfalls eine Verwendung von mehreren Files pro Sprache ist, welche jeweils viele Key-Value-Paare beinhalten.
+	
+	\item Zurücksetzen des Filters\\
+	Hat man beispielsweise beim Filter Themengebiete mehrere Werte ausgewählt und möchte nun alle Themengebiete anzeigen lassen, so müssen alle Werte einzeln abgewählt werden. Es soll bei allen Filtern eine zusätzliche Auswahlmöglichkeit \glqq alle\grqq vorhanden sein, um Filter schnell zurücksetzen zu können.
+	
+	\item Fehlermeldung bei offenem Request\\
+	Falls für eine Frage noch eine offener Topic- oder Sprach-Request besteht, kann sie nicht gelöscht werden. Nach dem Klick auf das Lösch-Symbol bleibt die Frage in der Liste vorhanden, der Benutzer bekommt aber keine Rückmeldung warum. Er soll entsprechende Fehlermeldung angezeigt bekommen.
+	
+	\item Vergrösserung des Mobile-Menu\\
+	Wählt man in der mobilen Version auf das Menu und anschliessend auf Profil, so ist nicht ersichtlich, dass ein Untermenu aufgeklappt wird. Der Grund liegt darin, dass dies in einem Bereich geschieht, welcher für den Benutzer nicht mehr sichtbar ist, da das Menu nicht gross genug angezeigt wird.
+\end{itemize}
 
 
 
@@ -9,6 +53,11 @@
 
 \section{Inhalte für weitere Studentenarbeiten}
 \label{sec:InhalteFuerStudentenarbeiten}
+
+Während dieser Studienarbeit konnten nicht alle zusammengetragenen Arbeiten und theoretisch erarbeitete Konzepte umgesetzt werden. Alle möglichen Arbeiten sind im Anhang unter \glqq MoeglicheArbeitenSA\grqq zu finden, die Konzepte sowie deren Datenbankänderungen unter \glqq Konzept Gruppenmanagement\grqq, \glqq Konzept Neue Fragetypen\grqq und \glqq Konzept Statistiken\_Auswertungen\grqq.
+\todo{Referenz auf Anhang}
+		
+
 
 \begin{itemize}
 	\item Umgestaltung der Willkommensseite \\
@@ -19,8 +68,8 @@
 	Wird das Quiz anschliessend veröffentlicht, soll der Ersteller gefragt werden, ob er die Quiz-Statistik zurücksetzen will. Ohne die Mitzählung seiner eigenen Teilnahme erhält er schlussendlich eine aussagekräftigere Auswertungsstatistik.
 	
 	\item Anonyme Teilnahme \\
-	Ein Teilnehmer eines Quizzes soll sich nicht anmelden müssen. Eine Anonyme Teilnahme am Quiz soll möglich sein. Speziell daran ist die Handhabung von mehreren Sessions nicht erstellter Benutzer.
-	\todo{Frage: Um Statistiken nicht zu verfälschen soll es die Rolle «Test-User» geben, dessen Teilnahme nicht mitgezählt wird. Wurde wieder verworfen?}
+	Ein Teilnehmer eines Quizzes soll sich nicht anmelden müssen. Eine Anonyme Teilnahme am Quiz soll möglich sein. Speziell daran ist die Handhabung von mehreren Sessions nicht erstellter Benutzer.\\
+	Wird zudem ein privates Quiz erstellt, um es vor Veröffentlichung durchzuspielen, wird der Ersteller bei dessen Veröffentlichung gefragt, ob die Statistiken des Quizzes zurückgesetzt werden sollen. Somit wird sichergestellt, dass diese durch die Teilnahme des Erstellers nicht verfälscht werden.
 	
 	\item Sicheres Login und Passwort-Recovery
 	Das Login sowie das Zurücksetzen des Passwortes sollen mittels OWASP Cheat-Sheets umgesetzt werden. Diese sind unter folgenden Links zu finden:
@@ -28,37 +77,40 @@
 		\item Login \\
 		\url{https://www.owasp.org/index.php/Authentication_Cheat_Sheet}
 		\item Password-Recovery \\ \url{https://www.owasp.org/index.php/Forgot_Password_Cheat_Sheet}
-
-		
 	\end{itemize}
 	
 	\item Speicherung der Filter-Einstellungen \\
 	Wählt der Benutzer eine Einstellung, ein Filter oder ähnliches, welches vom Standard-Fall abweicht, so soll dies in seinen Benutzerdaten gespeichert werden. In dieser Arbeit wurde bereits umgesetzt, dass der Teilnehmer ein oder mehrere Interessengebiete angeben konnte. Wechselte er auf die Ansicht aller Quizzes, so wurde zuerst nach diesen Interessengebieten gefiltert.
 	
 	
-	\todo{Mögliche Arbeiten SA durchgehen}
-	
-	\todo{Konzepte durchgehen}
-	
 	\item Statistiken
 	\begin{itemize}
 		\item Statistiken pro Gruppe
+		\item Statistiken über mehrere Quizzes \\
+		Die Auswertungen sollen nicht nur für ein Quiz ersichtlich sein. Es soll auch möglich sein, mehrere Quizzes auszuwählen und sich von allen zusammen die Auswertung anzeigen zu lassen.
+		\item Statistiken pro Gruppe über mehrere Quizzes \\
+		Die Ergebnisse, welche eine Gruppe über mehrere Quizzes hinweg erreicht hat, sollen als Verlauf dargestellt werden. So kann P. Heinzmann prüfen, wie die CN1-Teilnehmer über das Semester hinweg die Lernhilfen der Vorlesung gelöst haben.
 		\item Der Quiz-Ersteller soll bei einem Testat sehen, wer von der Gruppe das Testat bestanden hat und wer nicht. (z.B. Rot/Grün eingefärbt)
-		\item Die Ergebnisse, welche eine Gruppe über mehrere Quizzes hinweg erreicht hat, sollen als Verlauf dargestellt werden. So kann P. Heinzmann prüfen, wie die CN1-Teilnehmer über das Semester hinweg die Lernhilfen der Vorlesung gelöst haben.
-		
 	\end{itemize}
 	
-	\todo{Mockups durchgehen}
+	
 	\item Mockups umsetzen \\
 	\begin{itemize}
-		\item Quiz-Auswertungs-Ansicht \\
-		In der Ansicht von «Auswertung» die Anzeige der gewählten und richtigen Antwort links vor den Antworttexten stehen. Dies hat den Vorteil, dass die Auswahl und der Antworttext näher beieinander liegen.
-		Ebenfalls soll darin die Funktion vorhanden sein, um die Auswertung als PDF zu speichern.
+		\item Umsetzung der ausgearbeiteten Mockups\\
+		Die in dieser Arbeit erstellten Mockups konnten nicht alle umgesetzt werden. Einige der im Anhang befindlichen Screens können deshalb noch umsetzt werden. Dabei sind die Hinweise im Kapitel \ref{chap:mockups} zu beachten.
+		
 		\item Erfassung von Gruppen \\
 		In der Ansicht \glqq Quiz Erstellen – Administration\grqq soll die Möglichkeit bestehen, Gruppen zu erfassen. Wird ein Quiz anschliessend veröffentlicht, so wird diese Gruppe benachrichtigt.
+		
 		\item Anzeige von wichtigen Quizzes \\
 		Ziel ist es, dass einer Gruppe ein Quiz, beispielsweise als Testat, zugewiesen werden kann. Anschliessend sieht der Teilnehmer auf der Quiz-Übersichts-Seite sofort, welche Quizzes seine sofortige Bearbeitung benötigen.
 		Im Optimalfall sieht der Teilnehmer durch diese Option sowie durch das automatische Setzen des Filters nach seinen Interessen bereits alle Quizzes, welche er benötigt.
+		
+		\item Auswertungs-Darstellung \\
+		Bei der Auswahl der Quiz-Einstellung «nur richtige Anzeigen» wird in der Auswertung bei den falsch beantworteten Fragen ein «?» anstatt die korrekte Antwort angezeigt. Dies verstehen die Studenten nicht. Überlegen, wie man dies besser darstellen kann.
+		
+		\item Ergänzung des Auswertungs-Screens\\
+		In den Auswertungen für den Ersteller soll nebst den totalen Anzahl Stimmen einer Antwort auch der prozentuale Anteil angegeben sein. So kann direkt abgelesen werden, wie viele der Teilnehmer sich der Antwort enthalten haben, also «keine Antwort» angewählt haben.
 	\end{itemize}
 	
 	\item Automatisch Erfassung von Teilnehmern und Gruppen \\
@@ -68,9 +120,8 @@
 	Es soll möglich sein zu unterscheiden, ob nur zugewiesene Gruppen ein Quiz durchführen können oder ob das Quiz allen offenstehen soll.
 	
 	\item Umsetzung von Polls \\
-	Als Vorlage für die bestehende Lösung durch Patrick Eichler diente \glqq Straw Poll\grqq . \cite{straw_poll} 
-	%Email-Content von M. Stolze hinzufügen
-	Dazu sind Grundlegende Abklärungen zu Umfragen zu erarbeiten.
+	Zur Umsetzung sind  grundlegende Abklärungen zu erarbeiten.
+	Als Vorlage für die bestehende Lösung durch Patrick Eichler diente \glqq Straw Poll\grqq . \cite{straw_poll} Weitere Informationen zu diesem Thema sind unter folgendem Link erhältlich, welcher von Herr Markus Stolze und Herr Frank Koch zugeschickt wurde. \url{https://dl.dropboxusercontent.com/u/8905964/Breeze/FUM_Tilly_Polling_Tools.pdf}
 	
 	\item Session pro Benutzer \\
 	Die Session soll pro Benutzer und nicht pro Gerät erstellt werden. Ist ein Benutzer am Computer angemeldet und meldet sich anschliessend auch auf dem Smartphone an, so soll die Computer-Session beendet werden.
@@ -86,9 +137,9 @@
 	\item Status-Konzept überarbeiten \\
 	Konzept der Status soll dabei überarbeitet werden: Welche gibt es genau und was verursacht ein Status-Übergang?
 	Bisherige Status: offen (0\%), in Bearbeitung(1-99\%), erledigt(100\%)
-	\todo{Nachschauen, welche Status vorhanden}
 	
-	
+	\item Benachrichtigung der Interessengruppe\\
+	Wird ein neues Quiz zu einem Themenbereich erstellt, sollen alle in der Interessengruppe eingetragenen Teilnehmer per E-Mail informiert werden. Vom Erhalt dieser Nachrichten können sie auch abmelden.
 	
 \end{itemize}
 

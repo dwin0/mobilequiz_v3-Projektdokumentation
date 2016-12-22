@@ -1,24 +1,23 @@
 % !TEX root = Projektdokumentation.tex
 
-\newglossaryentry{XML External Entitiy} {name={XML External Entitiy-Attacke},description={}}  \todo{Erklären}
+\newglossaryentry{XML External Entitiy} {name={XML External Entitiy-Attacke},description={Eine Attacke, welche gegen einen XML-Input-Parser geht. Sie tritt auf, wenn der XML-Input einen Verweis auf eine externe Server-Ressource enthält, auf welche der Angreifer gar keinen Zugriff haben dürfte, und der Parser dies nicht prüft. \cite{xxe}}}
 \newglossaryentry{Refactoring}{name={Refactoring},
 	description={Refactoring bezeichnet die manuelle oder automatisierte Strukturverbesserung von Quelltexten unter Beibehaltung des beobachtbaren Programmverhaltens. Dabei sollen die Lesbarkeit, Verständlichkeit, Wartbarkeit und Erweiterbarkeit verbessert werden, mit dem Ziel, den jeweiligen Aufwand für Fehleranalyse und funktionale Erweiterungen deutlich zu senken. \cite{_refactoring_2016}}
 }
 
 \todo{Verweis auf Anhang 'Änderungen am Server'}
-\todo{Beschreibung der Angabe des Interessen-Gebietes sowie multiselect-filter}
-%Der Teilnehmer soll angeben können, für welche Fächer/Interessen er sich im Mobile Quiz anmeldet. Anschliessend soll der Filter nach den angegebenen Kriterien gesetzt werden. Die Möglichkeit alles anzeigen zu lassen, bleibt bestehen.
+
 
 	
-\todo{Frage-Erstellung beschreiben / Quiz-Erstellung mit Durchführung und DB-Änderung beschreiben. Wichtig: Vorteile und Gründe aufzeigen}
-%Wird eine Lernkontrolle einer Gruppe zugeordnet, so soll ein Enddatum nur für diese Gruppe festgelegt werden können. Dies wird beispielsweise in CN1 benötigt, bei dem die eine Gruppe1 das Praktikum 1 Woche früher besucht als Gruppe2.
 
-\todo{Beschreibung der Default-Einstellungen für Lernhilfe, etc.}
-\todo{Beschreien: Person kann neu mehr als 1 Gruppe zugewiesen werden}
+
+
+
 
 \section{Verbesserung der bestehenden Lösung}
 
 \subsection{\gls{Refactoring} und Fehlerbehebung}
+
 Aufgrund der im Punkt \ref{subsec:eigeneUntersuchungen} vorgenommenen eigenen Untersuchungen des Mobile Quiz entstand eine Liste von zu behebenden Problemen. Diese detaillierte Liste ist im Dokument 'Ergebnisse eigene Tests.pdf' ersichtlich. In diesem Kapitel werden die wichtigsten vorgenommenen Änderungen angeschaut.
 
 \begin{itemize}
@@ -56,10 +55,9 @@ Aufgrund der im Punkt \ref{subsec:eigeneUntersuchungen} vorgenommenen eigenen Un
 	
 \end{itemize}
 
-Die Festhaltung der restlichen Fehlerbehandlung und des Refactorings können sie im Ordner "Coding-vorher-nachher" nachschauen.
-\todo{Andrea} %Umformulieren und korrekten Ordner angeben, wenn Struktur für Schlussabgabe erstellt wurde
 
 \subsection{Frage-Template}
+
 \label{subsec:FrageTemplate}
 Die Möglichkeit, Fragen offline zu erstellen und anschliessend hochzuladen, bestand bereits. Unterstützt wurde die Erfassung von Singechoice und Multiplechoice-Fragen. Dazu konnten Fragen in eine CSV-Datei geschrieben werden. Alle korrekten Antworten wurden mit einem Asterisk (Stern-Zeichen) versehen. Eine Multiplechoice-Frage lag vor, wenn mehr als eine Antwort mit einem Asterisk versehen war.
 
@@ -86,6 +84,9 @@ Der neue Template-Import wurde mit PHPExcel \cite{phpexcel} umgesetzt. Diese PHP
 Bei PHPExcel gab es bis zur Version 1.7.9 eine \gls{XML External Entitiy} - \gls{Vulnerability}. Dadurch war es Remote-Angreifern möglich, beliebige Dateien auf dem Server zu lesen oder eine Denial-of-Service - Attacke durchzuführen. \cite{cvedetails_phpexcel} %TODO Remote und Denial-of-Service erklären
 Da bei MobileQuiz allerdings die Version 1.8.0 verwendet wird, ist dies nicht mehr möglich. Es wurde mit dem Wissen von InfSi3 versucht eine solche Attacke durchzuführen, was ebenfalls zum Ergebnis führte, dass diese Sicherheitslücke nicht mehr vorhanden ist. %TODO InfSi3 erklären
 
+\todo{Bildupload mit Excel beschreiben
+	https://github.com/dwin94/mobilequiz\_v3/commit/3fe09578311f3e20b5933b71dad546830c321ed0}
+
 \section{Neuerungen}
 
 \subsection{Fragen mit Bildern}
@@ -97,7 +98,6 @@ Bei jedem Fragetyp ist es neu möglich ein Bild zu hinterlegen. Die Funktion des
 Beim Hochladen des Bildes wurde zuvor eine Fehlermeldung ausgegeben, wenn ein Bild eine Grösse von über 20 Megabyte überstieg. Diese Limite wurde herabgesetzt, weil ein Bild von dieser Grösse lange benötigt, bis es heruntergeladen werden kann. Unten ist ein Vergleich von Downloadzeiten aufgeführt, bei verschiedenen Dateigrössen. Die Downloadgeschwindigkeit ist die durchschnittliche Downloadgeschwindigkeit der Swisscom-Kunden, welche anhand von Speedtests der cnlab AG \cite{cnlab_speedtest} ermittelt wurde. Es wurden die Swisscom-Kunden gewählt, weil die Anzahl der User dort am grössten war. \\
 
 
-%TODO: Geschwindigkeiten gemäss hei verwenden
 \begin{tabular}{|c|c|c|}
 	\hline 
 	Dateigrösse & Downloadgeschwindigkeit & Benötigte Zeit \\ 
@@ -135,7 +135,7 @@ Das Excel-Template für die Frage-Erstellung wurde ebenfalls erweitert, dass auc
 Es war dabei nicht möglich, nur die Excel-Datei alleine hochzuladen und anschliessend die Bilder selbstständig zu holen. Dies wäre bezüglich der Sicherheit höchst bedenklich.
 \\
 \\
-Wird eine Frage gelöscht, so wird nebst dem Datenbankeintrag auch das Bild vom Server entfernt.
+Wird eine Frage gelöscht, so wird nebst dem Datenbankeintrag neu auch das Bild vom Server entfernt.
 
 
 \subsubsection{Änderungen am Server}
@@ -282,8 +282,110 @@ Der Teilnehmer selbst erhält ein Bestätigungsmail mit den gleichen Information
 \end{figure}
 
 
+\section{Datenbankänderung}
+\subsection{Bestehende Datenbank}
+\todo{Einfügen von Ornder Datenbank\_aktueller\_Zustand}
+
+\subsection{Änderung an der Datenbank}
+
+\todo{Frage-Erstellung beschreiben / Quiz-Erstellung mit Durchführung und DB-Änderung beschreiben. Wichtig: Vorteile und Gründe aufzeigen}
+%Wird eine Lernkontrolle einer Gruppe zugeordnet, so soll ein Enddatum nur für diese Gruppe festgelegt werden können. Dies wird beispielsweise in CN1 benötigt, bei dem die eine Gruppe1 das Praktikum 1 Woche früher besucht als Gruppe2.
 
 
+%Verweis auf Anhang: Änderungen an der Datenbank
+%welche Änderungen gab es? PDF-Generierung, Quiz.-Durchführung, Quiz-Erstellung, Statistiken? etc.
+\todo{Beschreien: Person kann neu mehr als 1 Gruppe zugewiesen werden}
+
+\section{Neue Quiz- und Frageerstellung}
+%Wieso wurde umgestellt? intuitiver / Usability-Tests
+
+% Mobile-freundlicher mit accordeon
+
+
+
+
+
+\subsection{Quiz-Erstellung} %ev. eigene Subsection "Durchführung"
+%•	Das Token bei der Quiz-Teilnahme ist dient als Kurzform zum Link mit der Quiz-Id und ist zudem Datenbank-unabhängig.
+
+%•	Die Implementierung der Durchführung konnte nicht fertiggestellt werden. Die benötigten Informationen für die Fertigstellung werden in der Dokumentation festgehalten.
+
+%asynchron mit ajax -> Meldung 'gespeichert', deshalb wurde auch der Excel-Upload asynchrom gemacht
+
+%asynchrones hinzufügen von neuen fragen aus dem Pool. Ev mit Verweis auf Usability-Testing (Button umbenennen)
+
+\subsection{Frage-Erstellung}
+%•	Maximale Anzahl Antwortmöglichkeiten 5? Wenige Fragen haben 6 Möglichkeiten, s. DB-Abfrage
+%•	Umsetzung Frage-Screen: Änderungen werden sofort nach Ändern eines Feldes gespeichert, nicht erst beim Tab-Wechsel oder beim Verlassen des Erfassungs-Screens. Somit erübrigt sich auch eine automatische Speicherung alle 30 Sekunden.
+%•	Die Fragen, welche mehr als 6 Antwortmöglichkeiten haben, werden per E-Mail an P. Heinzmann geschickt. Er schreibt den Studenten, welche Antwortmöglichkeiten gelöscht werden sollen. Die Studenten passen anschliessend die Datenbank an.
+%o	Das hochgeladene Bild soll auch bei den Antwortmöglichkeiten angezeigt werden. Dies hilft bei deren Erfassung, da sich die Antwortmöglichkeiten häufig auf das Bild beziehen.
+%o	Wird die Möglichkeit «Single-Choice-Frage» ausgewählt, sollen anstatt Checkboxen Radio-Buttons angezeigt werden (wenn es möglich ist).
+%o	Komplett leere Fragen und leere Quizzes sollen nicht gespeichert werden.
+%o	Beim Reload soll kein neues, leeres Frage-Formular angezeigt werden, sondern es soll in den Edit-Mode gewechselt werden (dasselbe soll beim Quiz gelten).
+%•	Es ist dem Benutzer unter Umständen nicht klar, dass alle seine Änderungen sofort gespeichert werden. Es soll deshalb bei jeder erfolgreichen Speicherung eine kurze Meldung «Gespeichert» bzw. «Saved» eingeblendet werden. Diese könnte im unteren rechten Fensterrand erscheinen. Allenfalls bietet Bootstrap eine solche Lösung bereits an.
+
+%improved Formcheck -> Bild einfügen
+
+%asynchroner Bildupload mit ajax
+
+%- formcheck wird nur noch auf dem client gemacht
+
+
+%- ev. datenbankskript für update alte statistiken
+
+%Bildbeschreibung bei Bild-Upload anbieten, falls bild nicht geladen oder Screen-Reader
+
+
+\subsection{Default-Quiz-Einstellungen}
+Verweis auf Dokument
+
+%•	Wie in der letzten Sitzung besprochen, soll es bei der Durchführung die Möglichkeit geben, die Einstellungen auf den Standard zurückzusetzen. Es wurde nun beschlossen, dass dazu ein Button «Auf Standard zurücksetzen» angezeigt wird. Hat das Feld bereits den Standard-Wert, so ist der Button ausgegraut und kann nicht geklickt werden. Beinhaltet das Feld nicht den Standard-Wert, so sieht der Benutzer beim darüberfahren mit der Maus, welches der Standard-Wert ist und kann diesen durch Klicken übernehmen.
+
+
+\section{Interessensgruppen und Filterumstellung}
+Loggt sich ein Teilnehmer bei Mobile Quiz ein, so soll er möglichst wenige Klicks von seinem zu lösenden Quiz entfernt sein. Dadurch spart er Zeit da, er sich nicht mit Filteroptionen und Suchfeldern auseinandersetzen muss. Doch wie erkennt Mobile Quiz welche Quizzes für den Teilnehmer interessant sind?
+
+Möglich wäre es nachzuschauen, zu welchem Themengebiet der Teilnehmer schon Quizzes gelöst hat und aufgrund dessen die Filterauswahl bereits auf das Themengebiet mit seinen meisten Teilnahmen zu setzen. Das Problem dieser Methode liegt darin, dass sie für neu registrierte Teilnehmer nicht verwendet werden kann.
+Aus diesem Grund wurde eine noch einfachere Methode implementiert. Dabei wird bei der Registrierung eines oder mehrere Interessengebiete angegeben. Diese werden dabei vorgemerkt und beim anschliessenden Aufruf aller Durchführungen wird der Themengebiet-Filter entsprechend der Interessensgebiete des Teilnehmers gesetzt. Meldet beispielsweise ein Student von CN1 bei Mobile Quiz an und setzt das Interessengebiet entsprechend, so werden zuerst immer die Quiz-Durchführungen von CN1 angezeigt. Besucht er zu einem späteren Semester das Modul Informationssicherheit 1, so kann er das Interessensgebiet jederzeit in seinen Profileinstellungen ändern.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Images/Themengebiet_Angabe_Registrierung.PNG}
+	\caption{Angabe des Interessengebietes bei der Registrierung}
+\end{figure}
+
+Wie werden die Interessen der Teilnehmer in der Datenbank abgespeichert? Dazu half die Umstellung der Datenbank, welche es nun zulässt, dass ein Teilnehmer in mehreren Gruppen eingetragen werden kann.
+Für jedes Themengebiet wurde eine Interessengruppe erstellt. Gibt ein Teilnehmer ein neues Interesse an, so wird er automatisch zur entsprechenden Interessen-Gruppe hinzugefügt. Interessengruppen werden automatisch mit der Erfassung eines neuen Themengebietes erstellt, beziehungsweise mit dem Entfernen wieder gelöscht und alle Teilnehmer ausgetragen.
+
+\bigskip
+
+Damit ein Teilnehmer mehrere Interessensgebiete angeben kann, war es nötig die Implementierung der Filter zu ändern. Bisher konnte jeweils nur eine Auswahl pro Filter gesetzt werden. Für die Umsetzung wurde die Library 'Bootstrap Multiselect' \cite{bootstrap_multiselect} von David Stutz verwendet. Durch eine Logikumstellung auf dem Server war es anschliessend für Quiz-Durchführungen und Fragen möglich eine Mehrfachauswahl pro Filter zu setzen.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Images/Alte_Filter_Mobile_Quiz.PNG}
+	\caption{Filter der bestehenden Mobile Quiz - Version 3}
+	\cite{mobilequiz.ch}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Images/Neue_Filter_Mobile_Quiz.PNG}
+	\caption{Filter der neuen Mobile Quiz - Version}
+\end{figure}
+
+
+
+\section{Umgestaltung Startseite Teilnehmer / Ersteller}
+Filter, Anzeige der Durchführungen statt der einzelnen quizzes
+
+%weniger angezeigte spalten und ersetzung der symbole durch menu mit text glyphicons
+%beschreiben, wo dass die glyphicons gespeichert sind -> https://github.com/dwin94/mobilequiz_v3/commit/f4d4417696d31e12925213212342b79d5afeec96
+
+
+\section{Mobile Ansicht}
+%o	Es sollen alle Aktionen in der Mobile-Version dargestellt werden. Dazu müssen einige Aktionen gekürzt oder umgebrochen werden. Bsp: «Lösungsblatt anzeigen / drucken»
+% plus andere Seiten, auf denen die Ansicht optimiert wurde -> ev. Teilnahme, Screenshot altes und neues mobile quiz
 
 \section{Schlussprodukt}
 

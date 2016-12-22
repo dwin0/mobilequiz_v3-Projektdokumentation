@@ -11,6 +11,7 @@
 \usepackage{todonotes}
 \usepackage{multicol}
 \usepackage{listings}
+\usepackage{etoolbox}
 
 %graphics
 \usepackage{wrapfig}
@@ -19,7 +20,8 @@
 
 
 \makeglossaries
-\setcounter{tocdepth}{1} % Inhaltsverzeicnis wird nur bis \section erstellt
+\setcounter{tocdepth}{1}
+% Inhaltsverzeicnis wird nur bis \section erstellt
 
 
 \date{\today}
@@ -38,21 +40,9 @@
 	
 	
 	\begin{center}
-		{\LARGE Abstract}
+		{\LARGE \textbf{Abstract}}
 	\end{center}
-	%Die Kurzzusammenfassung (Abstract) richtet sich an Leute, die den Themenkreis der Arbeit relativ gut kennen. Für diese Leute beschreiben Sie die neuen, eigenen Resultate der Arbeit. Die Kurzzusammenfassung soll nur etwa 200 Worte (etwa 20 Zeilen) lang sein. Bei Studienarbeiten ist das von der HSR Schulleitung vorgegebene Kurzzusammenfassungsformular zu verwenden.
-	
-	Mobile Quiz ist eine Online-Quiz Plattform für Computer und Smartphones, welche in verschiedenen HSR-Modulen (Computernetze, Informations- und Codierungstheorie, Informationssicherheit) und Weiterbildungskursen regelmässig eingesetzt wird. Mobile Quiz entstand 2012 aus einer Bachelorarbeit und wurde seither mehrmals erweitert. Die zu Beginn der Arbeit vorliegende Mobile Quiz Version umfasste zwar viele praktische Funktionen und Einstellungs-möglichkeiten, es mangelte aber an der Bedienbarkeit. Im Rahmen dieser Studienarbeit sollten einerseits die Benutzerfreundlichkeit erhöht und andererseits neue Funktionen hinzugefügt werden.
-	
-	\bigskip
-	
-	In einem ersten Schritt wurde Mobile Quiz gründlich untersucht. Mit einem Usability Test wurden Optimierungsmöglichkeiten für Quizteilnehmer bestimmt. Anhand der Behebung von kleinen Fehlern machte man sich mit dem Code und den eingesetzten Technologien vertraut. Diese umfassen PHP, HTML, CSS, Javascript, JQuery und Bootstrap. Im Rahmen einer Umfeldanalyse wurden ähnliche Online Quiz-Plattformen gesucht, getestet und bewertet. Die aus dieser Projektphase gewonnenen Erkenntnisse halfen bei der Neugestaltung der Seiteninhalte sowie bei der Festlegung von neuen Funktionen. Beim Design wurden die dargestellten Informationen bewusst auf das nötigste beschränkt. Zur Verbesserung der Benutzerführung wurden Symbole durch textuelle Menus ersetzt. Die Implementierung erfolgte während fünf Wochen. Abgeschlossen wurde die Arbeit mit einem Usability Test. 
-	
-	\bigskip
-	
-
-	Die Bedienbarkeit von Mobile Quiz wurde durch diese Studienarbeit sowohl für Quiz-Ersteller, als auch für Teilnehmer wesentlich verbessert. Die Schritt-für-Schritt Benutzerführung erleichtert die Erstellung von Quiz, Fragen und Durchführungen. Dank der neuen Excel-Import Funktion lassen sich Quiz und Fragen einfacher erstellen. Durch die Erweiterung «Fragen mit Bildern» sind attraktivere Fragestellungen möglich. Die Konzeptänderung, welche pro Quiz mehrere Durchführungen möglich macht, erleichtert den Einsatz von Mobile Quiz im Unterricht mit mehreren Übungsgruppen. Dank dem neuen Design sollten sich die Quizteilnehmer schneller zurechtzufinden. Dies belegt der Vergleich der Ergebnisse der beiden Usability-Tests vor und nach der Überarbeitung des Mobile Quiz.  
-	Die jetzt vorliegende Mobile Quiz – Version wird ab dem nächsten Semester produktiv eingesetzt. Die Umsetzung der in der Analysephase ausgearbeiteten statistischen Auswertungen könnte im Rahmen einer weiteren Studienarbeit erfolgen. 
+	\input{Abstract.tex}
 	\newpage
 	
 	
@@ -60,29 +50,16 @@
 	\bigskip
 	%Die unterschriebene Aufgabenstellung des Dozenten.
 	\input{Aufgabenstellung.tex}
-	\todo{PDF einfügen}
 	\newpage
 	
 	
-	
-	Erklärung zur Urheberschaft \todo{Erklärung der Urheberschaft Formular HSR}
+	\includepdf[pagecommand={}]{PDFs/Eigenstaendigkeitserklaerung.pdf}
 	%Unterschriebenes Formular "Erklärung zur Urheberschaft" Handelt es sich um eine Fortsetzung einer Studienarbeit, so ist in der HSR_Erklaerung_Urheberschaft klar aufzuzeigen, was im Rahmen der Studienarbeit und was bei der Bachelorarbeit gemacht wurde. In diesem Formular ist auch anzugeben, welche Informationen Copyright geschützt sind und daher nicht ohne Weiteres weitergegeben werden können.
-	
-	%Mobile Quiz Prototype 1.0
-	%Khalid Abdul, Patrik Naef
-	%Bachelorarbeit «Mobile Quiz - Web-Anwendung für Lernkontrollen»
-	%MobileQuiz.ch Release 2.0
-	%Pascal Artho
-	%Redesign/Erweiterung der Mobile Quiz Anwendung
-	%MobileQuiz.ch Release 3.0
-	%Patrick Eichler
-	%Redesign/Erweiterung der Mobile Quiz Anwendung
 	\newpage
 	
 	
-	Vereinbarung zur Verwendung und Weiterentwicklung der Arbeit
+	\includepdf[pagecommand={}]{PDFs/Vereinbarungen_ueber_Urheber-und_Nutzungsrechte.pdf}
 	%Unterschriebenes Formular "Vereinbarung zur Verwendung und Weiterentwicklung der Arbeit".
-	\todo{vereinbarung zur weiterverwendung}
 	\newpage
 	
 	
@@ -180,25 +157,21 @@
 	
 	\chapter{Literaturverzeichnis}
 	%Im Literaturverzeichnis sind alle verwendeten Quellen (Bücher, Publikationen, Application Notes, Links (url), sowie Hinweise auf Gespräche mit bestimmten Personen) aufgeführt. Typischerweise werden die Quellenangaben nummeriert (z.B. [1], [2]) und in der Reihenfolge geordnet, wie sie im Bericht vorkommen. Man kann die Quellen auch mit den (abgekürzten) Namen der Autoren und dem Erscheinungsjahr bezeichnen (z.B. [Schueli90], [Shannon49]), wobei die Einträge dann alphabetisch geordnet werden. Jede Referenz ist so anzugeben, dass sie einfach auffindbar ist (evtl. inklusive Seitenzahl, Bibliothek Bestellnummer). Eine Referenz, welche die allgemeine Grundlage für ein ganzes Kapitel bildet, wird im Titel bzw. in einer Fussnote aufgeführt. Für Referenzen aus dem Internet soll ein kommentierter URL angegeben werden.
-	
-	%Beispiele zu Quellenangaben:
-	%[1] C.E.Shannon, Communication in the Presence of Noise, Proceedings IRE, Vol. 37, January, 1949, pp. 10-21.
-	%[2] Telefonat vom 22.5.92 mit Herrn XY, Firma, Adresse, Telefon-Nummer.
-	%[3] 12 Tipps für einen guten Sprach- und Schreibstil  www.redenwelt.de zuletzt besucht am 15.9.2015.
-	
+	\patchcmd{\thebibliography}{\chapter*}{\section*}{}{}
+	\renewcommand{\bibname}{}
 	\bibliographystyle{IEEEtran}
 	\bibliography{zotero}
 	
 	
 	\chapter{Abkürzungsverzeichnis (Glossar)}
 	%Das Abhkürzungsverzeichnis (Glossar) enthält alle im Bericht vorkommenden Abkürzungen in alphabetischer Reihenfolge. Häufig wird hier auch eine Kurzbeschreibung zu den Begriffen angegeben. In diesem Fall nennt man den Abschnitt eher "Glossar".
-	
+	\renewcommand{\glossarysection}[2][]{}
 	\printglossaries
 	
 	
 	\chapter{Abbildungsverzeichnis}
+	\renewcommand{\listfigurename}{}
 	\listoffigures
-	
 	
 	
 	\part{Anhang}
@@ -213,15 +186,39 @@
 	
 	\chapter{Details zur Lösungsfindung}
 	%Details zur Lösungsfindung (z.B. Analyseschritte, Designschritte, umfangreiche Herleitungen, Tabellen, Messergebnisse, Testauswertungen)
-	\includepdf[pages={1-3}, landscape=true]{PDFs/MoeglicheArbeitenSA.pdf}
-	\label{pdf:MoeglicheArbeitenSA}
-	\includepdf[landscape=true]{PDFs/CSV_Template.pdf}
-	\label{pdf:template}
-	\includepdf[landscape=true]{PDFs/Excel-Frage-Template.pdf}
+	
+	\includepdf[pages={1-6}, pagecommand={}]{PDFs/Gruppenadministration.pdf}
+	\includepdf[landscape=true, pagecommand={}]{PDFs/Gruppenadministration_DB.pdf}
+	\includepdf[pages={1-3}, landscape=true, pagecommand={}]{PDFs/MoeglicheArbeitenSA.pdf}
+	\includepdf[landscape=true, pagecommand={}]{PDFs/CSV_Template.pdf}
+	\includepdf[landscape=true, pagecommand={}]{PDFs/Excel-Frage-Template.pdf}
 	
 	
-	\chapter{User Interface Abklärungen, Mockups, Paper Prototypen}
-	%User Interface Abklärungen, Mockups, Paper Prototypen
+	\chapter{Mockups}
+	\label{chap:mockups}
+	Alle nachfolgenden Mockups wurden mit dem Online-Mockup-Tool myBalsamiq erstellt. Die Lizenz wurde von der HSR zur Verfügung gestellt.
+	
+	Durch die nachträgliche Besprechung mit dem Betreuer wurden die nachfolgenden  Änderungen beschlossen, wodurch nicht mehr alle Mockups auf dem neusten Stand sind.
+	\begin{itemize}
+		\item Quiz-Informations-Seite\\
+		Bereits umgesetzt:\\
+		Auf dieser Seite wird der \glqq Start-Button\grqq nach rechts verschoben, links wird neu ein \glqq zur Übersicht\grqq - Button hinzugefügt. Zudem werden «Anzahl Fragen» und «Maximal mögliche Punktzahl» in der Reihenfolge geändert.\\
+		Noch offen:\\
+		Wenn der Start nicht mehr möglich ist, soll der Button ausgegraut werden.
+		\item Durchführungsstatistik\\
+		Noch offen:\\
+		Das Datum der Durchführung soll immer angezeigt werden.
+		\item Quiz-Erstellung\\
+		Bereits umgesetzt:\\
+		Statt \glqq Beschreibung\grqq soll \glqq Kommentar\grqq verwendet werden. Die Tabs im Quiz Erstellen sollen \glqq Allgemeine Informationen, Fragen und Durchführung\grqq heissen. Die Quiz Administration fällt weg. Das Hinzufügen von speziellen Berechtigungen wird in den Allgemeinen Informationen gemacht. Um die neuen Fragen zu erstellen wird das gleiche Konzept wie bei der Quiz Erstellung verwendet. Es wird dann vom Button \glqq Fragen erstellen\grqq auf die neue Seite \glqq Fragen erstellen\grqq weitergeleitet.
+		
+		\item Durchführungsoptionen\\
+		Durchführungsoptionen sollen so nicht umgesetzt werden, stattdessen wird immer gleich die Einstellung in der Standardeinstellung angezeigt, wie dies bereits beim bestehenden Mobile Quiz der Fall ist. Rechts ist jeweils ein \glqq Zurücksetzen\grqq - Button, mit die jeweilige Einstellung auf den Standard-Wert zurückgesetzt werden kann.
+		
+	\end{itemize}
+	
+	\includepdf[pages={1-19}, landscape=true, pagecommand={}]{PDFs/MockupsVersion2.pdf}
+	
 	
 	\chapter{Server-Anpassungen}
 	%Alle Änderungen am Server, welche während der Entwicklung vorgenommen wurden
@@ -229,6 +226,12 @@
 	
 	\chapter{Projektmanagementplan}
 	%Projektmanagementplan (kommentierter Arbeitsplan, Zeiterfassung: Durch den Einbezug des Arbeitsplans in den Bericht sollen die Studenten zu einer bewussten Arbeitsplanung animiert werden, sodass sie lernen den Arbeitsaufwand abzuschätzen und die Arbeit optimal zu organisieren.
+	
+	Da für die Umsetzung der neuen Features voraussichtlich mehr Zeit benötigt wird, wird eine weitere Construction-Phase angehängt und die erste Transition-Phase gestrichen.
+	
+	Bemerkung zur Präsentation:
+	Am Anfang wäre eine Zeitachse mit den Meilensteinen noch gut gewesen, um eine Projekt-Übersicht zu geben. Diese Zeitachse hätte man dann als roter Faden verwenden können.
+	
 	\input{Projektmanagementplan.tex}
 	
 	\chapter{Risikomanagement}
@@ -244,12 +247,6 @@
 	\chapter{Verwendete Werkzeuge}
 	\input{Werkzeuge.tex}
 	
-	
-	\chapter{Spezielle nicht öffentlich verfügbare Berichte oder Datenblätter}
-	%Spezielle nicht öffentlich verfügbare Berichte oder Datenblätter.
-	
-	\chapter{Passworte/Logins}
-	%Passworte/Logins  (eventuell in speziellem Couvert abgegeben)
 	
 	\chapter{Kontaktadressen}
 	%Kontaktadressen von allen beteiligten Personen (Adressen der Studenten, über welche sie auch nach der Zeit an der HSR erreicht werden können, Industriepartner, Betreuer, weitere Personen)
