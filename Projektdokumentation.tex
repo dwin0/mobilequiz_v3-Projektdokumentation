@@ -12,6 +12,7 @@
 \usepackage{multicol}
 \usepackage{listings}
 \usepackage{etoolbox}
+\usepackage{subcaption}
 
 %graphics
 \usepackage{wrapfig}
@@ -117,19 +118,19 @@
 	\input{Analyse.tex}
 		
 	\chapter{Konzepte}
-	\input{Konzepte.tex}	
+	\input{Konzepte.tex}
+	
+	
+	\chapter{Design}
+	\todo{Beschreibung von einzelnen, wichtigen Mockups und diese in den Anhang}
+	%Design (im Sinne von aussehen, navigieren usw.)
+	%Bezug auf Analyse, Wireframes / Mockups, etc.	
 	
 	
 	\chapter{Software Engineering}
 	%Software Engineering: Systembeschreibung, Software-Architektur, Domainmodell, Sequenzdiagramme, etc. (Anhand dieses Teils sollte man genau verstehen, was wie realisiert wurde. Informatiker sollten alle für die Optimierung oder Weiterentwicklung des System nötigen Informationen haben.)
 	%Überarbeitung gewisser Konzepte, Bspw. Teilnahme
-		
-	
-	\chapter{Design}
-	\todo{Beschreibung von einzelnen, wichtigen Mockups und diese in den Anhang}
-	%Design (im Sinne von aussehen, navigieren usw.)
-	%Bezug auf Analyse, Wireframes / Mockups, etc.
-	
+	\input{Software_Engineering.tex}	
 	
 	
 	
@@ -190,13 +191,16 @@
 	\chapter{Details zur Lösungsfindung}
 	%Details zur Lösungsfindung (z.B. Analyseschritte, Designschritte, umfangreiche Herleitungen, Tabellen, Messergebnisse, Testauswertungen)
 	
+	\includepdf[pages={1-5}, pagecommand={}]{PDFs/Ergebnisse_eigene_Tests.pdf}
 	\includepdf[pages={1-6}, pagecommand={}]{PDFs/Gruppenadministration.pdf}
 	\includepdf[landscape=true, pagecommand={}]{PDFs/Gruppenadministration_DB.pdf}
 	\includepdf[pages={1-13}, pagecommand={}]{PDFs/Neue_Fragetypen.pdf}
 	\includepdf[pages={1-12}, pagecommand={}]{PDFs/Statistiken_Auswertungen.pdf}
 	\includepdf[pages={1-3}, landscape=true, pagecommand={}]{PDFs/MoeglicheArbeitenSA.pdf}
 	\includepdf[landscape=true, pagecommand={}]{PDFs/CSV_Template.pdf}
+	\includepdf[landscape=true, pagecommand={}]{PDFs/socrativeQuizTemplate.pdf}
 	\includepdf[landscape=true, pagecommand={}]{PDFs/Excel-Frage-Template.pdf}
+	\includepdf[pages={1-3}, pagecommand={}]{PDFs/Recherchetipps_book-a-librarian.pdf}
 	
 	
 	\chapter{Mockups}

@@ -7,6 +7,8 @@
 \newglossaryentry{Vulnerability}{name={Vulnerability},description={
 		Fehler im Code oder Design, welcher ein potentielles Sicherheitsrisiko darstellt \cite{whatIs_vulnerability}}}
 
+\newglossaryentry{CSV}{name={CSV},description={CSV steht für Comma-Seperated Values und ist ein Textformat.}}
+
 \newacronym{IKF}{IKF}{Institut für Kommunikation \& Führung}
 
 \newacronym{SKMF}{SKMF}{Swiss Knowledge Management Forum}
@@ -83,12 +85,13 @@ Was kann Mobile Quiz heute bereits, wo gibt es noch Probleme und wo steht das Qu
 		Dabei handelt es sich um sämtliche Probleme, welche ein Angreifer ausnutzen kann, um unberechtigte Aktionen durchzuführen. \\
 		\textit{Beispiel}: Wird eine Frage erfasst, so kann im Fragetext mittels HTML-Script-Tag JavaScript hinterlegt werden, welches beim Anzeigen der Frage beim Teilnehmer ausgeführt wird. Somit hat Mobile Quiz gegenüber Frage-Erstellern eine \gls{Cross-Site-Scripting} - \gls{Vulnerability}. Diese kann ausgenutzt werden, um das Session-Cookie eines Benutzers zu stehlen. Dabei handelt es sich um ein grosses Risiko, denn sobald ein Angreifer das Session-Cookie eines Benutzers hat, kann er sich als diesen ausgeben. Das Worst-Case Szenario für das Mobile Quiz ist, dass sich jemand an der Prüfung als ein anderer Benutzer ausgibt, oder einem anderen Benutzer die Quiz-Teilnahme sabotiert.
 		
-		\todo{Referenzen von Bildern angeben}
+		
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.7\textwidth
 			]{Images/XSS_Frage.PNG}
 			\caption{Platzierung des Script-Tags in der Frage}
+			\cite{mobilequiz.ch}
 		\end{figure}
 		
 		\begin{figure}[H]
@@ -96,6 +99,7 @@ Was kann Mobile Quiz heute bereits, wo gibt es noch Probleme und wo steht das Qu
 			\includegraphics[width=0.7\textwidth
 			]{Images/XSS_Cookie.PNG}
 			\caption{Anzeige des Cookie beim Lösen der Frage}
+			\cite{mobilequiz.ch}
 		\end{figure}
 		
 		
@@ -120,14 +124,12 @@ Was kann Mobile Quiz heute bereits, wo gibt es noch Probleme und wo steht das Qu
 		\textit{Beispiel}: Der Benutzer wird wird teilweise mit 'Sie' angesprochen, andernorts wird die 'Du'-Form verwendet.
 	\end{itemize}
 
-	Die ausführlichen Resultate sind im Anhang unter 'Ergebnisse eigene Tests.pdf' ersichtlich.
-	\todo{Anhang einfügen und Verweis auf Anhang}
-	
+	Die ausführlichen Resultate sind im Anhang unter \glqq Ergebnisse eigene Tests\grqq ersichtlich.	
 
 
 	\subsection{Vergleich Online-Quizzes}
 	\label{subsec:Webuntersuchungen}
-	Um andere Online-Quizzes mit Mobile Quiz zu vergleichen mussten zuerst die Kriterien festgelegt werden. Als Grundlage diente eine Excel-Tabelle von Khalid Abdul und Patrik Naef \todo{Verweis auf BA}, welche an die Bedürfnisse dieser Arbeit angepasst wurde. Es wurden folgende Vergleichskriterien festgelegt:
+	Um andere Online-Quizzes mit Mobile Quiz zu vergleichen mussten zuerst die Kriterien festgelegt werden. Als Grundlage diente eine Excel-Tabelle von Khalid Abdul und Patrik Naef, welche an die Bedürfnisse dieser Arbeit angepasst wurde. Es wurden folgende Vergleichskriterien festgelegt:
 	\begin{itemize}
 		\item Fragemöglichkeiten \\
 		Welche Möglichkeiten bestehen eine Frage zu stellen? \\
@@ -224,9 +226,10 @@ Was kann Mobile Quiz heute bereits, wo gibt es noch Probleme und wo steht das Qu
 			\centering
 			\includegraphics[width=0.4\textwidth]{Images/Testmoz2.PNG}
 			\caption{Ablauf Testmoz}
+			\cite{testmoz.com}
 		\end{figure}
 		
-		Der Ablauf von Mobile Quiz war einzig darin zu ändern, dass neue Fragen während der Erstellung eines Quizzes erfasst werden können. Zur Vereinfachung konnte auch beitragen, dass der Ablauf wie bei Testmoz \cite{testmoz.com} verteilter dargestellt wird, sodass pro Seite weniger Informationen stehen. Somit findet sich der Benutzer schneller zurecht. Die genaue Beschreibung dieser Umstellung ist in Kapitel 13 genauer beschrieben. \todo{Genauen Verweis einfügen}
+		Der Ablauf von Mobile Quiz war einzig darin zu ändern, dass neue Fragen während der Erstellung eines Quizzes erfasst werden können. Zur Vereinfachung konnte auch beitragen, dass der Ablauf wie bei Testmoz \cite{testmoz.com} verteilter dargestellt wird, sodass pro Seite weniger Informationen stehen. Somit findet sich der Benutzer schneller zurecht. Die genaue Beschreibung dieser Umstellung ist in Kapitel \ref{subsec:quiz-erstellung} genauer beschrieben.
 		
 		
 		
@@ -240,6 +243,7 @@ Was kann Mobile Quiz heute bereits, wo gibt es noch Probleme und wo steht das Qu
 			\includegraphics[width=0.75\textwidth
 			]{Images/MobileQuiz_Quiz-Settings.PNG}
 			\caption{Quiz-Einstellungen Mobile Quiz Version 3}
+			\cite{mobilequiz.ch}
 		\end{figure}
 		
 		
@@ -250,10 +254,11 @@ Was kann Mobile Quiz heute bereits, wo gibt es noch Probleme und wo steht das Qu
 			\includegraphics[width=0.5\textwidth
 			]{Images/QuizMaker_Quiz-Settings.PNG}
 			\caption{Quiz-Einstellungen Quiz Maker}
+			\cite{quiz-maker}
 		\end{figure}
 		
 		Aufgeräumter wirkten die Einstellungen beispielsweise bei Quiz Maker \cite{quiz-maker}. Zwar gab es ebenfalls eine Vielzahl von Möglichkeiten, diese wurden aber übersichtlich dargestellt, indem sie Themen zugeordnet und auf Tabs verteilt wurden. Zudem gab es einen eigenen Tab für erweiterte Optionen. \\
-		Bei Mobile Quiz wurde der Ablauf der Quiz-Erstellung neu organisiert und in diesem Schritt auch die Quiz-Einstellungen verteilter und übersichtlicher angeordnet. Die genaue Beschreibung ist in Kapitel 13 vorzufinden. \todo{Referenz einfügen}
+		Bei Mobile Quiz wurde der Ablauf der Quiz-Erstellung neu organisiert und in diesem Schritt auch die Quiz-Einstellungen verteilter und übersichtlicher angeordnet. Die genaue Beschreibung ist in Kapitel \ref{subsec:quiz-erstellung} vorzufinden.
 		
 		
 		
@@ -263,11 +268,10 @@ Was kann Mobile Quiz heute bereits, wo gibt es noch Probleme und wo steht das Qu
 		Dieser Punkt konnte mangels Zeit nicht umgesetzt werden, wird aber in Kapitel \ref{sec:InhalteFuerStudentenarbeiten}, Inhalte für weitere Studentenarbeiten einfliessen.
 		
 		
-		\todo{Abkürzung csv new acronym}
 		\item Template für Frage-Import \\
-		Ist man im Zug unterwegs und möchte trotzdem an einem neuen Quiz-Fragen arbeiten, so fehlt meist der Internetzugang. Dies kompensierte Mobile Quiz dadurch, dass Fragen aus CSV-Dateien eingelesen und erstellt werden konnten. Um dies zu nutzen, benötigte es jedoch eine spezielle Formatierung, was neue Benutzer abschrecken konnte. \\
+		Ist man im Zug unterwegs und möchte trotzdem an einem neuen Quiz-Fragen arbeiten, so fehlt meist der Internetzugang. Dies kompensierte Mobile Quiz dadurch, dass Fragen aus \gls{CSV}-Dateien eingelesen und erstellt werden konnten. Um dies zu nutzen, benötigte es jedoch eine spezielle Formatierung, was neue Benutzer abschrecken konnte. \\
 		Die Lösung dazu war es, ein Excel-Template, also eine Vorlage, für neue Fragen bereitzustellen. Darin kann der Benutzer schnell und einfach Fragen erfassen und muss sich nicht um das Format kümmern. Solche Templates bot beispielsweise
-		Socrative \cite{socrative.com} an. Es ist im Anhang unter 'socrativeQuizTemplate.xlsx' zu finden. \todo{pdf in anhang und verweis erstellen}
+		Socrative \cite{socrative.com} an. Es ist im Anhang unter 'socrativeQuizTemplate.xlsx' zu finden.
 		
 		Im Rahmen dieser Arbeit wurde ebenfalls ein solches Template erstellt, welches nun Quiz-Erstellern zum Download angeboten wird. Die genaue Beschreibung der Umstellung ist im Kapitel \ref{subsec:FrageTemplate} ersichtlich.
 		
