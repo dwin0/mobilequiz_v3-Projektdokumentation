@@ -9,8 +9,7 @@
 
 \begin{itemize}
 	\item Implementierung der Durchführung\\
-	Damit ein Quiz wieder komplett erstellt werden kann, muss die Erstellung der Durchführung fertig implementiert werden. Für die Umsetzung ist einerseits die Datei \glqq createEditExecution \grqq für die Darstellung und Benutzerinteraktion, andererseits \glqq action\_execution\grqq für die Logik auf dem Server mit der Datenbankkommunikation wichtig.
-	\todo{Andrea: Genauer beschreiben}
+	Damit ein Quiz wieder komplett erstellt werden kann, muss die Erstellung der Durchführung fertig implementiert werden. Für die Umsetzung ist einerseits die Datei \glqq createEditExecution \grqq für die Darstellung und Benutzerinteraktion, andererseits \glqq action\_execution\grqq für die Logik auf dem Server mit der Datenbankkommunikation wichtig. Was noch gemacht werden muss, ist die Abspeicherung der Daten im Tab Einstellungen und im Tab Publikation. Der Tab Allgemeine Informationen ist bereits vollständig umgesetzt und kann als Beispiel verwendet werden, um die noch notwendigen Implementierungsschritte zu erkennen. Der Tab Teilnehmer wurde ebenfalls vollständig umgesetzt.
 	\item Erstellung aller Interessengruppen\\
 	Ein Teilnehmer kann derzeit angeben für welche Themenbereiche er sich interessiert. Es wurde jedoch noch nicht zu allen bestehenden Themen eine entsprechende Interessengruppe in der Datenbank erstellt. Diese Datenbankbefehle müssen von Hand gemacht werden, da jede Gruppe ein eindeutiges Token benötigt. Ein Beispiel der Umsetzung ist nur für die Gruppe \glqq interest\_group\_Informationssicherheit\grqq vorhanden, welches in der Zusammenstellung aller Datenbank-Änderungen im Anhang vorhanden ist. \todo{Erstellen und verweis auf Anhang}
 	Der Rest der Logik wurde komplett implementiert. Die Eintragung des Interesse am Themengebiet, das Setzen des Filters gemäss Interesse sowie das nachträgliche Verändern der Interessen funktionieren.
