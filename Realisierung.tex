@@ -5,12 +5,6 @@
 	description={Refactoring bezeichnet die manuelle oder automatisierte Strukturverbesserung von Quelltexten unter Beibehaltung des beobachtbaren Programmverhaltens. Dabei sollen die Lesbarkeit, Verständlichkeit, Wartbarkeit und Erweiterbarkeit verbessert werden, mit dem Ziel, den jeweiligen Aufwand für Fehleranalyse und funktionale Erweiterungen deutlich zu senken. \cite{_refactoring_2016}}
 }
 
-\todo{Verweis auf Anhang 'Änderungen am Server'}
-
-
-	
-
-
 
 
 
@@ -81,11 +75,8 @@ Ein Beispiel des ursprünglichen Formats sowie des neuen Excel-Templates ist im 
 
 Der neue Template-Import wurde mit PHPExcel \cite{phpexcel} umgesetzt. Diese PHP-Library war bereits im Projekt eingebunden und wird dazu verwendet, die Rangliste aller Teilnehmenden eines Quiz zu Exportieren. Die neue Logik befindet sich hauptsächlich in der neu erstellen Datei 'importExcel.php'.
 
-Bei PHPExcel gab es bis zur Version 1.7.9 eine \gls{XML External Entitiy} - \gls{Vulnerability}. Dadurch war es Remote-Angreifern möglich, beliebige Dateien auf dem Server zu lesen oder eine Denial-of-Service - Attacke durchzuführen. \cite{cvedetails_phpexcel} %TODO Remote und Denial-of-Service erklären
-Da bei MobileQuiz allerdings die Version 1.8.0 verwendet wird, ist dies nicht mehr möglich. Es wurde mit dem Wissen von InfSi3 versucht eine solche Attacke durchzuführen, was ebenfalls zum Ergebnis führte, dass diese Sicherheitslücke nicht mehr vorhanden ist. %TODO InfSi3 erklären
-
-\todo{Bildupload mit Excel beschreiben
-	https://github.com/dwin94/mobilequiz\_v3/commit/3fe09578311f3e20b5933b71dad546830c321ed0}
+Bei PHPExcel gab es bis zur Version 1.7.9 eine \gls{XML External Entitiy} - \gls{Vulnerability}. Dadurch war es Remote-Angreifern möglich, beliebige Dateien auf dem Server zu lesen oder eine Denial-of-Service - Attacke durchzuführen. \cite{cvedetails_phpexcel}
+Da bei MobileQuiz allerdings die Version 1.8.0 verwendet wird, ist dies nicht mehr möglich. Es wurde mit dem Wissen von InfSi3 versucht eine solche Attacke durchzuführen, was ebenfalls zum Ergebnis führte, dass diese Sicherheitslücke nicht mehr vorhanden ist.
 
 \section{Neuerungen}
 
@@ -136,48 +127,6 @@ Es war dabei nicht möglich, nur die Excel-Datei alleine hochzuladen und anschli
 \\
 \\
 Wird eine Frage gelöscht, so wird nebst dem Datenbankeintrag neu auch das Bild vom Server entfernt.
-
-
-\subsubsection{Änderungen am Server}
-\textbf{Wichtig:} 
-Für den Server-Upload müssen die folgenden zwei Dinge gegeben sein:
-\begin{itemize}
-	\item Die PHP-Library 'GD' muss für die Bildverarbeitung installiert sein. Ob dies der Falls ist kann mittels PHPInfo() oder nachfolgendem Code festgestellt werden. \cite{zoopable.com} Sollte 'GD' nicht installiert sein, so ist unten ebenfalls der Installationsbefehl aufgeführt. \cite{askubuntu.com_php_extension}
-\end{itemize}
-\begin{lstlisting}
-<?php
-if (extension_loaded('gd') && function_exists('gd_info')) {
-echo "PHP GD library is installed on your web server";
-}
-else {
-echo "PHP GD library is NOT installed on your web server";
-}
-?>
-
-sudo apt-get install php5.6-gd
-\end{lstlisting}
-
-\begin{itemize}
-	\item Die Childprozesse des Apache-Servers, welche die Anfragen beantworten, benötigen Schreibrechte auf den Upload-Ordner. Ob dies gegeben ist, kann mittels folgendem Befehl überprüft und geändert werden. \cite{askubuntu.com_permissions} 
-\end{itemize}
-\begin{lstlisting}
-ps -ef | grep apache | grep -v grep
-\end{lstlisting}
-
-\begin{lstlisting}
-root      5001     1  0 07:21 ?    00:00:00 /usr/sbin/apache2 -k start
-www-data  5021  5001  0 07:21 ?    00:00:00 /usr/sbin/apache2 -k start
-www-data  5022  5001  0 07:21 ?    00:00:00 /usr/sbin/apache2 -k start
-www-data  5023  5001  0 07:21 ?    00:00:00 /usr/sbin/apache2 -k start
-\end{lstlisting}
-
-Ist die Ausgabe wie oben ersichtlich, so werden die Anfragen von Prozessen der Benutzergruppe 'www-data' beantwortet. Die Schreibrechte an diese Gruppe können wie folgt vergeben werden:
-\begin{lstlisting}
-chgrp www-data /path/to/mydir
-chmod g+w /path/to/mydir
-\end{lstlisting}
-
-
 
 
 \subsubsection{Anzeige eines Bildes}
@@ -284,54 +233,7 @@ Der Teilnehmer selbst erhält ein Bestätigungsmail mit den gleichen Information
 
 
 
-\section{Neue Quiz- und Frageerstellung}
-%Wieso wurde umgestellt? intuitiver / Usability-Tests
-
-% Mobile-freundlicher mit accordeon
-
-
-
-
-
-\subsection{Quiz-Erstellung} %ev. eigene Subsection "Durchführung"
-\label{subsec:quiz-erstellung}
-%•	Das Token bei der Quiz-Teilnahme ist dient als Kurzform zum Link mit der Quiz-Id und ist zudem Datenbank-unabhängig.
-
-%•	Die Implementierung der Durchführung konnte nicht fertiggestellt werden. Die benötigten Informationen für die Fertigstellung werden in der Dokumentation festgehalten.
-
-%asynchron mit ajax -> Meldung 'gespeichert', deshalb wurde auch der Excel-Upload asynchrom gemacht
-
-%asynchrones hinzufügen von neuen fragen aus dem Pool. Ev mit Verweis auf Usability-Testing (Button umbenennen)
-
-\subsection{Frage-Erstellung}
-%•	Maximale Anzahl Antwortmöglichkeiten 5? Wenige Fragen haben 6 Möglichkeiten, s. DB-Abfrage
-%•	Umsetzung Frage-Screen: Änderungen werden sofort nach Ändern eines Feldes gespeichert, nicht erst beim Tab-Wechsel oder beim Verlassen des Erfassungs-Screens. Somit erübrigt sich auch eine automatische Speicherung alle 30 Sekunden.
-%•	Die Fragen, welche mehr als 6 Antwortmöglichkeiten haben, werden per E-Mail an P. Heinzmann geschickt. Er schreibt den Studenten, welche Antwortmöglichkeiten gelöscht werden sollen. Die Studenten passen anschliessend die Datenbank an.
-%o	Das hochgeladene Bild soll auch bei den Antwortmöglichkeiten angezeigt werden. Dies hilft bei deren Erfassung, da sich die Antwortmöglichkeiten häufig auf das Bild beziehen.
-%o	Wird die Möglichkeit «Single-Choice-Frage» ausgewählt, sollen anstatt Checkboxen Radio-Buttons angezeigt werden (wenn es möglich ist).
-%o	Komplett leere Fragen und leere Quizzes sollen nicht gespeichert werden.
-%o	Beim Reload soll kein neues, leeres Frage-Formular angezeigt werden, sondern es soll in den Edit-Mode gewechselt werden (dasselbe soll beim Quiz gelten).
-%•	Es ist dem Benutzer unter Umständen nicht klar, dass alle seine Änderungen sofort gespeichert werden. Es soll deshalb bei jeder erfolgreichen Speicherung eine kurze Meldung «Gespeichert» bzw. «Saved» eingeblendet werden. Diese könnte im unteren rechten Fensterrand erscheinen. Allenfalls bietet Bootstrap eine solche Lösung bereits an.
-
-%improved Formcheck -> Bild einfügen
-
-%asynchroner Bildupload mit ajax
-
-%- formcheck wird nur noch auf dem client gemacht
-
-
-%- ev. datenbankskript für update alte statistiken
-
-%Bildbeschreibung bei Bild-Upload anbieten, falls bild nicht geladen oder Screen-Reader
-
-
-\subsection{Default-Quiz-Einstellungen}
-Verweis auf Dokument
-
-%•	Wie in der letzten Sitzung besprochen, soll es bei der Durchführung die Möglichkeit geben, die Einstellungen auf den Standard zurückzusetzen. Es wurde nun beschlossen, dass dazu ein Button «Auf Standard zurücksetzen» angezeigt wird. Hat das Feld bereits den Standard-Wert, so ist der Button ausgegraut und kann nicht geklickt werden. Beinhaltet das Feld nicht den Standard-Wert, so sieht der Benutzer beim darüberfahren mit der Maus, welches der Standard-Wert ist und kann diesen durch Klicken übernehmen.
-
-
-\section{Interessensgruppen und Filterumstellung}
+\subsection{Interessensgruppen und Filterumstellung}
 Loggt sich ein Teilnehmer bei Mobile Quiz ein, so soll er möglichst wenige Klicks von seinem zu lösenden Quiz entfernt sein. Dadurch spart er Zeit da, er sich nicht mit Filteroptionen und Suchfeldern auseinandersetzen muss. Doch wie erkennt Mobile Quiz welche Quizzes für den Teilnehmer interessant sind?
 
 Möglich wäre es nachzuschauen, zu welchem Themengebiet der Teilnehmer schon Quizzes gelöst hat und aufgrund dessen die Filterauswahl bereits auf das Themengebiet mit seinen meisten Teilnahmen zu setzen. Das Problem dieser Methode liegt darin, dass sie für neu registrierte Teilnehmer nicht verwendet werden kann.
@@ -362,20 +264,3 @@ Damit ein Teilnehmer mehrere Interessensgebiete angeben kann, war es nötig die 
 	\includegraphics[width=0.5\textwidth]{Images/Neue_Filter_Mobile_Quiz.PNG}
 	\caption{Filter der neuen Mobile Quiz - Version}
 \end{figure}
-
-
-
-\section{Umgestaltung Startseite Teilnehmer / Ersteller}
-Filter, Anzeige der Durchführungen statt der einzelnen quizzes
-
-%weniger angezeigte spalten und ersetzung der symbole durch menu mit text glyphicons
-%beschreiben, wo dass die glyphicons gespeichert sind -> https://github.com/dwin94/mobilequiz_v3/commit/f4d4417696d31e12925213212342b79d5afeec96
-
-
-\section{Mobile Ansicht}
-%o	Es sollen alle Aktionen in der Mobile-Version dargestellt werden. Dazu müssen einige Aktionen gekürzt oder umgebrochen werden. Bsp: «Lösungsblatt anzeigen / drucken»
-% plus andere Seiten, auf denen die Ansicht optimiert wurde -> ev. Teilnahme, Screenshot altes und neues mobile quiz
-
-\section{Schlussprodukt}
-
-
