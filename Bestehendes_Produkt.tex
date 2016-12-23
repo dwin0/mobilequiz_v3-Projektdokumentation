@@ -17,27 +17,15 @@ MobileQuiz in der Version 3 verwendete die folgenden Technologien:
 	\item Bootstrap für \gls{responsives CSS}
 \end{itemize}
 
-Diese Technologiepalette wurde im Verlauf dieser Arbeit beibehalten und nicht erweitert. Die verwendeten Werkzeuge zur Entwicklung mit diesen Technologien sowie die restlichen, während dieser Arbeit eingesetzten Werkzeuge, sind im Anhang unter Kapitel ... aufgeführt. Beschrieben sind unter anderem der Einsatzzweck und der Bezugsort. Ergänzt wurden nützliche Hinweise, welche durch die Benutzung dieser Werkzeuge in Erfahrung gebracht wurden. \todo{Verweis auf Anhang}
+Diese Technologiepalette wurde im Verlauf dieser Arbeit beibehalten und nicht erweitert. Die verwendeten Werkzeuge zur Entwicklung mit diesen Technologien sowie die restlichen, während dieser Arbeit eingesetzten Werkzeuge, sind im Anhang unter Kapitel \ref{chap:werkzeuge} aufgeführt. Beschrieben sind unter anderem der Einsatzzweck und der Bezugsort. Ergänzt wurden nützliche Hinweise, welche durch die Benutzung dieser Werkzeuge in Erfahrung gebracht wurden.
 
 
 \section{Inbetriebnahme}
-Das Aufsetzen der bestehenden Seite auf einer Server-Instanz der HSR dauerte länger als ursprünglich vorgesehen. Zu Beginn wurde das Aufsetzen mit Docker probiert, da die Server für die Studierenden neu damit ausgeliefert wurden. Anschliessend wurde eine neue Instanz mit reinem Linux Ubuntu bestellt, um die Seite ohne Docker in Betrieb zu nehmen. Beide Varianten scheiterten schlussendlich an der sicheren \gls{TLS}-Verbindung, wodurch diese dann im Code auskommentiert wurde.
+Das Aufsetzen der bestehenden Seite auf einer Server-Instanz der HSR dauerte länger als ursprünglich vorgesehen. Zu Beginn wurde das Aufsetzen mit Docker versucht, da die Server für die Studierenden neu damit ausgeliefert wurden. Anschliessend wurde eine neue Instanz mit reinem Linux Ubuntu bestellt, um die Seite ohne Docker in Betrieb zu nehmen. Beide Varianten scheiterten schlussendlich an der sicheren \gls{TLS}-Verbindung, wodurch diese dann im Code auskommentiert wurde.
 
 Um ein weiteres Aufsetzen zu Erleichtern wurden zu beiden Varianten Anleitungen erstellt. Diese sind im Anhang unter \glqq V2 Apache\_PHP\_MySQL-Docker.tex\grqq und \glqq V3 Apache\_PHP\_MySQL-Ubuntu.tex \grqq zu finden.
 Unter \glqq Anleitung Redmine Datenbank Backup\grqq ist dort ebenfalls das Einrichten eines täglichen Backups für die Sicherung der MySQL-Datenbank beschreiben.
-\todo{in Anhang einfügen und Verweis erstellen}
 
 
 \section{Code-Änderungen}
 Damit der Code auf der Server-Instanz der HSR lief, waren, neben dem Deaktivieren von TLS, weitere Code-Änderungen nötig. Diese wurden sowohl von Patrick Eichler als auch von den Studenten durchgeführt und schriftlich festgehalten. Alle aufgetretenen Probleme und die dazugehörenden Lösungen sind im Anhang unter \glqq Anfängliche\_Code\_Änderungen.pdf\grqq zu finden.
-\todo{Code-Änderungen schön niederschreiben, in den Anhang und Verweis darauf}
-\todo{Änderungen rückgängig machen? wenn ja, nicht alle, da manche sinnvoll}
-
-
-
-
-
-
-
-
-
