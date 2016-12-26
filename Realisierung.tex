@@ -29,6 +29,7 @@ Aufgrund der im Punkt \ref{subsec:eigeneUntersuchungen} vorgenommenen eigenen Un
 		\includegraphics[width=0.75\textwidth]
 		{Images/CancelButtonProblem.PNG}
 		\caption{Screenshot des Problems des Abbrechen-Buttons}
+		\cite{mobilequiz.ch}
 	\end{figure}
 	
 	\begin{figure}[H]
@@ -86,18 +87,30 @@ Da bei MobileQuiz allerdings die Version 1.8.0 verwendet wird, ist dies nicht me
 Bei jedem Fragetyp ist es neu möglich ein Bild zu hinterlegen. Die Funktion des Bild-Uploads auf den Server bestand bereits, wurde aber erweitert.
 \\
 \\
-Beim Hochladen des Bildes wurde zuvor eine Fehlermeldung ausgegeben, wenn ein Bild eine Grösse von über 20 Megabyte überstieg. Diese Limite wurde herabgesetzt, weil ein Bild von dieser Grösse lange benötigt, bis es heruntergeladen werden kann. Unten ist ein Vergleich von Downloadzeiten aufgeführt, bei verschiedenen Dateigrössen. Die Downloadgeschwindigkeit ist die durchschnittliche Downloadgeschwindigkeit der Swisscom-Kunden, welche anhand von Speedtests der cnlab AG \cite{cnlab_speedtest} ermittelt wurde. Es wurden die Swisscom-Kunden gewählt, weil die Anzahl der User dort am grössten war. \\
+Beim Hochladen des Bildes wurde zuvor eine Fehlermeldung ausgegeben, wenn ein Bild eine Grösse von über 20 Megabyte überstieg. Diese Limite wurde herabgesetzt, weil ein Bild von dieser Grösse zu lange benötigt, bis es heruntergeladen werden kann. Unten ist ein Vergleich von Downloadzeiten aufgeführt, bei verschiedenen Dateigrössen. Die angegebene Geschwindigkeit ist die Downloadgeschwindigkeit welche 80\% der Kunden erreichen. Diese wurden anhand von Speedtests der cnlab AG \cite{cnlab_speedtest} ermittelt. \\
 
 
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|c|c|c|c|}
 	\hline 
-	Dateigrösse & Downloadgeschwindigkeit & Benötigte Zeit \\ 
+	Dateigrösse & Art & Downloadgeschwindigkeit & Benötigte Zeit \\ 
 	\hline 
-	20 MB & 33,1 Mbit/s & 4,8 s \\ 
+	20 MB & DSL-Anbieter & 13,6 Mbit/s & 11,8 s \\ 
 	\hline 
-	5 MB & 33,1 Mbit/s & 1,2 s \\ 
+	20 MB & Kabel-Anbieter & 40,6 Mbit/s & 3,9 s \\ 
 	\hline 
-	800 KB & 33,1 Mbit/s & 0,2 s \\ 
+	20 MB & Mobile & 8,9 Mbit/s & 18 s \\ 
+	\hline 
+	5 MB & DSL-Anbieter & 13,6 Mbit/s & 2,9 s \\ 
+	\hline 
+	5 MB & Kabel-Anbieter & 40,6 Mbit/s & 1 s \\ 
+	\hline 
+	5 MB & Mobile & 8,9 Mbit/s & 4,5 s \\ 
+	\hline 
+	800 KB & DSL-Anbieter & 13,6 Mbit/s & 0,5 s \\ 
+	\hline 
+	800 KB & Kabel-Anbieter & 40,6 Mbit/s & 0,2 s \\ 
+	\hline 
+	800 KB & Mobile & 8,9 Mbit/s & 0,7 s \\ 
 	\hline 
 \end{tabular}\\
 
@@ -113,12 +126,12 @@ Weiter gibt es Grössenbeschränkungen von Apache selbst \cite{stackoverflow_lar
 Werden via Excel-Template 10 Fragen mit je einem Bild à 1 Megabyte hochgeladen, so ist dies mit der Standardkonfiguration nicht möglich. Diese wurde deshalb folgendermassen angepasst:
 \begin{itemize}
 	\item upload\_max\_filesize: Neu 5 MB. Grössere Dateien benötigen zu lange für den Upload, allerdings soll der Benutzer nicht nur auf kleine Grössen beschränkt sein. Deshalb wurde von der 2MB-Standardgrösse abgewichen.
-	\item post\_max\_size: Neu 25 MB. Bei dieser Grösse beträgt die Uploadzeit bei einer Geschwindigkeit von 15 Mbit/s 13 Sekunden. Dies ist die Durchschnittliche Uploadgeschwindigkeit von Swisscom-Kunden, welche beim Speedtest der cnlab AG \cite{cnlab_speedtest} erreicht wurde. Diese Messungen umfassen jedoch auch Mobile-Messungen mit Smartphones. Da die Uploads der Frage-Templates aber eher von Computern und Laptops erfolgen, welche dank LAN und WLAN eine höhere Uploadgeschwindigkeit aufweisen, ist diese Uploadzeit eher geringer. Der Benutzer sollte sich zudem bewusst sein, dass der Upload bei so vielen Dateien einige Zeit in Anspruch nimmt.
+	\item post\_max\_size: Neu 25 MB. Bei dieser Grösse beträgt die Uploadzeit bei einer Geschwindigkeit von 10,3 Mbit/s 19,4 Sekunden. Dies ist die Uploadgeschwindigkeit von 80\% der DSL-Messungen, welche beim Speedtest der cnlab AG \cite{cnlab_speedtest} erreicht wurde. Dem Benutzer sollte bewusst sein, dass der Upload bei so vielen Dateien einige Zeit in Anspruch nimmt.
 	Auf der anderen Seite soll der Benutzer aber auch nicht eingeschränkt werden. Es soll möglich sein, gleichzeitig 20 Fragen mit Bildern à 1 MB sowie 1 Frage mit einem grösseren Bild plus Excel-Template hochzuladen.
 	\item max\_file\_uploads: Neu 25 Dateien. Der Standard-Wert wird nur leicht angehoben, da es möglich sein soll 20 Fragen mit Bildern gleichzeitig zu erstellen. Damit würde das Maximum von 20 Dateien nicht ausreichen.
 \end{itemize}
 
-Beim Upload wird das mit folgendem Dateinahmen im Ordner 'uploadedImages' abgelegt: 'question\_Datum(Tag\_Monat\_Jahr\_Stunde\_Minute\_Sekunde\_\_SessionId.Dateityp'.
+Beim Upload wird das Bild mit folgendem Dateinahmen im Ordner 'uploadedImages' abgelegt: 'question\_Datum(Tag\_Monat\_Jahr\_Stunde\_Minute\_Sekunde\_\_SessionId.Dateityp'.
 \\
 \\
 Das Excel-Template für die Frage-Erstellung wurde ebenfalls erweitert, dass auch Fragen mit Bildern erstellt werden können. Dazu wurde eine neue Spalte eingefügt, bei welcher man den Bildnamen inklusive Endung einträgt. Die Bilder müssen sich dabei im gleichen Ordner wie das Template befinden. Anschliessend wird der gesamte Ordner hochgeladen.
@@ -138,7 +151,7 @@ Nachfolgend ist zu sehen, wie eine Frage mit Bild in verschieden Situationen ang
 	\centering
 	\includegraphics[width=0.75\textwidth]{Images/Frage-Bild_Anzeige_PC.PNG}
 	\caption{Anzeige des Frage-Bildes am Computer}
-	Quelle: mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
+	Quelle Fragebild: \cite{_bild_pixabay_mario_}
 \end{figure}
 
 \begin{figure}[H]
@@ -152,7 +165,7 @@ Nachfolgend ist zu sehen, wie eine Frage mit Bild in verschieden Situationen ang
 	\centering
 	\includegraphics[width=0.3\textwidth]{Images/Frage-Bild_Anzeige_Mobile_Full.PNG}
 	\caption{Fullscreen-Anzeige des Frage-Bildes auf dem Smartphone}
-	Quelle: mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
+	Quelle Fragebild: \cite{_bild_pixabay_mario_}
 \end{figure}
 
 Da sich eine Frage, bei welcher ein Bild hochgeladen wird, oft auf Inhalte aus dem Bild bezieht, wurde auch für die Auswertungsseite eine Bild-Anzeige implementiert. Somit können die Auswertungen besser nachvollzogen werden.
@@ -163,7 +176,7 @@ Ein Beispiel einer solchen Auswertung ist unten dargestellt.
 	\centering
 	\includegraphics[width=0.75\textwidth]{Images/Quiz-Auswertung_Anzeige.PNG}
 	\caption{Auswertungs-Anzeige des Frage-Bildes am Computer}
-	Quelle: mobilequiz.ch / Fragebild: https://pixabay.com/de/mario-luigi-figuren-lustig-bunt-1558012/
+	Quelle Fragebild: \cite{_bild_pixabay_mario_}
 \end{figure}
 
 Weiter wurde die Generierung des PDF-Aufgabenblattes und Lösungsblattes ergänzt, damit auch dort die Bilder angezeigt werden. Hat man unterwegs kein Internet, so kann man sich die Fragen damit auch vorgängig herunterladen und im Zug anschauen.
@@ -187,28 +200,24 @@ Dieses Problem wurde nun angegangen. Unter jeder Frage gibt es neu die Möglichk
 	\centering
 	\includegraphics[width=0.75\textwidth]{Images/Feedback-Button.PNG}
 	\caption{Feedback-Button}
-	Quelle: mobilequiz.ch
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\textwidth]{Images/Feedback-Feld.PNG}
 	\caption{Feedback-Feld nach Klick auf Feedback-Button}
-	Quelle: mobilequiz.ch
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\textwidth]{Images/Feedback-Frage.PNG}
 	\caption{Beispielfrage an Quiz-Ersteller}
-	Quelle: mobilequiz.ch
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\textwidth]{Images/Feedback-Frage-gesendet.PNG}
 	\caption{Feedback versendet nach Klick auf Senden-Button}
-	Quelle: mobilequiz.ch
 \end{figure}
 
 
@@ -218,7 +227,6 @@ Nach dem Senden des Feedbacks erhält der Quiz-Ersteller eine E-Mail. Darin ist 
 	\centering
 	\includegraphics[width=0.9\textwidth]{Images/Feedback-Mail_Quiz-Ersteller.PNG}
 	\caption{E-Mail an Quiz-Ersteller}
-	Quelle: mobilequiz.ch
 \end{figure}
 
 Der Teilnehmer selbst erhält ein Bestätigungsmail mit den gleichen Informationen, wie sie auch der Quiz-Ersteller erhält.
@@ -227,7 +235,6 @@ Der Teilnehmer selbst erhält ein Bestätigungsmail mit den gleichen Information
 	\centering
 	\includegraphics[width=0.9\textwidth]{Images/Feedback-Mail_Teilnehmer.PNG}
 	\caption{Bestätigungs-E-Mail an Teilnehmer}
-	Quelle: mobilequiz.ch
 \end{figure}
 
 
