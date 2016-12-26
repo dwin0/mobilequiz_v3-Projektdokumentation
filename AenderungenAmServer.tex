@@ -1,0 +1,40 @@
+% !TEX root = Projektdokumentation.tex
+
+
+\textbf{Wichtig:} 
+Für den Server-Upload müssen die folgenden zwei Dinge gegeben sein:
+\begin{itemize}
+	\item Die PHP-Library 'GD' muss für die Bildverarbeitung installiert sein. Ob dies der Falls ist kann mittels PHPInfo() oder nachfolgendem Code festgestellt werden. \cite{zoopable.com} Sollte 'GD' nicht installiert sein, so ist unten ebenfalls der Installationsbefehl aufgeführt. \cite{askubuntu.com_php_extension}
+\end{itemize}
+\begin{lstlisting}
+<?php
+if (extension_loaded('gd') && function_exists('gd_info')) {
+echo "PHP GD library is installed on your web server";
+}
+else {
+echo "PHP GD library is NOT installed on your web server";
+}
+?>
+
+sudo apt-get install php5.6-gd
+\end{lstlisting}
+
+\begin{itemize}
+	\item Die Childprozesse des Apache-Servers, welche die Anfragen beantworten, benötigen Schreibrechte auf den Upload-Ordner. Ob dies gegeben ist, kann mittels folgendem Befehl überprüft und geändert werden. \cite{askubuntu.com_permissions} 
+\end{itemize}
+\begin{lstlisting}
+ps -ef | grep apache | grep -v grep
+\end{lstlisting}
+
+\begin{lstlisting}
+root      5001     1  0 07:21 ?    00:00:00 /usr/sbin/apache2 -k start
+www-data  5021  5001  0 07:21 ?    00:00:00 /usr/sbin/apache2 -k start
+www-data  5022  5001  0 07:21 ?    00:00:00 /usr/sbin/apache2 -k start
+www-data  5023  5001  0 07:21 ?    00:00:00 /usr/sbin/apache2 -k start
+\end{lstlisting}
+
+Ist die Ausgabe wie oben ersichtlich, so werden die Anfragen von Prozessen der Benutzergruppe 'www-data' beantwortet. Die Schreibrechte an diese Gruppe können wie folgt vergeben werden:
+\begin{lstlisting}
+chgrp www-data /path/to/mydir
+chmod g+w /path/to/mydir
+\end{lstlisting}

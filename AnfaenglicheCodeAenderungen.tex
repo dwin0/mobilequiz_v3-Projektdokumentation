@@ -1,0 +1,180 @@
+% !TEX root = Projektdokumentation.tex
+
+\subsection{Problem: Server-Umstellung}
+
+\textbf{Diverse Code-Stellen} \\
+
+\noindent Ersetzen von:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+https://tlng.cnlab.ch/mobilequiz_v3/
+\end{lstlisting}
+
+\bigskip
+\noindent Durch:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+http://sinv-56082.edu.hsr.ch/
+\end{lstlisting}
+
+
+
+\subsection{Problem: Keine TLS-Unterstützung durch HSR-Server}
+
+\textbf{index.php - Zeile 5-9} \\
+
+\noindent Auskommentieren von:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+if(empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
+$redirect = 'https://' . $_SERVER['HTTP_HOST'] . 
+				$_SERVER['REQUEST_URI'];
+header('HTTP/1.1 301 Moved Permanently');
+header('Location: ' . $redirect);
+exit();
+\end{lstlisting}
+
+
+
+\subsection{Problem: Quiz durchzuführen}
+
+\textbf{participation.php - Zeile 347} \\
+
+\noindent Ersetzen von:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+$isSelected = $_POST["answer"] == $fetchAnswers[\$i]["id"];
+\end{lstlisting}
+
+\bigskip
+\noindent Durch:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+if($_POST["answer"] == $fetchAnswers[$i]["id"])
+{ 
+$isSelected = 1; 
+} 
+else { 
+$isSelected = 0; 
+}
+\end{lstlisting}
+
+
+
+\subsection{Problem: Anzahl Teilnehmer bei Quiz-Übersicht nicht korrekt}
+
+\textbf{in neuer Version nicht mehr vorhanden} \\
+
+\noindent Ersetzen von:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+select id from user_qunaire_session where 
+questionnaire_id = :qunaire_id group by user_id
+\end{lstlisting}
+
+\bigskip
+\noindent Durch:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+select distinct user_id from user_qunaire_session 
+where questionnaire_id = :qunaire_id
+\end{lstlisting}
+
+
+
+\subsection{Problem: Rangliste wird nicht angezeigt}
+
+\textbf{Änderungen gemäss Patrick Eichler}
+
+
+
+
+\subsection{Problem: Error \glqq Quiz nicht im Zeitraum\grqq bei Quiz-Ende}
+
+\textbf{Datenbank} \\
+
+\noindent Fehlermeldung in der Datenbank:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+sql_mode=only_full_group_by
+\end{lstlisting}
+
+\bigskip
+\noindent Lösung:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+SET GLOBAL sql_mode=''; 
+\end{lstlisting}
+
+
+
+\subsection{Problem: E-Mails können nicht versendet werden}
+
+\textbf{mail.php - Zeile 10} \\
+
+\noindent Auskommentieren von:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+$mail->Host = '10.20.20.22';
+\end{lstlisting}
+
+\bigskip
+\noindent\textbf{contact.php - Zeile 15} \\
+\noindent Ersetzen von:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+mobilequiz@cnlab.ch
+\end{lstlisting}
+
+\bigskip
+\noindent Durch:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+dwindler@hsr.ch
+\end{lstlisting}
+
+
+
+\subsection{Problem: Datenbank-Zugriff}
+
+\textbf{config.php - Zeile 2-5} \\
+
+\noindent Ersetzen von: Servername, Benutzername, Passwort und Datenbank-Name
+
+
+\subsection{Problem: PDF-Generierung}
+
+\textbf{generatePDF.php - Zeile 5} \\
+
+\noindent Ersetzen von:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+include_once '../config/config.php';
+\end{lstlisting}
+
+\bigskip
+\noindent Durch:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+include_once(__DIR__ . '/../config/config.php');
+\end{lstlisting}
+
+\bigskip
+\noindent\textbf{Diverse Code-Stellen} \\
+
+\noindent Ersetzen von:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+$stmt = $dbh->prepare("select name, description, ...
+\end{lstlisting}
+
+\bigskip
+\noindent Durch:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+$stmt = $dbh->prepare("select questionnaire.name, 
+description, ...
+\end{lstlisting}
+
+\noindent Grund: \glqq name\grqq war nicht eindeutig, Quelle: stackoverflow.com \cite{mysql-column-problem}
+
+
+\bigskip
+\noindent\textbf{Diverse Code-Stellen} \\
+
+\noindent Vor jedem Aufruf von:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+pdf->Output
+\end{lstlisting}
+
+\bigskip
+\noindent Folgender Code eingefügt:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+ob_end_clean()
+\end{lstlisting}
+
+Quelle: stackoverflow.com \cite{tcpdf-error}
