@@ -6,8 +6,15 @@
 
 \newglossaryentry{User Interface}{name={User Interface},description={Unter einer Benutzeroberfläche oder Benutzerschnittstelle (UI) versteht man die Art und Weise, wie Befehle und Daten in den Computer eingegeben werden. Die Benutzeroberfläche ist die Schnittstelle zwischen Computer und Mensch. \cite{itWissen_benutzeroberflache}}}
 
+\newglossaryentry{Commit}{name={Commit},description={Vorgang bei einem Versionsverwaltungssystem, um neuen oder geänderten Quellcode einzuspielen. \cite{commit}}}
+
+\newglossaryentry{Refactoring}{name={Refactoring},description={\begin{quote}
+			Mit Refactoring bezeichnet man die Überarbeitung der Struktur einer Software, ohne dass sich deren Verhalten nach außen ändert.
+		\end{quote} \cite{refactoring}}}
+
 \newacronym{CN1}{CN1}{Computernetze 1}
 \newacronym{UI}{UI}{User Interface}
+\newacronym{CI}{CI}{Continuous Integration}
 
 
 %Qualitätsmanagement: Messungen, Tests, Usability Tests, Code Review usw. (mit vollständiger Beschreibung der Anordnungen und Rahmenbedingungen)
@@ -62,12 +69,24 @@ Alle erfassten Tests werden abgespeichert und können danach einfach abgespielt 
 
 
 \section{Unit-Tests}
-%Unit-Tests mit PHPUnit
-%Einleitung
-Die Unit-Tests sind dazu da, einzelne Funktionen zu testen. Wenn eine Basis von Unit-Test bestehen, welche die Funktionalität des Codes abdecken, kann gut Refactoring betrieben werden. 
+Unit-Tests sind dazu da, einzelne Funktionen zu testen. Wenn eine Basis von Unit-Test bestehen, welche die Funktionalität des Codes abdecken, sind Code-\gls{Refactoring}s leichter umzusetzen. Funktionieren Tests nach dem Umstellen des Codes nicht mehr, so können die Fehler leichter gefunden werden, da die Tests jeweils nur einen kleinen Code-Bereich prüfen.
 
-\subsection{Methoden}
-%Konkretes Vorgehen beschreiben
-Das Testen wurde mit PHPUnit umgesetzt. Diese Test werden bei jedem commit automatisch vom Continuous Integration Server, in unserem Fall Travis CI, ausgeführt. So wird bei jedem commit geschaut, ob noch alles funktioniert
+Zu Beginn war geplant, Unit-Tests mit PHPUnit \cite{phpunit} umgesetzen. Es wäre möglich gewesen, diese Test bei jedem \gls{Commit} automatisch vom Continuous Integration Server Travis CI \cite{travisCI}, ausführen zu lassen. So wäre bei jedem \gls{Commit} überprüft worden, ob noch alles funktioniert.
+
+Das Problem war, dass der Code in einer nicht-testbaren Form geschrieben war und immer noch ist. Die vorhandenen PHP-Dateien enthalten alle lange Methoden mit vielen Nebeneffekten auf diverse Variablen oder die Datenbank. Somit war es aus zeitlichen Gründen nicht möglich, denn gesamten Code testbar umzuschreiben und entsprechende Unit-Tests zu implementieren.
 
 
+
+\section{Continuous Integration}
+\acrfull{CI} ist ein Prozess, bei dem die einzelnen Software-Komponenten nach dem \gls{Commit} automatisch getestet und anschliessend mit den anderen Komponenten zusammengefügt werden. Dies bringt den Vorteil, dass die Integration der Komponenten laufend geprüft wird und die Unit-Tests Fehler sofort erkennen. Zudem kann die Code-Qualität anhand von verschiedenen Kennzahlen regelmässig gemessen werden.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/travisCI.PNG}
+	\caption{TravisCI-Ansicht des letzten Commits}
+	\cite{travisCI}
+\end{figure}
+
+
+Dies wurde mit Travis CI \cite{travisCI} teilweise umgesetzt. Unit-Tests waren zwar nicht vorhanden, jedoch prüfte der \acrshort{CI}-Server jeweils die Abhängigkeiten der PHP-Files. Bei erfolgreichem Durchlaufen stiess er zudem das Codestatistik-Tool Code Climate \cite{codeclimate} an, welches anhand von vordefinierten Tests die Code-Qualität mass.
