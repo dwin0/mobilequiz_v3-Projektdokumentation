@@ -36,6 +36,22 @@ Verschiedene neue Funktionalitäten verlangten eine Änderung der Datenbank, da 
 	\item Quiz-Durchführungen\\
 	Da es im Modul \gls{CN1} mehrere Praktikumsgruppen gibt, welche unterschiedliche Zeiträume für die Lösung von Quizzes zur Verfügung haben, benötigte es pro Quiz mehrere Durchführungen. Dies führte ebenfalls Änderungen an der Datenbank. \\
 	Neu können mehrere Durchführungen erstellt und zu diesen Gruppen zugeordnet werden. So kann ein Enddatum pro Gruppe festgelegt werden.
+	Dafür mussten in der Datenbank einige Änderungen vorgenommen werden. 
+	
+	Die Wichtigste dieser Änderungen war das Erstellen der execution Tabelle. Die bisherigen Einstellungen für die Durchführung eines Quizzes wurden aus der Tabelle questionnaire in die Tabelle execution übertragen.
+	
+	Es wurden mehrere Verknüpfungstabellen nötig, welche dafür sorgen, dass Quizzes, Teilnehmer und Gruppen einer Durchführung zugeordnet werden können.
+	
+	Schlussendlich wurde die Tabelle priority\_settings erstellt. In dieser werden vom Standard abweichende Einstellungen eines Erstellers abgespeichert. Bei der Erstellung einer neuen Durchführung werden dann diese Werte als Startwerte eingetragen anstatt der Standardwerte. Das Ziel dahinter ist, dass der Ersteller so wenig wie möglich von Hand einstellen muss, sobald er seinen Durchführungstyp beziehungsweise seine Durchführungspriorität (Lernhilfe, Testatbedingung, Prüfung) gewählt hat.
+	
+	In der untenstehenden Grafik sind alle Datenbankänderungen festgehalten, dabei sind die neu erstellten Tabellen orange ausgefüllt und die veränderten Tabellen orange umrahmt.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth
+		]{Images/DB_Execution_Table.PNG}
+		\caption{Datenbankänderungen für die Durchführung}
+	\end{figure}
 	
 \end{itemize}
 
