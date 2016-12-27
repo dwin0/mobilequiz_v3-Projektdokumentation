@@ -233,6 +233,7 @@ Der Teilnehmer selbst erhält ein Bestätigungsmail mit den gleichen Information
 
 
 \subsection{Interessensgruppen und Filterumstellung}
+\label{InteressensgruppenUndFilterumstellung}
 Loggt sich ein Teilnehmer bei Mobile Quiz ein, so soll er möglichst wenige Klicks von seinem zu lösenden Quiz entfernt sein. Dadurch spart er Zeit da, er sich nicht mit Filteroptionen und Suchfeldern auseinandersetzen muss. Doch wie erkennt Mobile Quiz welche Quizzes für den Teilnehmer interessant sind?
 
 Möglich wäre es nachzuschauen, zu welchem Themengebiet der Teilnehmer schon Quizzes gelöst hat und aufgrund dessen die Filterauswahl bereits auf das Themengebiet mit seinen meisten Teilnahmen zu setzen. Das Problem dieser Methode liegt darin, dass sie für neu registrierte Teilnehmer nicht verwendet werden kann.
@@ -385,8 +386,56 @@ Dieses Verhalten funktioniert bisher aber nur in Firefox \cite{firefox}.
 
 
 
+\subsection{Umgestaltung Startseite Teilnehmer / Ersteller}
+
+Die Startseite enthält neu nicht mehr die einzelnen Quizzes, sondern alle Durchführungen der Quizzes. Diese Umstellung war nötig, damit Teilnehmer ihre Durchführung leicht finden und nicht zuerst über das Quiz einsteigen müssen.
+
+Wie im Abschnitt Interessensgruppen und Filterumstellung \ref{InteressensgruppenUndFilterumstellung} beschrieben, wurde ausserdem der Filter so angepasst, dass neu eine Mehrfachauswahl von Optionen möglich ist.
+
+\bigskip\bigskip
+
+\begin{quote}
+\glqq Probleme bereitete meist, dass Funktionen nicht auf den ersten Blick ersichtlich sind.\grqq
+\end{quote}
+
+Dies war eine der Schlussfolgerung des ersten \gls{Usability-Test}s und bezog sich vor allem auf die Startseite, da von dort aus die meisten Aktionen gestartet werden können. In dieser Arbeit wurde das Problem so angegangen, dass einerseits weniger Informationen zu den einzelnen Quizzes angezeigt wird und andererseits die Icons durch Text ergänzt wurden.
+
+Konkret wurde die Anzahl Fragen, die Anzahl eigene Teilnahmen sowie die Anzahl Gesamtteilnahmen entfernt. Der Benutzer kann somit schneller die benötigten Informationen erfassen. Um die korrekte Durchführung zu finden war es jedoch nötig, zusätzlich den Durchführungstyp aufzuführen. 
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Images/Startseite_alt.PNG}
+	\caption{Startseite der bestehenden Mobile Quiz - Version 3}
+	\cite{mobilequiz.ch}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Images/Startseite_neu.PNG}
+	\caption{Neue Startseite für den Teilnehmer}
+\end{figure}
+
+
+Weiter wurden die unterschiedlichen Icons der Aktionen durch ein ausklappbares Menu ersetzt. Dieses beinhaltet die Aktionen als Text sowie einheitliche Icons. Dazu wurden Glyphicons von Bootstrap \cite{glyphicons} verwendet. Dies vereinfacht das Navigieren für den Benutzer, da er alle Aktionen beschrieben sieht und nicht, wie zuvor, erst mit der Maus über alle Symbole fahren muss. Dieses Verhalten war auf mobilen Geräten auch gar nicht möglich, da es dort den \glqq Mouse-Hover-Effekt\grqq, also das darüberfahren mit der Maus, gar nicht gibt. Die neue Lösung ist somit auch mobile-tauglich.
+
+Icons gibt es zwar weiterhin, diese dienen aber für das schnelle Erfassen der Auswahlmöglichkeiten und der Gruppierung von ähnlichen Aktionen.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\textwidth]{Images/Aktionen_alt.PNG}
+	\includegraphics[width=0.5\textwidth]{Images/Aktionen_neu.PNG}
+	\caption{Vergleich des bestehenden und der neuen Aktions-Anzeige}
+	\cite{mobilequiz.ch}
+\end{figure}
 
 
 
 
+
+
+\section{Schlussprodukt}
+Fasst man 
 
