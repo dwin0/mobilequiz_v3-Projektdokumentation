@@ -281,7 +281,12 @@ Wie auf der unteren Abbildung ersichtlich ist, werden nun zuerst die allgemeinen
 
 Das Konzept der Durchführungen wurde in diesem Projekt neue erarbeitet und entstammte aus dem Wunsch, Quizzes für die einzelnen \acrshort{CN1}-Praktikumsgruppen anzupassen. Dabei nehmen die Studenten, in immer der gleichen Gruppe, jeweils im zwei-Wochen-Takt am Praktikum teil. Es gibt sowohl in der ersten als auch in der zweiten Woche mehrere Praktikumsgruppen.
 
-Nach dem Praktikums wird das Gelernte mit einem Online-Quiz überprüft. Dieses soll aber erst nach dem Praktikum und nur eine Woche lang aufgeschaltet sein. Dies konnte mit der bestehenden Mobile Quiz - Version nur mit Mehraufwand umgesetzt werden, da der festgelegte Durchführungszeitraum für alle Gruppen gleich war. Unterschiedliche Termine konnten nur festgelegt werden, indem mehrere Quizzes mit entsprechenden Datumsbeschränkungen erstellt wurden. \\
+Nach dem Praktikums wird das Gelernte mit einem Online-Quiz überprüft. Dieses soll aber erst nach dem Praktikum und nur eine Woche lang aufgeschaltet sein. Dies konnte mit der bestehenden Mobile Quiz - Version nur mit Mehraufwand umgesetzt werden, da der festgelegte Durchführungszeitraum für alle Gruppen gleich war. Unterschiedliche Termine konnten nur festgelegt werden, indem mehrere Quizzes mit entsprechenden Datumsbeschränkungen erstellt wurden.
+
+\bigskip\bigskip
+
+\textbf{Lösung}
+\bigskip
 
 Neu ist es für solche Fälle möglich, ein Quiz mit mehreren Durchführungen zu erstellen. Das Quiz selbst umfasst nur noch Eigenschaften wie der Name oder der Sprache, welche bei jeder Durchführung gleich sind. Ebenfalls werden die Fragen mit dem Quiz verknüpft. Anschliessend ist es möglich, für das Quiz mehrere, unterschiedliche Durchführungen zu erstellen. Diese beinhalten Einstellungen wie zum Beispiel den Start- und Endzeitpunkt sowie die zugewiesenen Gruppen und Teilnehmer.
 
@@ -295,6 +300,15 @@ Neu ist es für solche Fälle möglich, ein Quiz mit mehreren Durchführungen zu
 
 
 Auf diese Weise bietet Mobile Quiz für die oben beschriebene Situation eine einfache Lösung an. Das Quiz selbst muss nur noch einmal erstellt werden. Für die Praktikumsgruppen der ersten Woche wird dann eine Durchführung für den Zeitraum einer Woche nach dem Praktikum erfasst und die Gruppen zugewiesen. Das gleiche gilt für die Praktikumsgruppe der zweiten Woche. \\
+
+\bigskip\bigskip
+
+\textbf{Weitere Vereinfachungen}
+\bigskip
+
+Mobile Quiz geht hier allerdings noch einen Schritt weiter. Schon in der bestehenden Version gab es drei Quiz-Prioritäten, nämlich Lernhilfen für Unterrichtsfragen, Lernkontrollen für Testate und Prüfungen. Jede dieser Prioritäten besitzt bereits vordefinierte Einstellungen, welche automatisch gesetzt werden, wenn bei der Quiz-Erstellung die Priorität gewechselt wird. So ist zum Beispiel die maximale Anzahl Teilnahmen bei einer Prüfung immer eins. Somit wird der Ersteller davon befreit, alle Einstellungsmöglichkeiten selbst zu setzen. Möchte er trotzdem einzelne Werte verändern, so werden diese neuen Werte in der Datenbank in seinem Profil abgespeichert. Bei jeder nachfolgenden Quiz-Erstellung wird dann geprüft, ob beim Ersteller solche Werte gespeichert sind. Falls dies nicht der Fall ist, werden wieder die vordefinierten Werte verwendet. 
+
+\bigskip\bigskip
 
 Aufgrund von fehlender Zeit konnte die Implementierung der Durchführungs-Erstellung nicht abgeschlossen werden. Dieser Punkte wurde deshalb in den noch nicht fertiggestellten Arbeiten \ref{subsec:NichtFertiggestellteArbeiten} aufgeführt.
 
