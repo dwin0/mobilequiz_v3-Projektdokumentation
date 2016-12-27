@@ -88,183 +88,6 @@ Der neue Template-Import wurde mit PHPExcel \cite{phpexcel} umgesetzt. Diese PHP
 Bei PHPExcel gab es bis zur Version 1.7.9 eine \gls{XML External Entitiy} - \gls{Vulnerability}. Dadurch war es Remote-Angreifern möglich, beliebige Dateien auf dem Server zu lesen oder eine Denial-of-Service - Attacke durchzuführen. \cite{cvedetails_phpexcel}
 Da bei MobileQuiz allerdings die Version 1.8.0 verwendet wird, ist dies nicht mehr möglich. Es wurde mit dem Wissen von InfSi3 versucht eine solche Attacke durchzuführen, was ebenfalls zum Ergebnis führte, dass diese Sicherheitslücke nicht mehr vorhanden ist.
 
-\section{Neuerungen}
-
-\subsection{Fragen mit Bildern}
-
-\subsubsection{Hochladen und Entfernen eines Bildes}
-Bei jedem Fragetyp ist es neu möglich ein Bild zu hinterlegen. Die Funktion des Bild-Uploads auf den Server bestand bereits, wurde aber erweitert.
-\\
-\\
-Beim Hochladen des Bildes wurde zuvor eine Fehlermeldung ausgegeben, wenn ein Bild eine Grösse von über 20 Megabyte überstieg. Diese Limite wurde herabgesetzt, weil ein Bild von dieser Grösse zu lange benötigt, bis es heruntergeladen werden kann. Unten ist ein Vergleich von Downloadzeiten aufgeführt, bei verschiedenen Dateigrössen. Die angegebene Geschwindigkeit ist die Downloadgeschwindigkeit welche 80\% der Kunden erreichen. Diese wurden anhand von Speedtests der cnlab AG \cite{cnlab_speedtest} ermittelt. \\
-
-
-\begin{tabular}{|c|c|c|c|}
-	\hline 
-	Dateigrösse & Art & Downloadgeschwindigkeit & Benötigte Zeit \\ 
-	\hline 
-	20 MB & DSL-Anbieter & 13,6 Mbit/s & 11,8 s \\ 
-	\hline 
-	20 MB & Kabel-Anbieter & 40,6 Mbit/s & 3,9 s \\ 
-	\hline 
-	20 MB & Mobile & 8,9 Mbit/s & 18 s \\ 
-	\hline 
-	5 MB & DSL-Anbieter & 13,6 Mbit/s & 2,9 s \\ 
-	\hline 
-	5 MB & Kabel-Anbieter & 40,6 Mbit/s & 1 s \\ 
-	\hline 
-	5 MB & Mobile & 8,9 Mbit/s & 4,5 s \\ 
-	\hline 
-	800 KB & DSL-Anbieter & 13,6 Mbit/s & 0,5 s \\ 
-	\hline 
-	800 KB & Kabel-Anbieter & 40,6 Mbit/s & 0,2 s \\ 
-	\hline 
-	800 KB & Mobile & 8,9 Mbit/s & 0,7 s \\ 
-	\hline 
-\end{tabular}\\
-
-Falls ein Bild nun 800 Kilobyte übersteigt, so wird es so lange komprimiert, bis seine Dateigrösse darunterliegt. Dies wird durch die PHP-Funktion 'imagecopyresampled' erreicht. Als Code-Vorlage diente das Beispiel von www.williseiler.ch \cite{willis_php}. \\
-
-Weiter gibt es Grössenbeschränkungen von Apache selbst \cite{stackoverflow_largeFilePHP}. Im File 'php.ini' können folgende drei Werte definiert werden:
-\begin{itemize}
-	\item upload\_max\_filesize: Legt die maximale Dateigrösse für eine Upload-Datei fest. Der Standardwert liegt bei 2 MB.
-	\item post\_max\_size: Legt die maximale Grösse aller POST-Daten zusammen fest. Der Standardwert liegt bei 8 MB.
-	\item max\_file\_uploads: Legt die maximale Anzahl aller Dateien fest, welche auf einmal hochgeladen werden können. Der Standardwert liegt bei 20 Dateien.
-\end{itemize}
-
-Werden via Excel-Template 10 Fragen mit je einem Bild à 1 Megabyte hochgeladen, so ist dies mit der Standardkonfiguration nicht möglich. Diese wurde deshalb folgendermassen angepasst:
-\begin{itemize}
-	\item upload\_max\_filesize: Neu 5 MB. Grössere Dateien benötigen zu lange für den Upload, allerdings soll der Benutzer nicht nur auf kleine Grössen beschränkt sein. Deshalb wurde von der 2MB-Standardgrösse abgewichen.
-	\item post\_max\_size: Neu 25 MB. Bei dieser Grösse beträgt die Uploadzeit bei einer Geschwindigkeit von 10,3 Mbit/s 19,4 Sekunden. Dies ist die Uploadgeschwindigkeit von 80\% der DSL-Messungen, welche beim Speedtest der cnlab AG \cite{cnlab_speedtest} erreicht wurde. Dem Benutzer sollte bewusst sein, dass der Upload bei so vielen Dateien einige Zeit in Anspruch nimmt.
-	Auf der anderen Seite soll der Benutzer aber auch nicht eingeschränkt werden. Es soll möglich sein, gleichzeitig 20 Fragen mit Bildern à 1 MB sowie 1 Frage mit einem grösseren Bild plus Excel-Template hochzuladen.
-	\item max\_file\_uploads: Neu 25 Dateien. Der Standard-Wert wird nur leicht angehoben, da es möglich sein soll 20 Fragen mit Bildern gleichzeitig zu erstellen. Damit würde das Maximum von 20 Dateien nicht ausreichen.
-\end{itemize}
-
-Beim Upload wird das Bild mit folgendem Dateinahmen im Ordner 'uploadedImages' abgelegt: 'question\_Datum(Tag\_Monat\_Jahr\_Stunde\_Minute\_Sekunde\_\_SessionId.Dateityp'.
-\\
-\\
-Das Excel-Template für die Frage-Erstellung wurde ebenfalls erweitert, dass auch Fragen mit Bildern erstellt werden können. Dazu wurde eine neue Spalte eingefügt, bei welcher man den Bildnamen inklusive Endung einträgt. Die Bilder müssen sich dabei im gleichen Ordner wie das Template befinden. Anschliessend wird der gesamte Ordner hochgeladen.
-
-Es war dabei nicht möglich, nur die Excel-Datei alleine hochzuladen und anschliessend die Bilder selbstständig zu holen. Dies wäre bezüglich der Sicherheit höchst bedenklich.
-\\
-\\
-Wird eine Frage gelöscht, so wird nebst dem Datenbankeintrag neu auch das Bild vom Server entfernt.
-
-
-\subsubsection{Anzeige eines Bildes}
-Das Bild sollte beim Anzeigen der Frage gross genug dargestellt werden. Auf dem Computer war dies kein Problem, da ein Browserfenster genug Platz dazu bot, bei einem Smartphone hingegen war dieser beschränkt. Deshalb wurde die Anzeige so umgesetzt, dass das Bild beim Klick darauf auf dem ganzen Bildschirm dargestellt wird. Dies wurde mit Photoswipe \cite{photoswipe} umgesetzt, welches von GitHub \cite{github_photoswipe} bezogen wurde. Photoswipe ist eine JavaScript-Library, welche es ermöglicht, Bildgalerien auf Websites darzustellen. Sie unterstützt unter anderem Touch-Gesten und Zoom. So ist es kein Problem, ein Bild mit vielen Details darzustellen.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.5\textwidth]{Images/Frage-Bild_Anzeige_PC.PNG}
-	\caption{Anzeige des Frage-Bildes am Computer}
-	Quelle Fragebild: \cite{_bild_pixabay_mario_}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.3\textwidth]{Images/Frage-Bild_Anzeige_Mobile.PNG}
-	\includegraphics[width=0.3\textwidth]{Images/Frage-Bild_Anzeige_Mobile_Full.PNG}
-	\caption{Anzeige des Frage-Bildes auf dem Smartphone}
-	Quelle Fragebild: \cite{_bild_pixabay_mario_}
-\end{figure}
-
-Da sich eine Frage, bei welcher ein Bild hochgeladen wird, oft auf Inhalte aus dem Bild bezieht, wurde auch für die Auswertungsseite eine Bild-Anzeige implementiert. Somit können die Auswertungen besser nachvollzogen werden.
-
-Weiter wurde die Generierung des PDF-Aufgabenblattes und Lösungsblattes ergänzt, damit auch dort die Bilder angezeigt werden. Hat man unterwegs kein Internet, so kann man sich die Fragen damit auch vorgängig herunterladen und im Zug anschauen.
-
-
-
-
-
-
-
-
-\newpage
-\subsection{Feedback an Quiz-Ersteller}
-Bei der Ausarbeitung von neuen Fragetypen kam die Idee einer Freitext-Frage auf. Bei diesem Fragetyp sind keine Antwortmöglichkeiten vorgegeben, stattdessen schreibt der Teilnehmer seine Antworten in ein leeres Textfeld. Das Problem dabei ist aber die Korrektur, da eine korrekte Antwort auf viele verschiedene Wege niedergeschrieben werden kann. Aus diesem Grund wurde beschlossen, diesen Fragetyp nicht umzusetzen, aber die Idee andernorts zu verwenden.
-
-Ist eine Frage unklar gestellt, gibt es Schreibfehler oder andere Verbesserungsmöglichkeiten, so musste dies ein Teilnehmer bis anhin selbst notieren und den Quiz-Ersteller, in den meisten Fällen der Dozent, im Unterricht fragen. Dies setzt aber voraus, dass der Quiz-Ersteller für den Teilnehmer immer ansprechbar ist. Erstellt ein Dozent aus Rapperswil ein Quiz, an welchem Teilnehmer der ganzen Schweiz mitmachen, so besteht diese Möglichkeit nicht.
-
-Dieses Problem wurde nun angegangen. Unter jeder Frage gibt es neu die Möglichkeit einen Kommentar direkt an den Quiz-Ersteller zu senden.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.75\textwidth]{Images/Feedback-Button.PNG}
-	\caption{Feedback-Button}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.75\textwidth]{Images/Feedback-Feld.PNG}
-	\caption{Feedback-Feld nach Klick auf Feedback-Button}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.75\textwidth]{Images/Feedback-Frage.PNG}
-	\caption{Beispielfrage an Quiz-Ersteller}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.75\textwidth]{Images/Feedback-Frage-gesendet.PNG}
-	\caption{Feedback versendet nach Klick auf Senden-Button}
-\end{figure}
-
-
-Nach dem Senden des Feedbacks erhält der Quiz-Ersteller eine E-Mail. Darin ist nicht nur die Frage des Teilnehmers aufgeführt, sondern auch Informationen zum Teilnehmer selbst sowie die gesamte Frage inklusive Antwortmöglichkeiten. Somit hat der Quiz-Ersteller alle Informationen, um auf die Teilnehmer-Frage zu antworten.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\textwidth]{Images/Feedback-Mail_Quiz-Ersteller.PNG}
-	\caption{E-Mail an Quiz-Ersteller}
-\end{figure}
-
-Der Teilnehmer selbst erhält ein Bestätigungsmail mit den gleichen Informationen, wie sie auch der Quiz-Ersteller erhält.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\textwidth]{Images/Feedback-Mail_Teilnehmer.PNG}
-	\caption{Bestätigungs-E-Mail an Teilnehmer}
-\end{figure}
-
-
-
-
-\subsection{Interessensgruppen und Filterumstellung}
-\label{InteressensgruppenUndFilterumstellung}
-Loggt sich ein Teilnehmer bei Mobile Quiz ein, so soll er möglichst wenige Klicks von seinem zu lösenden Quiz entfernt sein. Dadurch spart er Zeit da, er sich nicht mit Filteroptionen und Suchfeldern auseinandersetzen muss. Doch wie erkennt Mobile Quiz welche Quizzes für den Teilnehmer interessant sind?
-
-Möglich wäre es nachzuschauen, zu welchem Themengebiet der Teilnehmer schon Quizzes gelöst hat und aufgrund dessen die Filterauswahl bereits auf das Themengebiet mit seinen meisten Teilnahmen zu setzen. Das Problem dieser Methode liegt darin, dass sie für neu registrierte Teilnehmer nicht verwendet werden kann.
-Aus diesem Grund wurde eine noch einfachere Methode implementiert. Dabei wird bei der Registrierung eines oder mehrere Interessengebiete angegeben. Diese werden dabei vorgemerkt und beim anschliessenden Aufruf aller Durchführungen wird der Themengebiet-Filter entsprechend der Interessensgebiete des Teilnehmers gesetzt. Meldet beispielsweise ein Student von CN1 bei Mobile Quiz an und setzt das Interessengebiet entsprechend, so werden zuerst immer die Quiz-Durchführungen von CN1 angezeigt. Besucht er zu einem späteren Semester das Modul Informationssicherheit 1, so kann er das Interessensgebiet jederzeit in seinen Profileinstellungen ändern.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Images/Themengebiet_Angabe_Registrierung.PNG}
-	\caption{Angabe des Interessengebietes bei der Registrierung}
-\end{figure}
-
-Wie werden die Interessen der Teilnehmer in der Datenbank abgespeichert? Dazu half die Umstellung der Datenbank, welche es nun zulässt, dass ein Teilnehmer in mehreren Gruppen eingetragen werden kann.
-Für jedes Themengebiet wurde eine Interessengruppe erstellt. Gibt ein Teilnehmer ein neues Interesse an, so wird er automatisch zur entsprechenden Interessen-Gruppe hinzugefügt. Interessengruppen werden automatisch mit der Erfassung eines neuen Themengebietes erstellt, beziehungsweise mit dem Entfernen wieder gelöscht und alle Teilnehmer ausgetragen.
-
-\bigskip
-
-Damit ein Teilnehmer mehrere Interessensgebiete angeben kann, war es nötig die Implementierung der Filter zu ändern. Bisher konnte jeweils nur eine Auswahl pro Filter gesetzt werden. Für die Umsetzung wurde die Library 'Bootstrap Multiselect' \cite{bootstrap_multiselect} von David Stutz verwendet. Durch eine Logikumstellung auf dem Server war es anschliessend für Quiz-Durchführungen und Fragen möglich eine Mehrfachauswahl pro Filter zu setzen.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Images/Alte_Filter_Mobile_Quiz.PNG}
-	\caption{Filter der bestehenden Mobile Quiz - Version 3}
-	\cite{mobilequiz.ch}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Images/Neue_Filter_Mobile_Quiz.PNG}
-	\caption{Filter der neuen Mobile Quiz - Version}
-\end{figure}
-
 
 
 \subsection{Ablauf Quiz-Erstellung}
@@ -395,7 +218,7 @@ Wie im Abschnitt Interessensgruppen und Filterumstellung \ref{Interessensgruppen
 \bigskip\bigskip
 
 \begin{quote}
-\glqq Probleme bereitete meist, dass Funktionen nicht auf den ersten Blick ersichtlich sind.\grqq
+	\glqq Probleme bereitete meist, dass Funktionen nicht auf den ersten Blick ersichtlich sind.\grqq
 \end{quote}
 
 Dies war eine der Schlussfolgerung des ersten \gls{Usability-Test}s und bezog sich vor allem auf die Startseite, da von dort aus die meisten Aktionen gestartet werden können. In dieser Arbeit wurde das Problem so angegangen, dass einerseits weniger Informationen zu den einzelnen Quizzes angezeigt wird und andererseits die Icons durch Text ergänzt wurden.
@@ -436,6 +259,197 @@ Icons gibt es zwar weiterhin, diese dienen aber für das schnelle Erfassen der A
 
 
 
+
+\section{Neuerungen}
+
+\subsection{Fragen mit Bildern}
+
+\subsubsection{Hochladen und Entfernen eines Bildes}
+Bei jedem Fragetyp ist es neu möglich ein Bild zu hinterlegen. Die Funktion des Bild-Uploads auf den Server bestand bereits, wurde aber erweitert.
+\\
+\\
+Beim Hochladen des Bildes wurde zuvor eine Fehlermeldung ausgegeben, wenn ein Bild eine Grösse von über 20 Megabyte überstieg. Diese Limite wurde herabgesetzt, weil ein Bild von dieser Grösse zu lange benötigt, bis es heruntergeladen werden kann. Unten ist ein Vergleich von Downloadzeiten aufgeführt, bei verschiedenen Dateigrössen. Die angegebene Geschwindigkeit ist die Downloadgeschwindigkeit welche 80\% der Kunden erreichen. Diese wurden anhand von Speedtests der cnlab AG \cite{cnlab_speedtest} ermittelt. \\
+
+
+\begin{tabular}{|c|c|c|c|}
+	\hline 
+	Dateigrösse & Art & Downloadgeschwindigkeit & Benötigte Zeit \\ 
+	\hline 
+	20 MB & DSL-Anbieter & 13,6 Mbit/s & 11,8 s \\ 
+	\hline 
+	20 MB & Kabel-Anbieter & 40,6 Mbit/s & 3,9 s \\ 
+	\hline 
+	20 MB & Mobile & 8,9 Mbit/s & 18 s \\ 
+	\hline 
+	5 MB & DSL-Anbieter & 13,6 Mbit/s & 2,9 s \\ 
+	\hline 
+	5 MB & Kabel-Anbieter & 40,6 Mbit/s & 1 s \\ 
+	\hline 
+	5 MB & Mobile & 8,9 Mbit/s & 4,5 s \\ 
+	\hline 
+	800 KB & DSL-Anbieter & 13,6 Mbit/s & 0,5 s \\ 
+	\hline 
+	800 KB & Kabel-Anbieter & 40,6 Mbit/s & 0,2 s \\ 
+	\hline 
+	800 KB & Mobile & 8,9 Mbit/s & 0,7 s \\ 
+	\hline 
+\end{tabular}\\
+
+Falls ein Bild nun 800 Kilobyte übersteigt, so wird es so lange komprimiert, bis seine Dateigrösse darunterliegt. Dies wird durch die PHP-Funktion 'imagecopyresampled' erreicht. Als Code-Vorlage diente das Beispiel von www.williseiler.ch \cite{willis_php}. \\
+
+Weiter gibt es Grössenbeschränkungen von Apache selbst \cite{stackoverflow_largeFilePHP}. Im File 'php.ini' können folgende drei Werte definiert werden:
+\begin{itemize}
+	\item upload\_max\_filesize: Legt die maximale Dateigrösse für eine Upload-Datei fest. Der Standardwert liegt bei 2 MB.
+	\item post\_max\_size: Legt die maximale Grösse aller POST-Daten zusammen fest. Der Standardwert liegt bei 8 MB.
+	\item max\_file\_uploads: Legt die maximale Anzahl aller Dateien fest, welche auf einmal hochgeladen werden können. Der Standardwert liegt bei 20 Dateien.
+\end{itemize}
+
+Werden via Excel-Template 10 Fragen mit je einem Bild à 1 Megabyte hochgeladen, so ist dies mit der Standardkonfiguration nicht möglich. Diese wurde deshalb folgendermassen angepasst:
+\begin{itemize}
+	\item upload\_max\_filesize: Neu 5 MB. Grössere Dateien benötigen zu lange für den Upload, allerdings soll der Benutzer nicht nur auf kleine Grössen beschränkt sein. Deshalb wurde von der 2MB-Standardgrösse abgewichen.
+	\item post\_max\_size: Neu 25 MB. Bei dieser Grösse beträgt die Uploadzeit bei einer Geschwindigkeit von 10,3 Mbit/s 19,4 Sekunden. Dies ist die Uploadgeschwindigkeit von 80\% der DSL-Messungen, welche beim Speedtest der cnlab AG \cite{cnlab_speedtest} erreicht wurde. Dem Benutzer sollte bewusst sein, dass der Upload bei so vielen Dateien einige Zeit in Anspruch nimmt.
+	Auf der anderen Seite soll der Benutzer aber auch nicht eingeschränkt werden. Es soll möglich sein, gleichzeitig 20 Fragen mit Bildern à 1 MB sowie 1 Frage mit einem grösseren Bild plus Excel-Template hochzuladen.
+	\item max\_file\_uploads: Neu 25 Dateien. Der Standard-Wert wird nur leicht angehoben, da es möglich sein soll 20 Fragen mit Bildern gleichzeitig zu erstellen. Damit würde das Maximum von 20 Dateien nicht ausreichen.
+\end{itemize}
+
+Beim Upload wird das Bild mit folgendem Dateinahmen im Ordner 'uploadedImages' abgelegt: 'question\_Datum(Tag\_Monat\_Jahr\_Stunde\_Minute\_Sekunde\_\_SessionId.Dateityp'.
+\\
+\\
+Das Excel-Template für die Frage-Erstellung wurde ebenfalls erweitert, dass auch Fragen mit Bildern erstellt werden können. Dazu wurde eine neue Spalte eingefügt, bei welcher man den Bildnamen inklusive Endung einträgt. Die Bilder müssen sich dabei im gleichen Ordner wie das Template befinden. Anschliessend wird der gesamte Ordner hochgeladen.
+
+Es war dabei nicht möglich, nur die Excel-Datei alleine hochzuladen und anschliessend die Bilder selbstständig zu holen. Dies wäre bezüglich der Sicherheit höchst bedenklich.
+\\
+\\
+Wird eine Frage gelöscht, so wird nebst dem Datenbankeintrag neu auch das Bild vom Server entfernt.
+
+
+\subsubsection{Anzeige eines Bildes}
+Das Bild sollte beim Anzeigen der Frage gross genug dargestellt werden. Auf dem Computer war dies kein Problem, da ein Browserfenster genug Platz dazu bot, bei einem Smartphone hingegen war dieser beschränkt. Deshalb wurde die Anzeige so umgesetzt, dass das Bild beim Klick darauf auf dem ganzen Bildschirm dargestellt wird. Dies wurde mit Photoswipe \cite{photoswipe} umgesetzt, welches von GitHub \cite{github_photoswipe} bezogen wurde. Photoswipe ist eine JavaScript-Library, welche es ermöglicht, Bildgalerien auf Websites darzustellen. Sie unterstützt unter anderem Touch-Gesten und Zoom. So ist es kein Problem, ein Bild mit vielen Details darzustellen.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{Images/Frage-Bild_Anzeige_PC.PNG}
+	\caption{Anzeige des Frage-Bildes am Computer}
+	Quelle Fragebild: \cite{_bild_pixabay_mario_}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.3\textwidth]{Images/Frage-Bild_Anzeige_Mobile.PNG}
+	\includegraphics[width=0.3\textwidth]{Images/Frage-Bild_Anzeige_Mobile_Full.PNG}
+	\caption{Anzeige des Frage-Bildes auf dem Smartphone}
+	Quelle Fragebild: \cite{_bild_pixabay_mario_}
+\end{figure}
+
+Da sich eine Frage, bei welcher ein Bild hochgeladen wird, oft auf Inhalte aus dem Bild bezieht, wurde auch für die Auswertungsseite eine Bild-Anzeige implementiert. Somit können die Auswertungen besser nachvollzogen werden.
+
+Weiter wurde die Generierung des PDF-Aufgabenblattes und Lösungsblattes ergänzt, damit auch dort die Bilder angezeigt werden. Hat man unterwegs kein Internet, so kann man sich die Fragen damit auch vorgängig herunterladen und im Zug anschauen.
+
+
+
+
+
+
+
+
+\newpage
+\subsection{Feedback an Quiz-Ersteller}
+Bei der Ausarbeitung von neuen Fragetypen kam die Idee einer Freitext-Frage auf. Bei diesem Fragetyp sind keine Antwortmöglichkeiten vorgegeben, stattdessen schreibt der Teilnehmer seine Antworten in ein leeres Textfeld. Das Problem dabei ist aber die Korrektur, da eine korrekte Antwort auf viele verschiedene Wege niedergeschrieben werden kann. Aus diesem Grund wurde beschlossen, diesen Fragetyp nicht umzusetzen, aber die Idee andernorts zu verwenden.
+
+Ist eine Frage unklar gestellt, gibt es Schreibfehler oder andere Verbesserungsmöglichkeiten, so musste dies ein Teilnehmer bis anhin selbst notieren und den Quiz-Ersteller, in den meisten Fällen der Dozent, im Unterricht fragen. Dies setzt aber voraus, dass der Quiz-Ersteller für den Teilnehmer immer ansprechbar ist. Erstellt ein Dozent aus Rapperswil ein Quiz, an welchem Teilnehmer der ganzen Schweiz mitmachen, so besteht diese Möglichkeit nicht.
+
+Dieses Problem wurde nun angegangen. Unter jeder Frage gibt es neu die Möglichkeit einen Kommentar direkt an den Quiz-Ersteller zu senden.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Images/Feedback-Button.PNG}
+	\includegraphics[width=0.7\textwidth]{Images/Feedback-Frage.PNG}
+	\includegraphics[width=0.7\textwidth]{Images/Feedback-Frage-gesendet.PNG}
+	\caption{Ablauf der Feedback-Erfassung}
+\end{figure}
+
+
+Nach dem Senden des Feedbacks erhält der Quiz-Ersteller eine E-Mail. Darin ist nicht nur die Frage des Teilnehmers aufgeführt, sondern auch Informationen zum Teilnehmer selbst sowie die gesamte Frage inklusive Antwortmöglichkeiten. Somit hat der Quiz-Ersteller alle Informationen, um auf die Teilnehmer-Frage zu antworten.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Images/Feedback-Mail_Quiz-Ersteller.PNG}
+	\caption{E-Mail an Quiz-Ersteller}
+\end{figure}
+
+Der Teilnehmer selbst erhält ein Bestätigungsmail mit den gleichen Informationen, wie sie auch der Quiz-Ersteller erhält.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Images/Feedback-Mail_Teilnehmer.PNG}
+	\caption{Bestätigungs-E-Mail an Teilnehmer}
+\end{figure}
+
+
+
+
+\subsection{Interessensgruppen und Filterumstellung}
+\label{InteressensgruppenUndFilterumstellung}
+Loggt sich ein Teilnehmer bei Mobile Quiz ein, so soll er möglichst wenige Klicks von seinem zu lösenden Quiz entfernt sein. Dadurch spart er Zeit da, er sich nicht mit Filteroptionen und Suchfeldern auseinandersetzen muss. Doch wie erkennt Mobile Quiz welche Quizzes für den Teilnehmer interessant sind?
+
+Möglich wäre es nachzuschauen, zu welchem Themengebiet der Teilnehmer schon Quizzes gelöst hat und aufgrund dessen die Filterauswahl bereits auf das Themengebiet mit seinen meisten Teilnahmen zu setzen. Das Problem dieser Methode liegt darin, dass sie für neu registrierte Teilnehmer nicht verwendet werden kann.
+Aus diesem Grund wurde eine noch einfachere Methode implementiert. Dabei wird bei der Registrierung eines oder mehrere Interessengebiete angegeben. Diese werden dabei vorgemerkt und beim anschliessenden Aufruf aller Durchführungen wird der Themengebiet-Filter entsprechend der Interessensgebiete des Teilnehmers gesetzt. Meldet beispielsweise ein Student von CN1 bei Mobile Quiz an und setzt das Interessengebiet entsprechend, so werden zuerst immer die Quiz-Durchführungen von CN1 angezeigt. Besucht er zu einem späteren Semester das Modul Informationssicherheit 1, so kann er das Interessensgebiet jederzeit in seinen Profileinstellungen ändern.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Images/Themengebiet_Angabe_Registrierung.PNG}
+	\caption{Angabe des Interessengebietes bei der Registrierung}
+\end{figure}
+
+Wie werden die Interessen der Teilnehmer in der Datenbank abgespeichert? Dazu half die Umstellung der Datenbank, welche es nun zulässt, dass ein Teilnehmer in mehreren Gruppen eingetragen werden kann.
+Für jedes Themengebiet wurde eine Interessengruppe erstellt. Gibt ein Teilnehmer ein neues Interesse an, so wird er automatisch zur entsprechenden Interessen-Gruppe hinzugefügt. Interessengruppen werden automatisch mit der Erfassung eines neuen Themengebietes erstellt, beziehungsweise mit dem Entfernen wieder gelöscht und alle Teilnehmer ausgetragen.
+
+\bigskip
+
+Damit ein Teilnehmer mehrere Interessensgebiete angeben kann, war es nötig die Implementierung der Filter zu ändern. Bisher konnte jeweils nur eine Auswahl pro Filter gesetzt werden. Für die Umsetzung wurde die Library 'Bootstrap Multiselect' \cite{bootstrap_multiselect} von David Stutz verwendet. Durch eine Logikumstellung auf dem Server war es anschliessend für Quiz-Durchführungen und Fragen möglich eine Mehrfachauswahl pro Filter zu setzen.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.462\textwidth]{Images/Alte_Filter_Mobile_Quiz.PNG}
+	\includegraphics[width=0.45\textwidth]{Images/Neue_Filter_Mobile_Quiz.PNG}
+	\caption{Filter der bestehenden (links) und der neuen (rechts) Mobile Quiz - Version}
+	\cite{mobilequiz.ch}
+\end{figure}
+
+
+
+\newpage
 \section{Schlussprodukt}
-Fasst man 
+
+\begin{figure}[H]
+	\centering
+	\begin{itemize}
+		\item Verbesserung der bestehenden Lösung
+		\begin{itemize}
+			\item \gls{Refactoring} und Fehlerbehebung
+			\item Frage-Template
+			\item Ablauf Quiz-Erstellung
+			\item Design Quiz- und Frage-Erstellung
+			\item Umgestaltung Startseite Teilnehmer/Ersteller
+		\end{itemize}
+		\item Neuerungen
+		\begin{itemize}
+			\item Fragen mit Bildern
+			\item Feedback an Quiz-Ersteller
+			\item Interessensgruppen und Filterumstellung
+		\end{itemize}
+	\end{itemize}
+	\caption{Übersicht der Änderungen}
+\end{figure}
+
+Fasst man die Änderungen am bestehenden Mobile Quiz zusammen, so gab es einen überwiegenden Teil Überarbeitung der bestehenden Lösung sowie einen kleineren Teil von zusätzlichen Funktionalitäten. Die Verbesserungen kamen dabei zu einem Grossteil aus den Erkenntnissen der ersten \gls{Usability-Test}s, welche zu Beginn der Arbeit durchgeführt wurden. Die Wirkung davon blieb nicht aus, denn in der zweiten Durchführung gab es viel weniger Probleme mit dem Lösen der gegebenen Aufgaben.
+Ausserdem haben die Fehlerbehebungen zu Beginn die Zuverlässigkeit von Mobile Quiz erhöht, was allen Benutzern zugute kommt und was das Vertrauen der Benutzer steigert.
+
+Die Neuerungen ergänzen die Online Quiz-Plattform in verschiedenen Bereichen. Die Bild-Fragen geben dem Ersteller neue Möglichkeiten zur Wissensabholung und machen die Teilnahme an einem Quiz für Teilnehmer spannender.
+Das Feedback an den Quiz-Ersteller erhöht die Kommunikation zwischen Teilnehmer und Quiz-Ersteller und soll dabei helfen Unklarheiten möglichst schnell aus dem Weg zu schaffen.
+Schliesslich ist das Ziel der Interessensgruppen, dass Teilnehmer möglichst nur das sehen, was sie auch interessiert. Dadurch soll ein langes Suchen nach der gewünschten Quiz-Durchführung vermieden werden, wodurch die Bedienung als angenehm empfunden werden soll.
+
+\bigskip
+
+Alles in allem konnte Mobile Quiz durch die Umsetzung der oben beschriebenen Punkte zu einer verlässlicheren und bedienungsfreundlicheren Quiz-Plattform umgestaltet werden.
 
