@@ -21,10 +21,14 @@
 \usepackage{graphicx}
 \usepackage{float}
 
+\usepackage{etoolbox}
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand\headrulewidth{0pt}
 \cfoot{\thepage\ von \pageref{LastPage}}
+\fancyhead[LE, RO]{Studienarbeit: Mobile Quiz}
 \makeglossaries
 \setcounter{tocdepth}{1}
 
@@ -142,6 +146,13 @@
 	\chapter{Qualitätsmanagement}
 	\input{Qualitaetsmanagement.tex}	
 	
+	\chapter{Schlussfolgerung}
+	%Die Schlussfolgerungen bilden zusammen mit der Kurzzusammenfassung (Abstract) und der Zusammenfassung (Mgmt Summary, Broschürentext) die wichtigsten Abschnitte eines Berichts und sollen daher am sorgfältigsten ausgearbeitet sein.
+	
+	%Die Schlussfolgerungen enthalten eine Zusammenfassung und Beurteilung der Resultate (Vergleich mit anderen Lösungen, was wurde erreicht, was nicht, was bleibt noch zu tun, was würde man nun anders tun).
+	%Bei Systementwicklungen kann eine Vergleichstabelle sinnvoll sein, welche die wichtigsten Funktionen im Vergleich zu verschiedenen Lösungen zeigt.
+	%In den Schlussfolgerungen soll auch ein Ausblick auf das weitere Vorgehen bzw. auf die Bedeutung der erreichten Ergebnisse gegeben werden.
+	\input{Schlussfolgerung.tex}
 	
 	
 	\chapter{Literaturverzeichnis}
