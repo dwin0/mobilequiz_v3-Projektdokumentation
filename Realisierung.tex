@@ -1,9 +1,14 @@
 % !TEX root = Projektdokumentation.tex
 
 \newglossaryentry{XML External Entitiy} {name={XML External Entitiy-Attacke},description={Eine Attacke, welche gegen einen XML-Input-Parser geht. Sie tritt auf, wenn der XML-Input einen Verweis auf eine externe Server-Ressource enthält, auf welche der Angreifer gar keinen Zugriff haben dürfte, und der Parser dies nicht prüft. \cite{xxe}}}
+
 \newglossaryentry{Refactoring}{name={Refactoring},
 	description={Refactoring bezeichnet die manuelle oder automatisierte Strukturverbesserung von Quelltexten unter Beibehaltung des beobachtbaren Programmverhaltens. Dabei sollen die Lesbarkeit, Verständlichkeit, Wartbarkeit und Erweiterbarkeit verbessert werden, mit dem Ziel, den jeweiligen Aufwand für Fehleranalyse und funktionale Erweiterungen deutlich zu senken. \cite{_refactoring_2016}}
 }
+
+\newglossaryentry{URL}{name={URL},description={\begin{quote}
+			Uniform Resource Locator (URL) ist eine Adressierungsform für Internetadressen, die vor allem innerhalb des World Wide Web (WWW) zur Anwendung kommt.
+		\end{quote} \cite{url}}}
 
 \newacronym{AJAX}{AJAX}{Asynchronous Javascript And XML}
 
@@ -351,14 +356,18 @@ Damit ein Benutzer weiss, dass seine Eingabedaten fortlaufend gespeichert werden
 	\label{fig:Eingabe bei der Quiz-Erstellung}
 \end{figure}
 
-\bigskip
+\bigskip\bigskip
 
 \textbf{Frage-Erstellung}
-Das oben beschriebene Design und die Umsetzung mit AJAX wurde ebenfalls für die Frage-Erstellung umgesetzt. Dabei waren die Überlegungen die gleichen.
 
+\bigskip
 
+Das oben beschriebene Design und die Umsetzung mit AJAX wurde ebenfalls für die Frage-Erstellung umgesetzt. Dabei waren die Überlegungen die gleichen. \\
 
+Zusätzlich wurde implementiert, dass eine Frage erst mit der ersten Benutzereingabe erstellt wird. Will sich ein Ersteller die Eingabemaske nur Ansehen, so werden noch keine Daten in die Datenbank gespeichert.
 
+Schliesslich wurde ein weiteres Verhalten implementiert, welches das Erfassen der Frage vereinfacht. Wenn ein Ersteller überprüfen will, ob seine Daten wirklich gespeichert wurden, so aktualisiert er die Seite und es wird normalerweise seine letzte angeforderte Seite erneut geladen. Dies ist in diesem Fall aber die Frage-Erstellungs-Seite, welche ihm ein neues, leeres Erfassungsformular anzeigt. Damit aber seine soeben eingegebenen Daten angezeigt werden, wurde mit JavaScript der \glqq Unload-Event\grqq abgefangen, welcher durch eine Seitenaktualisierung ausgelöst wird, und die angefragte \gls{URL} ausgetauscht, sodass neu die Frage-Bearbeitungs-Seite vom Server geladen wird.
+Dieses Verhalten funktioniert bisher aber nur in Firefox \cite{firefox}.
 
 
 
