@@ -18,7 +18,7 @@
 
 \subsection{\gls{Refactoring} und Fehlerbehebung}
 
-Aufgrund der im Punkt \ref{subsec:eigeneUntersuchungen} vorgenommenen eigenen Untersuchungen des Mobile Quiz entstand eine Liste von zu behebenden Problemen. Diese detaillierte Liste ist im Dokument 'Ergebnisse eigene Tests.pdf' ersichtlich. In diesem Kapitel werden die wichtigsten vorgenommenen Änderungen angeschaut.
+Aufgrund der im Kapitel \ref{subsec:eigeneUntersuchungen} vorgenommenen eigenen Untersuchungen des Mobile Quiz entstand eine Liste von zu behebenden Problemen. Diese detaillierte Liste ist im Dokument \glqq Ergebnisse eigene Tests\grqq ab Seite \hyperlink{page.\getpagerefnumber{pdf:eigeneTests}}{\getpagerefnumber{pdf:eigeneTests}} ersichtlich. In diesem Kapitel werden die wichtigsten vorgenommenen Änderungen angeschaut.
 
 \begin{itemize}
 	\item Es wurden unterschiedliche Fehlermeldungen bei falscher E-Mail Adresse oder falschem Passwort ausgegeben. Dies wurde aus Sicherheitsgründen geändert. Es wird neu bei einer falschen Eingabe von Passwort oder E-Mail folgende generelle Meldung angezeigt:	
@@ -29,7 +29,7 @@ Aufgrund der im Punkt \ref{subsec:eigeneUntersuchungen} vorgenommenen eigenen Un
 		\caption{Neu Umgesetzte Fehlermeldung}
 	\end{figure}
 
-	\item Wenn an einem Quiz Teilgenommen wird und versucht wird, das Quiz durch klicken auf den Abbrechen-Button zu verlassen, führte das teilweise zu keine Aktion. An was dies lag, ist in folgendem Bild gut ersichtlich. Es wurde nur innerhalb der blauen Markierung auf die Klicks von Benutzer reagiert. Dieser Ausschnitt wurde als Korrekturmassnahme direkt über den Abbrechen-Button platziert.
+	\item Wenn an einem Quiz Teilgenommen wird und versucht wird, das Quiz durch klicken auf den Abbrechen-Button zu verlassen, führte das teilweise zu keiner Aktion. An was dies lag, ist in folgendem Bild gut ersichtlich. Es wurde nur innerhalb der blauen Markierung auf die Klicks von Benutzer reagiert. Dieser blaue Ausschnitt wurde als Korrekturmassnahme direkt über den Abbrechen-Button platziert.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.75\textwidth]
@@ -45,13 +45,13 @@ Aufgrund der im Punkt \ref{subsec:eigeneUntersuchungen} vorgenommenen eigenen Un
 		\caption{Screenshot der Lösung für das Problem des Abbrechen-Buttons}
 	\end{figure}
 	
-	\item Es wurden diverse Verbesserungen im HTML vorgenommen. Zum Beispiel waren im Registrierungsformular sämtliche Input-Typen auf 'text' gesetzt. Diese wurden entsprechend dem tatsächlich passenden bzw. erwarteten Datentyp angepasst.
+	\item Es wurden diverse Verbesserungen im HTML vorgenommen. Zum Beispiel waren im Registrierungsformular sämtliche Input-Typen auf 'text' gesetzt. Diese wurden entsprechend dem tatsächlich passenden beziehungsweise erwarteten Datentyp angepasst.
 	
 	Zudem wurde der Doctype-Tag von HTML4 auf HTML5 aktualisiert. Dieser Doctype-Tag teilt dem Browser mit, in welcher Version das HTML geschrieben ist und wie er das Dokument zu interpretieren hat.
 	
-	\item An den wichtigsten Stellen wurde die gefundene \gls{Cross-Site-Scripting} Schwachstelle behoben. Es gibt allerdings noch Stellen im Mobile Quiz wo diese Schwachstelle nicht behoben wurde. Grundsätzlich müsste jedes Element welches von einem Benutzer (sei es Teilnehmer, Ersteller, Assistent oder Administrator) eingegeben wurde bei seiner Ausgabe so codiert werden, dass es nicht mehr ausgeführt werden kann. Wenn dies nicht gemacht ist, kann ein böswilliger Benutzer von ihm erstellten Code ausführen lassen. Dies kann im schlimmsten Fall zum Verlust von Benutzerdaten und Sessions führen. Damit kann ein Angreifer dann im Namen von anderen Benutzer im System agieren.
+	\item An den wichtigsten Stellen wurde die gefundene \gls{Cross-Site-Scripting} Schwachstelle behoben. Es gibt allerdings noch Stellen im Mobile Quiz an denen diese Schwachstelle nicht behoben wurde. Grundsätzlich müsste jedes Element welches von einem Benutzer (sei es Teilnehmer, Ersteller, Assistent oder Administrator) eingegeben wurde bei seiner Ausgabe so codiert werden, dass es nicht mehr ausgeführt werden kann. Wenn dies nicht gemacht ist, kann ein böswilliger Benutzer von ihm erstellten Code ausführen lassen. Dies kann im schlimmsten Fall zum Verlust von Benutzerdaten und Sessions führen. Damit kann ein Angreifer dann im Namen von anderen Benutzer im System agieren.
 	
-	\item Bei der Durchführung eines Quizzes wird oben links im Stil X/Y jeweils angezeigt, bei welcher Frage X der totalen Anzahl zu beantwortenden Fragen Y man sich befindet. Allerdings hatte es einen Fehler in der Logik, es wurde bei Zurück-Navigieren ebenfalls nach oben gezählt, womit die Aussage nicht mehr stimmte.
+	\item Bei der Durchführung eines Quizzes wird oben links im Stil X/Y jeweils angezeigt, bei welcher Frage X der totalen Anzahl zu beantwortenden Fragen Y man sich befindet. Allerdings hatte es einen Fehler in der Logik, es wurde beim Zurück-Navigieren ebenfalls nach oben gezählt, womit die Aussage nicht mehr stimmte.
 	Die Logik wurde so angepasst, dass dieser Zähler nun in jedem Fall stimmt. 
 	
 \end{itemize}
@@ -79,21 +79,27 @@ In dieser Arbeit wurde das CSV-Template durch ein Excel-Template abgelöst. Die 
 
 \end{itemize}
 
-Durch den Einsatz des neuen Templates konnte auch ein Bug behoben werden, welcher aufgrund des csv-Templates entstand. Bei der Erstellung von Fragen wird geprüft, ob die gleiche Frage bereits schon besteht und falls dies der Fall ist, wird auf diese Frage verlinkt und keine neue Frage erstellt. Mit dem csv-Template gab es einen Fehler bei der Erkennung von Umlauten, diese Fragen wurden trotzdem noch doppelt erstellt. Mit dem neuen Template geschieht dies nicht mehr.
+Durch den Einsatz des neuen Templates konnte auch ein Bug behoben werden, welcher aufgrund des CSV-Templates entstand. Bei der Erstellung von Fragen wird geprüft, ob die gleiche Frage bereits schon besteht und falls dies der Fall ist, wird auf diese Frage verlinkt und keine neue Frage erstellt. Mit dem CSV-Template gab es einen Fehler bei der Erkennung von Umlauten, diese Fragen wurden trotzdem noch doppelt erstellt. Mit dem neuen Template geschieht dies nicht mehr.
 
-Ein Beispiel des ursprünglichen Formats sowie des neuen Excel-Templates ist im Anhang, im Kapitel 19 Details zur Lösungsfindung, ersichtlich.
+\bigskip
+
+Ein Beispiel des ursprünglichen Formats sowie des neuen Excel-Templates ist im Anhang, im Kapitel 19 \glqq Details zur Lösungsfindung\grqq auf den Seiten \hyperlink{page.\getpagerefnumber{pdf:csvTemplate}}{\getpagerefnumber{pdf:csvTemplate}} und \hyperlink{page.\getpagerefnumber{pdf:excelTemplate}}{\getpagerefnumber{pdf:excelTemplate}}, ersichtlich.
+
+\bigskip
 
 Der neue Template-Import wurde mit PHPExcel \cite{phpexcel} umgesetzt. Diese PHP-Library war bereits im Projekt eingebunden und wird dazu verwendet, die Rangliste aller Teilnehmenden eines Quiz zu Exportieren. Die neue Logik befindet sich hauptsächlich in der neu erstellen Datei 'importExcel.php'.
 
+\bigskip
+
 Bei PHPExcel gab es bis zur Version 1.7.9 eine \gls{XML External Entitiy} - \gls{Vulnerability}. Dadurch war es Remote-Angreifern möglich, beliebige Dateien auf dem Server zu lesen oder eine Denial-of-Service - Attacke durchzuführen. \cite{cvedetails_phpexcel}
-Da bei MobileQuiz allerdings die Version 1.8.0 verwendet wird, ist dies nicht mehr möglich. Es wurde mit dem Wissen von InfSi3 versucht eine solche Attacke durchzuführen, was ebenfalls zum Ergebnis führte, dass diese Sicherheitslücke nicht mehr vorhanden ist.
+Da bei MobileQuiz allerdings die Version 1.8.0 verwendet wird, ist dies nicht mehr möglich. Es wurde mit dem Wissen aus dem Fach Informationssicherheit 3 versucht eine solche Attacke durchzuführen, was ebenfalls zum Ergebnis führte, dass diese Sicherheitslücke nicht mehr vorhanden ist.
 
 
 
 \subsection{Ablauf Quiz-Erstellung}
 \label{subsec:quiz-erstellung}
 
-Um in Mobile Quiz ein Quiz zu erstellen war es bisher so, dass zuerst die Fragen und anschliessend das Quiz separat erstellt werden musste. Dieser Ablauf war nicht nur bei der eigenen Untersuchung der Webseite unklar, er warf auch bei den Usability-Tests Fragen auf. Dabei versuchten die Teilnehmer oft ein Quiz zu erstellen und wollten darin die Fragen erfassen. Da dies auch der Standard-Ablauf aller anderen untersuchten Quiz-Webseiten war, wurde er auch in Mobile Quiz implementiert.
+Um in Mobile Quiz ein Quiz zu erstellen war es bisher so, dass zuerst die Fragen und anschliessend das Quiz separat erstellt werden musste. Dieser Ablauf war nicht nur bei der eigenen Untersuchung der Webseite unklar, er warf auch bei den Usability-Tests Fragen auf. Dabei versuchten die Teilnehmer oft ein Quiz zu erstellen und wollten darin die Fragen erfassen. Da dies auch der Standard-Ablauf aller anderen untersuchten Quiz-Webseiten war, wurde der auch in Mobile Quiz so implementiert.
 
 Wie auf der unteren Abbildung ersichtlich ist, werden nun zuerst die allgemeinen Informationen erfasst, welche bei jeder Quiz-Durchführung gleich sein sollen. Anschliessend können im Frage-Tab neue Fragen erstellt oder bestehende zum Quiz hinzugefügt werden. Schliesslich können eine oder mehrere Durchführungen erstellt werden.
 
@@ -112,7 +118,7 @@ Nach dem Praktikums wird das Gelernte mit einem Online-Quiz überprüft. Dieses 
 \textbf{Lösung}
 \bigskip
 
-Neu ist es für solche Fälle möglich, ein Quiz mit mehreren Durchführungen zu erstellen. Das Quiz selbst umfasst nur noch Eigenschaften wie der Name oder der Sprache, welche bei jeder Durchführung gleich sind. Ebenfalls werden die Fragen mit dem Quiz verknüpft. Anschliessend ist es möglich, für das Quiz mehrere, unterschiedliche Durchführungen zu erstellen. Diese beinhalten Einstellungen wie zum Beispiel den Start- und Endzeitpunkt sowie die zugewiesenen Gruppen und Teilnehmer.
+Neu ist es für solche Fälle möglich, ein Quiz mit mehreren Durchführungen zu erstellen. Das Quiz selbst umfasst nur noch Eigenschaften wie der Name oder die Sprache, welche bei jeder Durchführung gleich sind. Ebenfalls werden die Fragen mit dem Quiz verknüpft. Anschliessend ist es möglich, für das Quiz mehrere, unterschiedliche Durchführungen zu erstellen. Diese beinhalten Einstellungen wie zum Beispiel den Start- und Endzeitpunkt sowie die zugewiesenen Gruppen und Teilnehmer.
 
 
 \begin{figure}[H]
@@ -130,7 +136,7 @@ Auf diese Weise bietet Mobile Quiz für die oben beschriebene Situation eine ein
 \textbf{Weitere Vereinfachungen}
 \bigskip
 
-Mobile Quiz geht hier allerdings noch einen Schritt weiter. Schon in der bestehenden Version gab es drei Quiz-Prioritäten, nämlich Lernhilfen für Unterrichtsfragen, Lernkontrollen für Testate und Prüfungen. Jede dieser Prioritäten besitzt bereits vordefinierte Einstellungen, welche automatisch gesetzt werden, wenn bei der Quiz-Erstellung die Priorität gewechselt wird. So ist zum Beispiel die maximale Anzahl Teilnahmen bei einer Prüfung immer eins. Somit wird der Ersteller davon befreit, alle Einstellungsmöglichkeiten selbst zu setzen. Möchte er trotzdem einzelne Werte verändern, so werden diese neuen Werte in der Datenbank in seinem Profil abgespeichert. Bei jeder nachfolgenden Quiz-Erstellung wird dann geprüft, ob beim Ersteller solche Werte gespeichert sind. Falls dies nicht der Fall ist, werden wieder die vordefinierten Werte verwendet. 
+Mobile Quiz geht hier allerdings noch einen Schritt weiter. Schon in der bestehenden Version gab es drei Quiz-Prioritäten, nämlich Lernhilfen für Unterrichtsfragen, Lernkontrollen für Testate und Prüfungen. Jede dieser Prioritäten besitzt bereits vordefinierte Einstellungen, welche automatisch gesetzt werden, wenn bei der Quiz-Erstellung die Priorität gewechselt wird. So ist zum Beispiel die maximale Anzahl Teilnahmen bei einer Prüfung immer eins. Somit wird der Ersteller davon befreit, alle Einstellungsmöglichkeiten selbst zu setzen. Möchte er trotzdem einzelne Werte verändern, so werden diese neuen Werte in der Datenbank in seinem Profil abgespeichert. Bei jeder nachfolgenden Quiz-Erstellung wird dann geprüft, ob beim Ersteller solche Werte gespeichert sind. Falls dies nicht der Fall ist, werden wieder die vordefinierten Default-Werte verwendet. Die mit Herr Heinzmann besprochenen Default-Werte sind im Anhang unter \glqq Default-Einstellungen\grqq auf Seite \hyperlink{page.\getpagerefnumber{pdf:defaultEinstellungen}}{\getpagerefnumber{pdf:defaultEinstellungen}} ersichtlich.
 
 \bigskip\bigskip
 
@@ -164,9 +170,9 @@ Um dem entgegenzuwirken wurde die Quiz-Erstellung auf mehrere Seiten aufgeteilt,
 
 Um nun beide Ansichten zu vereinen wurde \glqq Bootstrap Tab Collapse\grqq \cite{bootstrap-tabcollapse} verwendet. Das Design verhält sich wie nachfolgend folgendermassen:
 
-Bis zu einer gewissen Fensterbreite werden die Inhalte mit Tabs angezeigt. Bei kleineren Bildschirmen wird automatisch in die Accodion-Ansicht gewechselt. Dieses verdankt seinen Namen den aufklappenden und zusammenziehenden Elementen, welche es wie ein Akkordeon aussehen lassen.
+Bis zu einer gewissen Fensterbreite werden die Inhalte mit Tabs angezeigt. Bei kleineren Bildschirmen wird automatisch in die Accordion-Ansicht gewechselt. Dieses verdankt seinen Namen den aufklappenden und zusammenziehenden Elementen, welche es wie ein Akkordeon aussehen lassen.
 
-Somit konnten die Seiteninhalte für die Quiz-Erstellung auf mehrere Seiten verteilt werden, welche in jeder Ansicht gut dargestellt werden.
+Somit konnten die Seiteninhalte für die Quiz-Erstellung auf mehrere Seiten verteilt werden, welche in jeder Ansicht gut dargestellt werden können.
 
 
 \begin{figure}[H]
@@ -178,11 +184,11 @@ Somit konnten die Seiteninhalte für die Quiz-Erstellung auf mehrere Seiten vert
 
 
 \textbf{Funktionale Umstellungen}
-Da nun mit dem Quiz zusammen auch Fragen und Durchführen erstellt werden, dauert dieser Vorgang länger, als das alleinige Erfassen eines Quizzes in der bestehenden Mobile Quiz - Version. Da es sein kann, dass der Benutzer diesen Vorgang unterbrechen muss, beispielsweise arbeitet er im Zug und muss umsteigen, sollten die Benutzereingaben zwischendurch gespeichert werden.
+Da nun mit dem Quiz zusammen auch Fragen und Durchführungen erstellt werden, dauert dieser Vorgang länger, als das alleinige Erfassen eines Quizzes in der bestehenden Mobile Quiz - Version. Da es sein kann, dass der Benutzer diesen Vorgang unterbrechen muss, beispielsweise arbeitet er im Zug und muss umsteigen, sollten die Benutzereingaben zwischendurch gespeichert werden.
 
 Für die Umsetzung wäre ein halb-minütiger Countdown möglich gewesen, bei dessen Ablauf alle Daten im Hintergrund an den Server geschickt werden. Die Probleme liegen darin, dass der Ersteller im schlimmsten Fall 29 Sekunden Arbeit verliert oder unnötig viele Daten verschickt werden, falls keine oder nur wenige Änderungen vorliegen.
 
-Aus diesem Grund wurde entschieden jede neue Benutzereingabe einzeln an den Server zu senden. Dies wird mit \acrfull{AJAX} umgesetzt, welches es ermöglicht Daten an den Server zu schicken, ohne die gesamte Seite neu zu laden. Da jeweils nur ein Eingabefeld verändert wurde, wurden mussten jeweils nur die wirklich benötigten Daten an den Server geschickt werden. Zudem ist die Handhabung auf dem Server ebenfalls einfacher, da meist nur ein Attributwert eines einzelnen Datenbank-Eintrages verändert werden musste.
+Aus diesem Grund wurde entschieden, jede neue Benutzereingabe einzeln an den Server zu senden. Dies wird mit \acrfull{AJAX} umgesetzt, welches es ermöglicht Daten an den Server zu schicken, ohne die gesamte Seite neu zu laden. Da jeweils nur ein Eingabefeld verändert wurde, wurden jeweils nur die wirklich benötigten Daten an den Server geschickt. Zudem ist die Handhabung auf dem Server ebenfalls einfacher, da meist nur ein Attributwert eines einzelnen Datenbank-Eintrages verändert werden musste.
 
 Damit ein Benutzer weiss, dass seine Eingabedaten fortlaufend gespeichert werden, bekommt er jedes Mal eine entsprechende Meldung zurück. In Abbildung \ref{fig:Eingabe bei der Quiz-Erstellung} ist links ersichtlich, wie eine solche Meldung aussieht und rechts was der entsprechende \acrshort{AJAX}-Request an den Server beinhaltet.
 
@@ -200,12 +206,12 @@ Damit ein Benutzer weiss, dass seine Eingabedaten fortlaufend gespeichert werden
 
 \bigskip
 
-Das oben beschriebene Design und die Umsetzung mit AJAX wurde ebenfalls für die Frage-Erstellung umgesetzt. Dabei waren die Überlegungen die gleichen. \\
+Das oben beschriebene Design und die Umsetzung mit \acrshort{AJAX} wurde ebenfalls für die Frage-Erstellung umgesetzt. Dabei waren die Überlegungen die gleichen. \\
 
 Zusätzlich wurde implementiert, dass eine Frage erst mit der ersten Benutzereingabe erstellt wird. Will sich ein Ersteller die Eingabemaske nur Ansehen, so werden noch keine Daten in die Datenbank gespeichert.
 
 Schliesslich wurde ein weiteres Verhalten implementiert, welches das Erfassen der Frage vereinfacht. Wenn ein Ersteller überprüfen will, ob seine Daten wirklich gespeichert wurden, so aktualisiert er die Seite und es wird normalerweise seine letzte angeforderte Seite erneut geladen. Dies ist in diesem Fall aber die Frage-Erstellungs-Seite, welche ihm ein neues, leeres Erfassungsformular anzeigt. Damit aber seine soeben eingegebenen Daten angezeigt werden, wurde mit JavaScript der \glqq Unload-Event\grqq abgefangen, welcher durch eine Seitenaktualisierung ausgelöst wird, und die angefragte \gls{URL} ausgetauscht, sodass neu die Frage-Bearbeitungs-Seite vom Server geladen wird.
-Dieses Verhalten funktioniert bisher aber nur in Firefox \cite{firefox}.
+Dieses Verhalten funktioniert bisher allerdings nur in Firefox \cite{firefox}.
 
 
 
@@ -241,7 +247,7 @@ Konkret wurde die Anzahl Fragen, die Anzahl eigene Teilnahmen sowie die Anzahl G
 \end{figure}
 
 
-Weiter wurden die unterschiedlichen Icons der Aktionen durch ein ausklappbares Menu ersetzt. Dieses beinhaltet die Aktionen als Text sowie einheitliche Icons. Dazu wurden Glyphicons von Bootstrap \cite{glyphicons} verwendet. Dies vereinfacht das Navigieren für den Benutzer, da er alle Aktionen beschrieben sieht und nicht, wie zuvor, erst mit der Maus über alle Symbole fahren muss. Dieses Verhalten war auf mobilen Geräten auch gar nicht möglich, da es dort den \glqq Mouse-Hover-Effekt\grqq, also das darüberfahren mit der Maus, gar nicht gibt. Die neue Lösung ist somit auch mobile-tauglich.
+Weiter wurden die unterschiedlichen Icons der Aktionen durch ein ausklappbares Menu ersetzt. Dieses beinhaltet die Aktionen als Text sowie einheitliche Icons. Dazu wurden Glyphicons von Bootstrap \cite{glyphicons} verwendet. Dies vereinfacht das Navigieren für den Benutzer, da er alle Aktionen beschrieben sieht und nicht, wie zuvor, erst mit der Maus über alle Symbole fahren muss. Dieses Verhalten war auf mobilen Geräten zudem gar nicht möglich, da es dort den \glqq Mouse-Hover-Effekt\grqq, also das darüberfahren mit der Maus, gar nicht gibt. Die neue Lösung ist somit auch mobile-tauglich.
 
 Icons gibt es zwar weiterhin, diese dienen aber für das schnelle Erfassen der Auswahlmöglichkeiten und der Gruppierung von ähnlichen Aktionen.
 
@@ -262,13 +268,13 @@ Icons gibt es zwar weiterhin, diese dienen aber für das schnelle Erfassen der A
 
 \section{Neuerungen}
 
-\subsection{Fragen mit Bildern}
+\subsection{Fragen mit Bilder}
 
 \subsubsection{Hochladen und Entfernen eines Bildes}
 Bei jedem Fragetyp ist es neu möglich ein Bild zu hinterlegen. Die Funktion des Bild-Uploads auf den Server bestand bereits, wurde aber erweitert.
 \\
 \\
-Beim Hochladen des Bildes wurde zuvor eine Fehlermeldung ausgegeben, wenn ein Bild eine Grösse von über 20 Megabyte überstieg. Diese Limite wurde herabgesetzt, weil ein Bild von dieser Grösse zu lange benötigt, bis es heruntergeladen werden kann. Unten ist ein Vergleich von Downloadzeiten aufgeführt, bei verschiedenen Dateigrössen. Die angegebene Geschwindigkeit ist die Downloadgeschwindigkeit welche 80\% der Kunden erreichen. Diese wurden anhand von Speedtests der cnlab AG \cite{cnlab_speedtest} ermittelt. \\
+Beim Hochladen des Bildes wurde zuvor eine Fehlermeldung ausgegeben, wenn ein Bild eine Grösse von über 20 Megabyte überstieg. Diese Limite wurde herabgesetzt, weil ein Bild von dieser Grösse zu lange benötigt, bis es heruntergeladen werden kann. Unten ist ein Vergleich von Downloadzeiten bei verschiedenen Dateigrössen aufgeführt. Die angegebene Geschwindigkeit ist die Downloadgeschwindigkeit welche 80\% der Kunden erreichen. Diese wurden anhand von Speedtests der cnlab AG \cite{cnlab_speedtest} ermittelt. \\
 
 
 \begin{tabular}{|c|c|c|c|}
@@ -306,16 +312,16 @@ Weiter gibt es Grössenbeschränkungen von Apache selbst \cite{stackoverflow_lar
 
 Werden via Excel-Template 10 Fragen mit je einem Bild à 1 Megabyte hochgeladen, so ist dies mit der Standardkonfiguration nicht möglich. Diese wurde deshalb folgendermassen angepasst:
 \begin{itemize}
-	\item upload\_max\_filesize: Neu 5 MB. Grössere Dateien benötigen zu lange für den Upload, allerdings soll der Benutzer nicht nur auf kleine Grössen beschränkt sein. Deshalb wurde von der 2MB-Standardgrösse abgewichen.
+	\item upload\_max\_filesize: Neu 5 MB. Grössere Dateien benötigen zu lange für den Upload. Allerdings soll der Benutzer nicht nur auf kleine Grössen beschränkt sein, deshalb wurde von der 2MB-Standardgrösse abgewichen.
 	\item post\_max\_size: Neu 25 MB. Bei dieser Grösse beträgt die Uploadzeit bei einer Geschwindigkeit von 10,3 Mbit/s 19,4 Sekunden. Dies ist die Uploadgeschwindigkeit von 80\% der DSL-Messungen, welche beim Speedtest der cnlab AG \cite{cnlab_speedtest} erreicht wurde. Dem Benutzer sollte bewusst sein, dass der Upload bei so vielen Dateien einige Zeit in Anspruch nimmt.
-	Auf der anderen Seite soll der Benutzer aber auch nicht eingeschränkt werden. Es soll möglich sein, gleichzeitig 20 Fragen mit Bildern à 1 MB sowie 1 Frage mit einem grösseren Bild plus Excel-Template hochzuladen.
+	Auf der anderen Seite soll der Benutzer aber auch nicht eingeschränkt werden. Es soll möglich sein, gleichzeitig 20 Fragen mit Bildern à 1 MB sowie 1 Frage mit einem grösseren Bild plus das Excel-Template hochzuladen.
 	\item max\_file\_uploads: Neu 25 Dateien. Der Standard-Wert wird nur leicht angehoben, da es möglich sein soll 20 Fragen mit Bildern gleichzeitig zu erstellen. Damit würde das Maximum von 20 Dateien nicht ausreichen.
 \end{itemize}
 
 Beim Upload wird das Bild mit folgendem Dateinahmen im Ordner 'uploadedImages' abgelegt: 'question\_Datum(Tag\_Monat\_Jahr\_Stunde\_Minute\_Sekunde\_\_SessionId.Dateityp'.
 \\
 \\
-Das Excel-Template für die Frage-Erstellung wurde ebenfalls erweitert, dass auch Fragen mit Bildern erstellt werden können. Dazu wurde eine neue Spalte eingefügt, bei welcher man den Bildnamen inklusive Endung einträgt. Die Bilder müssen sich dabei im gleichen Ordner wie das Template befinden. Anschliessend wird der gesamte Ordner hochgeladen.
+Das Excel-Template für die Frage-Erstellung wurde ebenfalls erweitert, so dass auch Fragen mit Bilder erstellt werden können. Dazu wurde eine neue Spalte eingefügt, bei welcher man den Bildnamen inklusive Endung einträgt. Die Bilder müssen sich dabei im gleichen Ordner wie das Template befinden. Anschliessend wird der gesamte Ordner hochgeladen.
 
 Es war dabei nicht möglich, nur die Excel-Datei alleine hochzuladen und anschliessend die Bilder selbstständig zu holen. Dies wäre bezüglich der Sicherheit höchst bedenklich.
 \\
@@ -354,7 +360,7 @@ Weiter wurde die Generierung des PDF-Aufgabenblattes und Lösungsblattes ergänz
 
 \newpage
 \subsection{Feedback an Quiz-Ersteller}
-Bei der Ausarbeitung von neuen Fragetypen kam die Idee einer Freitext-Frage auf. Bei diesem Fragetyp sind keine Antwortmöglichkeiten vorgegeben, stattdessen schreibt der Teilnehmer seine Antworten in ein leeres Textfeld. Das Problem dabei ist aber die Korrektur, da eine korrekte Antwort auf viele verschiedene Wege niedergeschrieben werden kann. Aus diesem Grund wurde beschlossen, diesen Fragetyp nicht umzusetzen, aber die Idee andernorts zu verwenden.
+Bei der Ausarbeitung der neuen Fragetypen kam die Idee einer Freitext-Frage auf. Bei diesem Fragetyp sind keine Antwortmöglichkeiten vorgegeben, stattdessen schreibt der Teilnehmer seine Antworten in ein leeres Textfeld. Das Problem dabei ist aber die Korrektur, da eine korrekte Antwort auf viele verschiedene Wege niedergeschrieben werden kann. Aus diesem Grund wurde beschlossen, diesen Fragetyp nicht umzusetzen, aber die Idee andernorts zu verwenden.
 
 Ist eine Frage unklar gestellt, gibt es Schreibfehler oder andere Verbesserungsmöglichkeiten, so musste dies ein Teilnehmer bis anhin selbst notieren und den Quiz-Ersteller, in den meisten Fällen der Dozent, im Unterricht fragen. Dies setzt aber voraus, dass der Quiz-Ersteller für den Teilnehmer immer ansprechbar ist. Erstellt ein Dozent aus Rapperswil ein Quiz, an welchem Teilnehmer der ganzen Schweiz mitmachen, so besteht diese Möglichkeit nicht.
 
@@ -393,7 +399,7 @@ Der Teilnehmer selbst erhält ein Bestätigungsmail mit den gleichen Information
 Loggt sich ein Teilnehmer bei Mobile Quiz ein, so soll er möglichst wenige Klicks von seinem zu lösenden Quiz entfernt sein. Dadurch spart er Zeit da, er sich nicht mit Filteroptionen und Suchfeldern auseinandersetzen muss. Doch wie erkennt Mobile Quiz welche Quizzes für den Teilnehmer interessant sind?
 
 Möglich wäre es nachzuschauen, zu welchem Themengebiet der Teilnehmer schon Quizzes gelöst hat und aufgrund dessen die Filterauswahl bereits auf das Themengebiet mit seinen meisten Teilnahmen zu setzen. Das Problem dieser Methode liegt darin, dass sie für neu registrierte Teilnehmer nicht verwendet werden kann.
-Aus diesem Grund wurde eine noch einfachere Methode implementiert. Dabei wird bei der Registrierung eines oder mehrere Interessengebiete angegeben. Diese werden dabei vorgemerkt und beim anschliessenden Aufruf aller Durchführungen wird der Themengebiet-Filter entsprechend der Interessensgebiete des Teilnehmers gesetzt. Meldet beispielsweise ein Student von CN1 bei Mobile Quiz an und setzt das Interessengebiet entsprechend, so werden zuerst immer die Quiz-Durchführungen von CN1 angezeigt. Besucht er zu einem späteren Semester das Modul Informationssicherheit 1, so kann er das Interessensgebiet jederzeit in seinen Profileinstellungen ändern.
+Aus diesem Grund wurde eine noch einfachere Methode implementiert. Dabei wird bei der Registrierung eines oder mehrere Interessengebiete angegeben. Diese werden dabei vorgemerkt und beim anschliessenden Aufruf aller Durchführungen wird der Themengebiet-Filter entsprechend der Interessensgebiete des Teilnehmers gesetzt. Meldet sich beispielsweise ein Student von CN1 bei Mobile Quiz an und setzt das Interessengebiet entsprechend, so werden zuerst immer die Quiz-Durchführungen von CN1 angezeigt. Besucht er zu einem späteren Semester das Modul Informationssicherheit 1, so kann er das Interessensgebiet jederzeit in seinen Profileinstellungen ändern.
 
 \begin{figure}[H]
 	\centering
@@ -442,7 +448,7 @@ Damit ein Teilnehmer mehrere Interessensgebiete angeben kann, war es nötig die 
 	\caption{Übersicht der Änderungen}
 \end{figure}
 
-Fasst man die Änderungen am bestehenden Mobile Quiz zusammen, so gab es einen überwiegenden Teil Überarbeitung der bestehenden Lösung sowie einen kleineren Teil von zusätzlichen Funktionalitäten. Die Verbesserungen kamen dabei zu einem Grossteil aus den Erkenntnissen der ersten \gls{Usability-Test}s, welche zu Beginn der Arbeit durchgeführt wurden. Die Wirkung davon blieb nicht aus, denn in der zweiten Durchführung gab es viel weniger Probleme mit dem Lösen der gegebenen Aufgaben.
+Fasst man die Änderungen am bestehenden Mobile Quiz zusammen, so gab es einen überwiegenden Teil Überarbeitung der bestehenden Lösung sowie einen kleineren Teil von zusätzlichen Funktionalitäten. Die Verbesserungen kamen dabei zu einem Grossteil aus den Erkenntnissen der ersten \gls{Usability-Test}s, welche zu Beginn der Arbeit durchgeführt wurden, Seite \hyperlink{page.\getpagerefnumber{pdf:UTAW1}}{\getpagerefnumber{pdf:UTAW1}}. Die Wirkung davon blieb nicht aus, denn in der zweiten Durchführung gab es viel weniger Probleme mit dem Lösen der gegebenen Aufgaben, Seite \hyperlink{page.\getpagerefnumber{pdf:UTAW2}}{\getpagerefnumber{pdf:UTAW2}}.
 Ausserdem haben die Fehlerbehebungen zu Beginn die Zuverlässigkeit von Mobile Quiz erhöht, was allen Benutzern zugute kommt und was das Vertrauen der Benutzer steigert.
 
 Die Neuerungen ergänzen die Online Quiz-Plattform in verschiedenen Bereichen. Die Bild-Fragen geben dem Ersteller neue Möglichkeiten zur Wissensabholung und machen die Teilnahme an einem Quiz für Teilnehmer spannender.
