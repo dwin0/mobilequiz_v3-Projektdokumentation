@@ -7,7 +7,9 @@
 \newglossaryentry{Vulnerability}{name={Vulnerability},description={
 		Fehler im Code oder Design, welcher ein potentielles Sicherheitsrisiko darstellt \cite{whatIs_vulnerability}}}
 
-\newglossaryentry{CSV}{name={CSV},description={CSV steht für Comma-Seperated Values und ist ein Textformat.}}
+\newglossaryentry{Session-Cookie}{name={Session-Cookie},description={Daten, anhand derer ein Web-Server einen Benutzer wiedererkennt. Diese werden mit dem schliessen des Browsers wieder verworfen}}
+
+\newglossaryentry{CSV}{name={CSV},description={CSV steht für Comma-Seperated Values und ist ein Textformat}}
 
 \newacronym{IKF}{IKF}{Institut für Kommunikation \& Führung}
 
@@ -23,16 +25,16 @@ Um ein möglichst gutes Bild davon zu erhalten, was im Bereich Online-Quizzes be
 
 \bigskip
 
-Dazu wurden unter anderem ähnliche Arbeiten, im Sinne von Bachelorarbeiten oder Studienarbeiten, gesucht (Abschnitt \ref{sec:rechercheAehnlicheArbeiten}) und diese auf ihre Relevanz überprüft. Dabei wurde festgestellt, dass sich, was Arbeiten von Studierenden betrifft, vor allem die HSR auf Quizzes im Lernbereich konzentriert. Andere Hochschulen befassten sich vor allem mit Online-Plattformen, welche auf Prüfungssituationen ausgelegt sind. Da es sich dabei um unterschiedliche Anwendungsbereiche mit unterschiedlichen Anforderungen handelt, wurden diese Arbeiten nicht im Detail angeschaut.
+Dazu wurden unter anderem ähnliche Arbeiten, im Sinne von Bachelorarbeiten oder Studienarbeiten, gesucht (Abschnitt \ref{sec:rechercheAehnlicheArbeiten}) und diese auf ihre Relevanz überprüft. Dabei wurde festgestellt, dass sich, was Arbeiten von Studierenden betrifft, vor allem die HSR auf Quizzes im Lernbereich konzentriert. Andere Hochschulen befassten sich vor allem mit Online-Plattformen, welche auf Prüfungssituationen ausgelegt sind. Da es sich dabei um unterschiedliche Anwendungsbereiche mit verschiedenen Anforderungen handelt, wurden diese Arbeiten nicht im Detail angeschaut.
 
 \bigskip
 
 Das Testen von Mobile Quiz selbst (Abschnitt \ref{subsec:eigeneUntersuchungen}) zeigte, dass es noch einige Probleme in der Version 3 anzutreffen gab. Diese zu beheben würde die Plattform solider machen und bestenfalls neue Quiz-Ersteller anziehen.
-Weiter wurde beim Vergleich mit anderen Online-Quiz-Plattformen (Abschnitt \ref{subsec:Webuntersuchungen}) ersichtlich, dass Mobile Quiz im Bereich Funktionsumfang und Einstellungsmöglichkeiten gut dastand. Allerdings konnte Mobile Quiz im Bereich Usability nicht Punkten, da viele Funktionen nicht sofort ersichtlich oder nur schwierig zu erreichen waren. Dies wurde auch durch die Usability-Tests (Abschnitt \ref{sec:usability}) bestätigt, welche ebenfalls zu Beginn der Arbeit durchgeführt wurden.
+Weiter wurde beim Vergleich mit anderen Online-Quiz-Plattformen (Abschnitt \ref{subsec:Webuntersuchungen}) ersichtlich, dass Mobile Quiz im Bereich Funktionsumfang und Einstellungsmöglichkeiten gut dastand. Allerdings konnte die Version 3 im Bereich Usability nicht Punkten, da viele Funktionen nicht sofort ersichtlich oder nur schwierig zu erreichen waren. Dies wurde auch durch die Usability-Tests (Abschnitt \ref{sec:usability}) bestätigt, welche ebenfalls zu Beginn der Arbeit durchgeführt wurden.
 
 \bigskip
 
-Die Ergebnisse aus dieser Untersuchung flossen zusammen mit den bereits bekannten Verbesserungspunkten in die Aufgabenstellung dieser Studienarbeit ein und sind im Anhang unter \glqq MoeglicheArbeitenSA\grqq ab Seite \hyperlink{page.\getpagerefnumber{pdf:moeglicheArbeiten}}{\getpagerefnumber{pdf:moeglicheArbeiten}} ersichtlich. Um nicht jeden Fehler einzeln aufzuführen, wurden darin die Probleme abstrahiert und nur Themenbereiche aufgeführt und beschrieben. Diese wurden zusammen mit dem Betreuer nach ihrer Wichtigkeit priorisiert.
+Die Ergebnisse aus diesen Untersuchungen flossen, zusammen mit den bereits bekannten Verbesserungspunkten, in die Aufgabenstellung dieser Studienarbeit ein und sind im Anhang unter \glqq MoeglicheArbeitenSA\grqq ab Seite \hyperlink{page.\getpagerefnumber{pdf:moeglicheArbeiten}}{\getpagerefnumber{pdf:moeglicheArbeiten}} ersichtlich. Um nicht jeden Fehler einzeln aufzuführen, wurden darin die Probleme abstrahiert und nur Themenbereiche aufgeführt und beschrieben. Diese wurden zusammen mit dem Betreuer nach ihrer Wichtigkeit priorisiert.
 
 \newpage
 
@@ -43,11 +45,11 @@ Welche ähnlichen Arbeiten, seien es Bachelorarbeiten, Studienarbeiten oder sons
 
 \bigskip
 
-Um möglichst viele Quellen zu berücksichtigen wurde bei der Bibliothek das Angebot \glqq Book a Librarian\grqq \cite{hsr_book_a_librarian} in Anspruch genommen. Die mitgenommenen Tipps wurden für weitere Arbeiten im Dokument \glqq Recherchetipps\_book-a-librarian\grqq ab Seite \hyperlink{page.\getpagerefnumber{pdf:recherchetipps}}{\getpagerefnumber{pdf:recherchetipps}} festgehalten. Dieses Dokument ist im Anhang unter \glqq Recherchetipps von Book a Librarian\grqq zu finden. Die allgemeinen Recherchetipps der Bibliothek sind unter folgender URL erreichbar: \url{https://www.hsr.ch/fileadmin/user_upload/customers/hsr/HSR-INTERN/Bibliothek/Bibliothek_Startseite/Recherchetipps_Dossier.pdf}
+Um möglichst viele Quellen zu berücksichtigen wurde bei der Bibliothek das Angebot \glqq Book a Librarian\grqq \cite{hsr_book_a_librarian} in Anspruch genommen. Die mitgenommenen Tipps wurden für weitere Arbeiten im Dokument \glqq Recherchetipps von Book a Librarian\grqq ab Seite \hyperlink{page.\getpagerefnumber{pdf:recherchetipps}}{\getpagerefnumber{pdf:recherchetipps}} festgehalten. Die allgemeinen Recherchetipps der Bibliothek sind unter folgender URL erreichbar:\\ \url{https://www.hsr.ch/fileadmin/user_upload/customers/hsr/HSR-INTERN/Bibliothek/Bibliothek_Startseite/Recherchetipps_Dossier.pdf}
 
 \bigskip
 
-Da es kein zentrales, Schulen-übergreifendes Verzeichnis aller Arbeiten gibt, musste zur Beantwortung dieser Frage die einzelnen Verzeichnisse der Schulen durchgegangen werden. Dabei wurden die folgende Schulen, aufgelistet mit dem jeweiligen gefundenen Ergebnissen, beachtet:
+Da es kein zentrales, Schulen-übergreifendes Verzeichnis aller Arbeiten gibt, musste zur Beantwortung der obigen Frage die einzelnen Verzeichnisse der Schulen durchgegangen werden. Dabei wurden die folgende Schulen, aufgelistet mit dem jeweiligen gefundenen Ergebnissen, beachtet:
 \begin{itemize}
 	\item ETH Zürich
 	\begin{itemize}
@@ -84,7 +86,7 @@ Es wurde entschieden nicht auf die Standards von IMS Global zu wechseln, da es s
 \section{Eigene Untersuchungen, Webuntersuchung}
 \label{sec:eigeneUntersuchungenWebuntersuchungen}
 
-Was kann Mobile Quiz heute bereits? Wo gibt es noch Probleme? Und wo steht das Quiz heute im Vergleich zu ähnlichen Webanwendungen? Diese Fragen waren Kern der eigenen Untersuchungen. Einerseits wurde dazu Mobile Quiz selbst intensiv getestet, andererseits wurden mehrere vergleichbare Online-Quizzes gesucht und diese anhand von vorher definierten Kriterien verglichen.
+Was kann Mobile Quiz bereits heute? Wo gibt es noch Probleme? Und wo steht das Quiz heute im Vergleich zu ähnlichen Webanwendungen? Diese Fragen waren Kern der eigenen Untersuchungen. Einerseits wurde dazu Mobile Quiz selbst intensiv getestet, andererseits wurden mehrere vergleichbare Online-Quizzes gesucht und diese anhand von vorher definierten Kriterien verglichen.
 
 
 	\subsection{Untersuchung www.mobilequiz.ch}
@@ -95,7 +97,7 @@ Was kann Mobile Quiz heute bereits? Wo gibt es noch Probleme? Und wo steht das Q
 	\begin{itemize}
 		\item Sicherheitsrelevante Probleme \\
 		Dabei handelt es sich um sämtliche Probleme, welche ein Angreifer ausnutzen kann, um unberechtigte Aktionen durchzuführen. \\
-		\textit{Beispiel}: Wird eine Frage erfasst, so kann im Fragetext mittels HTML-Script-Tag JavaScript hinterlegt werden, welches beim Anzeigen der Frage beim Teilnehmer ausgeführt wird. Somit hat Mobile Quiz gegenüber Frage-Erstellern eine \gls{Cross-Site-Scripting} - \gls{Vulnerability}. Diese kann ausgenutzt werden, um das Session-Cookie eines Benutzers zu stehlen. Dabei handelt es sich um ein grosses Risiko, denn sobald ein Angreifer das Session-Cookie eines Benutzers hat, kann er sich als diesen ausgeben. Das Worst-Case Szenario für das Mobile Quiz ist, dass sich jemand an der Prüfung als ein anderer Benutzer ausgibt, oder einem anderen Benutzer die Quiz-Teilnahme sabotiert.
+		\textit{Beispiel}: Wird eine Frage erfasst, so kann im Fragetext mittels HTML-Script-Tag JavaScript hinterlegt werden, welches beim Anzeigen der Frage beim Teilnehmer ausgeführt wird. Somit hat Mobile Quiz gegenüber Frage-Erstellern eine \gls{Cross-Site-Scripting} - \gls{Vulnerability}. Diese kann ausgenutzt werden, um das \gls{Session-Cookie} eines Benutzers zu stehlen. Dabei handelt es sich um ein grosses Risiko, denn sobald ein Angreifer das Session-Cookie eines Benutzers hat, kann er sich als diesen ausgeben. Das Worst-Case Szenario für das Mobile Quiz ist, dass sich jemand an der Prüfung als ein anderer Benutzer ausgibt, oder einem anderen Benutzer die Quiz-Teilnahme sabotiert.
 		
 		
 		\begin{figure}[H]
@@ -122,7 +124,7 @@ Was kann Mobile Quiz heute bereits? Wo gibt es noch Probleme? Und wo steht das Q
 			\centering
 			\includegraphics[width=0.20\textwidth]
 			{Images/MobileQuizAlteVersionStartbutton.png}
-			\caption{Möglichen Aktionen inkl. Start-Button}
+			\caption{Möglichen Aktionen inklusive Start-Button}
 			\cite{mobilequiz.ch}
 		\end{figure}
 		\item Mobile-Probleme \\
@@ -165,7 +167,7 @@ Was kann Mobile Quiz heute bereits? Wo gibt es noch Probleme? Und wo steht das Q
 		Welche Möglichkeiten zur Punktevergabe sind vorhanden? \\
 		\textit{Beispiel:} Individuelle Punktevergabe pro Frage
 		\item Testfunktion \\
-		Kann das Quiz vor Veröffentlichung durchgespielt werden? \\
+		Kann das Quiz vor Veröffentlichung durchgespielt werden?
 		\item Textdarstellung \\
 		Welche Einstellung können am angezeigten Text vorgenommen werden? \\
 		\textit{Beispiel:} Anpassung der  Schriftgrösse
