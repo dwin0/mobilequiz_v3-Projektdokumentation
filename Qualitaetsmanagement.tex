@@ -30,18 +30,18 @@ Wie gut die bestehende Mobile Quiz - Version in diesen Bereichen abschneidet, wu
 \subsection{Methoden}
 Bei den \gls{Usability-Test}s zu Beginn der Arbeit nahmen drei Studenten der \acrfull{CN1}-Vorlesung, ein Student aus der Raumplanung sowie ein Student aus dem 5. Semester Informatik teil, was der Zielgruppe von Mobile Quiz entspricht. Abgesehen vom Informatik-Student aus dem 5. Semester hatten die Teilnehmer noch wenig bis gar keine Erfahrung mit Mobile Quiz gesammelt.
 
-Bei der Durchführung wurden die Teilnehmern in Situationen hineinversetzt, welche bei der Benutzung von Mobile Quiz oft vorkommen (siehe Usability-Test\_Aufgabenstellung). Die Teilnehmer wurden dabei eins zu eins beobachtet und Schwierigkeiten oder Abweichungen von den Erwartungen (siehe Usability-Test\_Erwartungen) notiert. Die Gesamtauswertung wurde anschliessend in einem separaten Dokument festgehalten (siehe Usability-Test\_Auswertung\_Durchführung1).
+Bei der Durchführung wurden die Teilnehmern in Situationen hineinversetzt, welche bei der Benutzung von Mobile Quiz oft vorkommen (siehe Usability-Test\_Aufgabenstellung auf Seite \hyperlink{page.\getpagerefnumber{pdf:UTAS1}}{\getpagerefnumber{pdf:UTAS1}}). Die Teilnehmer wurden dabei eins zu eins beobachtet und Schwierigkeiten oder Abweichungen von den Erwartungen notiert. Die Gesamtauswertung wurde anschliessend in einem separaten Dokument festgehalten (siehe Usability-Test\_Auswertung\_Durchführung1 auf Seite \hyperlink{page.\getpagerefnumber{pdf:UTAW1}}{\getpagerefnumber{pdf:UTAW1}}).
 
-Am Ende der Arbeit wurden eine Auswahl der gleichen Tests nochmals durchgeführt (siehe Usability-Test\_Aufgabenstellung2 und Usability-Test\_Erwartungen2). Es nahmen dabei drei Informatikstudenten aus dem Modul \gls{CN1} teil. Aus dieser Durchführung wurden die Auswertungen ebenfalls niedergeschrieben (siehe Usability-Test\_Durchführung2).\\
+Am Ende der Arbeit wurden eine Auswahl der gleichen Tests nochmals durchgeführt (siehe Usability-Test\_Aufgabenstellung2 auf Seite \hyperlink{page.\getpagerefnumber{pdf:UTAS2}}{\getpagerefnumber{pdf:UTAS2}}). Es nahmen dabei drei Informatikstudenten aus dem Modul \gls{CN1} teil. Aus dieser Durchführung wurden die Auswertungen ebenfalls niedergeschrieben (siehe Usability-Test\_Durchführung2 auf Seite \hyperlink{page.\getpagerefnumber{pdf:UTAW2}}{\getpagerefnumber{pdf:UTAW2}})).\\
 
-Die erwähnten Dokumente befinden sich im Anhang. Da die Datenbank-Umstellung gegen Ende des Projektes viel Zeit in Anspruch nahm, konnte die zweite Durchführung erst in der letzten Projekt-Woche durchgeführt werden. Die Änderungen sind in dieser Arbeit somit nicht mehr umgesetzt worden und wurden somit in den Arbeiten für die HSR \ref{sec:ArbeitenFuerDieHSR} aufgeführt.
+Da die Datenbank-Umstellung gegen Ende des Projektes viel Zeit in Anspruch nahm, konnte die zweite Durchführung erst in der letzten Projekt-Woche durchgeführt werden. Die Änderungen sind in dieser Arbeit somit nicht mehr umgesetzt worden und wurden somit in den Arbeiten für die HSR \ref{sec:ArbeitenFuerDieHSR} aufgeführt.
 
 Für die Bachelorarbeit wird darauf geachtet, dass die Implementation der Hauptbereiche frühzeitig abgeschlossen ist und die Ergebnisse der zweiten Usability-Tests somit noch umgesetzt werden können. 
 
 
 \subsection{Erkenntnisse der ersten Durchführung}
 Die erste Durchführung der \gls{Usability-Test}s zeigte, dass vor allem im Bereich der Benutzerführung Probleme vorhanden sind, denn die vorhandenen Funktionen wurden nicht auf den ersten Blick gefunden.
-Aus den Erkenntnissen der Usability-Tests sowie den eigenen Tests mit Mobile Quiz wurden die ersten \gls{Wireframes} erstellt, diese befinden sich im Anhang.
+Aus den Erkenntnissen der Usability-Tests sowie den eigenen Tests mit Mobile Quiz wurden die ersten \gls{Wireframes} erstellt, diese befinden sich im Kapitel Mockups \ref{chap:mockups}.
 
 \subsection{Erkenntnisse der zweiten Durchführung}
 In der zweiten Durchführung wurde festgestellt, dass einige Probleme behoben werden konnten, aber noch Handlungsbedarf besteht.
@@ -56,10 +56,10 @@ Verbesserungspotential gibt es noch beim Filter und der Durchführung. Bei erste
 
 \newpage
 \section{Codestatistik}
-Mit Codestatistiken soll erkannt werden, ob sich die Codequalität während der Arbeit verbessert oder nicht. Dafür wird das Webtool Code Climate \cite{codeclimate.com} eingesetzt. Dieses bewertet die Qualität mit einer Skala von null bis vier, wobei vier den besten Wert darstellt. Zur Ermittlung können sogenannte \glqq engines\grqq ausgewählt werden, welche jeweils verschiedene Code-Prüfungen enthalten. Diese können im Code, in der Konfigurationsdatei \glqq .codeclimate.yml\grqq, abgespeichert werden.\\
+Mit Codestatistiken soll erkannt werden, ob sich die Codequalität während der Arbeit verbessert oder nicht. Dafür wurde das Webtool Code Climate \cite{codeclimate.com} eingesetzt. Dieses bewertet die Qualität mit einer Skala von null bis vier, wobei vier den besten Wert darstellt. Zur Ermittlung können sogenannte \glqq engines\grqq ausgewählt werden, welche jeweils verschiedene Code-Prüfungen enthalten. Diese können im Code, in der Konfigurationsdatei \glqq .codeclimate.yml\grqq, abgespeichert werden.\\
 
 \subsection{Stand Projekt-Beginn}
-Der nachfolgende Screenshot zeigt den Stand der Codequalität ganz zu Beginn des Projektes. Die bereits eingezeichneten Verbesserungen sind entstanden, da die Grundeinstellungen der Qualitäts-Tests auf unsere Bedürfnisse angepasst und verfeinert wurden. Dazu zählt zum Beispiel die Prüfung, dass jeweils mit White-Spaces, also Leerzeichen, eingerückt werden soll und nicht mit Tabs. Da dies bisher nicht so gemacht wurde und es keine sicherheitsrlevanten Auswirkungen auf den Code hat, wurde beschlossen, diese Prüfung auszuschalten. Dies erfolgt ebenfalls über die Konfigurationsdatei.
+Der nachfolgende Screenshot zeigt den Stand der Codequalität ganz zu Beginn des Projektes. Die bereits eingezeichneten Verbesserungen sind entstanden, da die Grundeinstellungen der Qualitäts-Tests auf unsere Bedürfnisse angepasst und verfeinert wurden. Dazu zählt zum Beispiel die Prüfung, dass jeweils mit White-Spaces, also Leerzeichen, eingerückt werden soll und nicht mit Tabs. Da dies bisher nicht so gemacht wurde und es keine sicherheitsrelevanten Auswirkungen auf den Code hat, wurde beschlossen, diese Prüfung auszuschalten. Dies erfolgt ebenfalls über die Konfigurationsdatei.
 
 \begin{figure}[H]
 	\centering
@@ -68,14 +68,14 @@ Der nachfolgende Screenshot zeigt den Stand der Codequalität ganz zu Beginn des
 	\cite{codeclimate.com}
 \end{figure}
 
-Im Verlaufe des Projektes wurden einige Code-Änderungen vorgenommen, welche die Qualität verbesserten. Ein grosses Problem war zum Beispiel, dass einige PHP-Dateien sehr viele Code-Zeilen enthielten und gleichzeitig viel duplizierter Code vorhanden war. Diese Probleme konnten damit angegangen werden, dass der duplizierte Code in separate Funktionen ausgelagert wurde und jeweils auf diese zugegriffen wurde. Dies hat den Vorteil, dass der Code bei Funktions-Anpassungen nur an einem Ort geändert werden muss und nicht an fünf verschiedenen Stellen. Weiter konnte durch diese Massnahme und durch zusätzliche Auslagerungen von Code-Stücken die grossen Dateien in kleinere aufgeteilt werden. \\
+Im Verlaufe des Projektes wurden einige Code-Änderungen vorgenommen, welche die Qualität verbesserten. Ein grosses Problem war zum Beispiel, dass einige PHP-Dateien sehr viele Code-Zeilen enthielten und gleichzeitig viel duplizierter Code vorhanden war. Diese Probleme konnten damit angegangen werden, dass der duplizierte Code in separate Funktionen ausgelagert wurde und jeweils auf diese zugegriffen wurde. Dies hat den Vorteil, dass der Code bei Funktions-Anpassungen nur an einem Ort geändert werden muss und nicht an fünf verschiedenen Stellen. Weiter konnten durch diese Massnahme und durch zusätzliche Auslagerungen von Code-Stücken die grossen Dateien in kleinere aufgeteilt werden. \\
 
 \subsection{Stand Projekt-Ende}
 Somit konnte die Qualität von 1.86 auf 2.04 gesteigert werden, wie in der nachfolgenden Abbildung ersichtlich ist. Ganz am Ende des Projektes ist jedoch ein kleiner Einbruch zu erkennen. Dies hängt mit der Umsetzung der Datenbank-Änderung zusammen, für welche nur noch wenig Zeit übrig war und kein \gls{Refactoring} gemacht werden konnte.
 
-Die linke, untere Grafik zeigt zudem den Anteil der gut bewerteten Dateien im Verhältnis zu den schlecht bewerteten Dateien. Hier ist ersichtlich, dass vor allem einige der am schlechtesten bewerteten Code-Stücke leicht verbessert werden konnten.
+Die linke, untere Grafik zeigt zudem den Anteil der gut bewerteten Dateien im Verhältnis zu den schlecht bewerteten Dateien an. Hier ist ersichtlich, dass vor allem einige der am schlechtesten bewerteten Code-Stücke leicht verbessert werden konnten.
 
-Auf der unteren, rechten Grafik wird die Qualität ins Verhältnis zu den Anzahl Changes gesetzt, also wie oft eine Datei in der Entwicklung geändert werden muss. Wird eine Datei häufig angefasst, so kann dies ein Indikator dafür sein, dass sie zu viele Funktionen beinhaltet. Als Beispiel kann do.php verwendet werden, welche Abläufe für diverse Seiten unterstützt. Arbeiten mehrere Personen an einem Projekt so ist die Wahrscheinlichkeit gross, dass beide an dieser Datei arbeiten müssen und sich somit in die Quere kommen. In diesem Falle ist der Zugriff hoch. Teilt man do.php nun nach unterstützten Webseite auf, so lösen sich diese Probleme auf und mit der kleineren Anzahl Zugriffe verbessert sich auch diese Kennzahl. Oben rechts sind die am schlechtesten, unten links die am besten bewerteten Dateien. Im Vergleich zum Projekt-Beginn ist auch hier ersichtlich, dass die Qualität einiger Dateien durch die oben beschriebenen Massnahmen verbessert werden konnte.
+Auf der unteren, rechten Grafik wird die Qualität ins Verhältnis zu den Anzahl Changes gesetzt, also wie oft eine Datei in der Entwicklung geändert werden muss. Wird eine Datei häufig angefasst, so kann dies ein Indikator dafür sein, dass sie zu viele Funktionen beinhaltet. Als Beispiel kann do.php verwendet werden, welche Abläufe für diverse Seiten unterstützt. Arbeiten mehrere Personen an einem Projekt so ist die Wahrscheinlichkeit gross, dass beide an dieser Datei arbeiten müssen und sich somit in die Quere kommen. In diesem Falle ist der Zugriff hoch. Teilt man do.php nun nach unterstützten Funktionalitäten auf, so lösen sich diese Probleme auf und mit der kleineren Anzahl Zugriffe verbessert sich auch diese Kennzahl. Oben rechts sind die am schlechtesten, unten links die am besten bewerteten Dateien eingetragen. Im Vergleich zum Projekt-Beginn ist auch hier ersichtlich, dass die Qualität einiger Dateien durch die oben beschriebenen Massnahmen verbessert werden konnte.
 
 \begin{figure}[H]
 	\centering
@@ -84,7 +84,7 @@ Auf der unteren, rechten Grafik wird die Qualität ins Verhältnis zu den Anzahl
 	\cite{codeclimate.com}
 \end{figure}
 
-Auch wenn die Kennzahlen von Code Climate in diesem Projekt nur selten beachtet wurden, gaben sie gute Hinweise darauf, welcher Code-Stücke noch verbesserungswürdig sind. Es wurde jeweils gut angezeigt, was das Issue, also das jeweilige Problem, ist und wo es auftaucht.
+Auch wenn die Kennzahlen von Code Climate in diesem Projekt nur selten beachtet wurden, gaben sie gute Hinweise darauf, welcher Code-Stücke noch verbesserungswürdig sind. Es wurde jeweils angezeigt, was das Issue, also das jeweilige Problem, ist und wo es auftaucht.
 
 \begin{figure}[H]
 	\centering
@@ -115,7 +115,7 @@ Für die Test-Erstellung genügt es, mit Firefox die Aufgangs-Webseite aufzurufe
 
 Alle erfassten Tests werden abgespeichert und können danach einfach abgespielt werden.
 
-Für diese Arbeit wurden mehrere solcher Tests erfasst. Sie dienten vor allem beim Durchspielen von sich wiederholenden und gleichbleibenden Fällen, wie dem Erstellen einer Frage. So konnte nach Code-Umstellungen in diesem Bereich geprüft werden, ob noch alle Komponenten korrekt zusammenarbeiten.
+Für diese Arbeit wurden mehrere solcher Tests erfasst. Sie dienten vor allem der Überprüfung beim Durchspielen von sich wiederholenden und gleichbleibenden Fällen, wie dem Erstellen einer Frage. So konnte nach Code-Umstellungen in diesem Bereich geprüft werden, ob noch alle Komponenten korrekt zusammenarbeiten.
 
 Probleme gab es allerdings bei Listenelementen, wie zum Beispiel der Aufführung aller Quizzes. Wählte man ein solches aus, so verwendete Selenium IDE den entsprechenden Index des Elementes in der Gesamtliste. Fügte man anschliessend ein Element zu dieser Liste hinzu oder entfernte eines, so stimmte die gespeicherte Index-Position nicht mehr überein und es wurde beim nächsten Durchlauf des Tests ein anderes Element ausgewählt.
 
