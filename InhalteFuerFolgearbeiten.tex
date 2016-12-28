@@ -25,7 +25,7 @@
 	Wird ein Bild über 5 MB  hochgeladen, wird es von Apache nicht angenommen, da dies in der Datei \glqq php.ini\grqq so festgelegt wurde. Der Benutzer erhält nur einen allgemeinen Fehlercode. Das Übersteigen der Bildgrösse soll abgefangen und dem Benutzer ein spezifischer Fehlercode ausgegeben werden.
 
 	\item Optimierung der Datenbank\\
-	Allenfalls Änderung des Speichermodells, da beispielsweise das Abspeichern jeder eingegebenen Antwort in «an\_qu\_user» sehr viele Datenbankeinträge generiert.
+	Allenfalls Änderung des Speichermodells, da beispielsweise das Abspeichern jeder eingegebenen Antwort in \glqq an\_qu\_user\grqq sehr viele Datenbankeinträge generiert.
 
 	\item Aufräumen und Vereinheitlichung des Programm-Codes\\
 	Es gibt einige Code-Stellen, welche gar nie aufgerufen werden, oder welche leserlicher geschrieben werden könnten. Zudem sind sehr viele verschiedene Programmierstile aufzufinden.
@@ -35,25 +35,22 @@
 
 	\item Language-Support\\
 	Der Language-Support ist mit 2 Language-Files etwas unhandlich. Allenfalls kann eine bessere Methode gefunden werden, um MobileQuiz leichter in verschiedenen Sprachen anzubieten.\\
-	In \acrfull{SE1} wird für Java der Umgang mit Sprachfiles in Form von \glqq Resource Bundles\grqq vorgestellt, was ebenfalls eine Verwendung von mehreren Files pro Sprache ist, welche jeweils viele Key-Value-Paare beinhalten.
+	In \acrfull{SE1} wird für Java der Umgang mit Sprachfiles in Form von \glqq Resource Bundles\grqq vorgestellt, was ebenfalls eine Verwendung von mehreren Files pro Sprache ist, welche jeweils viele Key-Value-Paare beinhalten. Dies entspricht in etwa dem momentan bereits Umgesetzten Konzept im Mobile Quiz Code.
 	
 	\item Zurücksetzen des Filters\\
 	Hat man beispielsweise beim Filter Themengebiete mehrere Werte ausgewählt und möchte nun alle Themengebiete anzeigen lassen, so müssen alle Werte einzeln abgewählt werden. Es soll bei allen Filtern eine zusätzliche Auswahlmöglichkeit \glqq alle\grqq vorhanden sein, um Filter schnell zurücksetzen zu können.
 	
 	\item Fehlermeldung bei offenem Request\\
-	Falls für eine Frage noch eine offener Topic- oder Sprach-Request besteht, kann sie nicht gelöscht werden. Nach dem Klick auf das Lösch-Symbol bleibt die Frage in der Liste vorhanden, der Benutzer bekommt aber keine Rückmeldung warum. Er soll entsprechende Fehlermeldung angezeigt bekommen.
+	Falls für eine Frage noch eine offener Topic- oder Sprach-Request besteht, kann sie nicht gelöscht werden. Nach dem Klick auf das Löschen-Symbol bleibt die Frage in der Liste vorhanden, der Benutzer bekommt aber keine Rückmeldung, weshalb dies geschieht. Er soll eine entsprechende Fehlermeldung angezeigt bekommen.
 	
 	\item Vergrösserung des Mobile-Menu\\
-	Wählt man in der mobilen Version auf das Menu und anschliessend auf Profil, so ist nicht ersichtlich, dass ein Untermenu aufgeklappt wird. Der Grund liegt darin, dass dies in einem Bereich geschieht, welcher für den Benutzer nicht mehr sichtbar ist, da das Menu nicht gross genug angezeigt wird.
-	
-	\item Filteroption \glqq Alle\grqq \\
-	Bei der eigenen Benutzung der neuen Filter fiel auf, dass es lange dauert, um mehrere ausgewählte Optionen abzuwählen, damit wieder alle Quizzes angezeigt werden. Allenfalls kann bei jedem Filter eine zusätzliche Single-Choice-Option \glqq Alle\grqq angeboten werden, um den entsprechenden Filter zurückzusetzen.
+	Wählt man in der mobilen Version das Menu und anschliessend das Profil aus, so ist nicht ersichtlich, dass ein Untermenu aufgeklappt wird. Der Grund liegt darin, dass dies in einem Bereich geschieht, welcher für den Benutzer nicht mehr sichtbar ist, da das Menu nicht gross genug angezeigt wird.
 	
 	\item Umsetzung der Verbesserungsvorschläge aus den zweiten Usability-Tests\\
-	Da die zweite Durchführung der Usability-Tests erst in der letzten Projekt-Woche durchgeführt werden konnte, wurden die Ergebnisse daraus noch nicht umgesetzt. Sie sind im Anhang unter \glqq Auswertung Usability-Tests Durchführung 2\grqq zu finden.
+	Da die zweite Durchführung der Usability-Tests erst in der letzten Projekt-Woche durchgeführt werden konnte, wurden die Ergebnisse daraus noch nicht umgesetzt. Sie sind im Anhang unter \glqq Usability-Tests Mobile Quiz v3 - Auswertung; Durchhführung vom 20.12.2016\grqq auf Seite \hyperlink{page.\getpagerefnumber{pdf:UTAW2}}{\getpagerefnumber{pdf:UTAW2}} zu finden.
 	
 	\item Datenbankskript für alte Statistiken\\
-	In dieser Arbeit wurden Fehler in der Berechnung der Richtigkeit behoben. Neu Berechnet werden allerdings nur neu erstellte Quizzes. Um eine korrekte Berechnung für ältere Quizzes anzubieten muss ein Skript geschrieben werden, damit die Werte in der Datenbank neu berechnet werden.
+	In dieser Arbeit wurden Fehler in der Berechnung der Richtigkeit behoben. Richtig Berechnet werden allerdings nur neu erstellte Quizzes. Um eine korrekte Berechnung für ältere Quizzes anzubieten muss ein Skript geschrieben werden, damit die Werte in der Datenbank neu berechnet wird.
 	
 	\item Bildbeschreibung für Bildupload \\
 	Bei der Erstellung von Fragen können neu auch Bilder hinzugefügt werden. Probleme haben hier Personen, welche auf einen Screen-Reader angewiesen sind, da dieser nicht weiss, was genau auf dem Bild dargestellt wird. Zudem kann es sein, dass ein Bild gar nicht geladen werden kann. Um dem entgegen zu wirken, benötigt jedes Bild eine Beschreibung, welche vom Frage-Ersteller mitgegeben werden soll. Diese ist für die Online-Frage-Erstellungsseite sowie für den Excel-Upload mit Bildern zu implementieren.
@@ -66,7 +63,7 @@
 \section{Inhalte für weitere Studentenarbeiten}
 \label{sec:InhalteFuerStudentenarbeiten}
 
-Während dieser Studienarbeit konnten nicht alle zusammengetragenen Arbeiten und theoretisch erarbeitete Konzepte umgesetzt werden. Alle möglichen Arbeiten sind im Anhang unter \glqq MoeglicheArbeitenSA\grqq zu finden, die Konzepte sowie deren Datenbankänderungen unter \glqq Konzept Gruppenmanagement\grqq, \glqq Konzept Neue Fragetypen\grqq und \glqq Konzept Statistiken\_Auswertungen\grqq.
+Während dieser Studienarbeit konnten nicht alle zusammengetragenen Arbeiten und theoretisch erarbeitete Konzepte umgesetzt werden. Alle möglichen Arbeiten sind im Anhang unter \glqq MoeglicheArbeitenSA\grqq (ab Seite \hyperlink{page.\getpagerefnumber{pdf:moeglicheArbeiten}}{\getpagerefnumber{pdf:moeglicheArbeiten}}) zu finden, die Konzepte sowie deren Datenbankänderungen unter \glqq Konzept Gruppenmanagement\grqq (Konzept ab Seite \hyperlink{page.\getpagerefnumber{pdf:gruppenadmin}}{\getpagerefnumber{pdf:gruppenadmin}}, Datenbankänderungen auf Seite \hyperlink{page.\getpagerefnumber{pdf:dbgruppenadmin}}{\getpagerefnumber{pdf:dbgruppenadmin}} sowie im Kapitel \ref{subsec:DBAenderungen}), \glqq Konzept Neue Fragetypen\grqq (ab Seite \hyperlink{page.\getpagerefnumber{pdf:konzeptFragen}}{\getpagerefnumber{pdf:konzeptFragen}}) und \glqq Konzept Statistiken\_Auswertungen\grqq (ab Seite \hyperlink{page.\getpagerefnumber{pdf:konzeptStatistiken}}{\getpagerefnumber{pdf:konzeptStatistiken}}).
 		
 
 
@@ -75,12 +72,11 @@ Während dieser Studienarbeit konnten nicht alle zusammengetragenen Arbeiten und
 	Wie im Kapitel \ref{subsec:Webuntersuchungen} beschrieben, besteht Verbesserungspotential beim ersten Eindruck von Mobile Quiz. Ein entsprechender Blog-Eintrag zu diesem Thema ist ebenfalls dort aufgeführt.
 	
 	\item Durchspielen vor Veröffentlichung \\
-	Um ein Quiz auf Fehler zu Überprüfen soll es vor Veröffentlichung durchgespielt werden können. Dies ist bereits möglich, indem das Quiz auf privat gesetzt wird. Dies funktioniert aber nur im Administratoren-Modus korrekt.
+	Um ein Quiz auf Fehler zu Überprüfen, soll es vor Veröffentlichung durchgespielt werden können. Dies ist bereits möglich, indem das Quiz auf privat gesetzt wird.
 	Wird das Quiz anschliessend veröffentlicht, soll der Ersteller gefragt werden, ob er die Quiz-Statistik zurücksetzen will. Ohne die Mitzählung seiner eigenen Teilnahme erhält er schlussendlich eine aussagekräftigere Auswertungsstatistik.
 	
 	\item Anonyme Teilnahme \\
-	Ein Teilnehmer eines Quizzes soll sich nicht anmelden müssen. Eine Anonyme Teilnahme am Quiz soll möglich sein. Speziell daran ist die Handhabung von mehreren Sessions nicht erstellter Benutzer.\\
-	Wird zudem ein privates Quiz erstellt, um es vor Veröffentlichung durchzuspielen, wird der Ersteller bei dessen Veröffentlichung gefragt, ob die Statistiken des Quizzes zurückgesetzt werden sollen. Somit wird sichergestellt, dass diese durch die Teilnahme des Erstellers nicht verfälscht werden.
+	Ein Teilnehmer eines Quizzes soll sich nicht anmelden müssen. Eine Anonyme Teilnahme am Quiz soll möglich sein. Speziell daran ist die Handhabung von mehreren Sessions nicht erstellter Benutzer.
 	
 	\item Sicheres Login und Passwort-Recovery
 	Das Login sowie das Zurücksetzen des Passwortes sollen mittels OWASP Cheat-Sheets umgesetzt werden. Diese sind unter folgenden Links zu finden:
@@ -108,45 +104,46 @@ Während dieser Studienarbeit konnten nicht alle zusammengetragenen Arbeiten und
 	\item Mockups umsetzen \\
 	\begin{itemize}
 		\item Umsetzung der ausgearbeiteten Mockups\\
-		Die in dieser Arbeit erstellten Mockups konnten nicht alle umgesetzt werden. Einige der im Anhang befindlichen Screens können deshalb noch umsetzt werden. Dabei sind die Hinweise im Kapitel \ref{chap:mockups} zu beachten.
+		Die in dieser Arbeit erstellten Mockups konnten nicht alle umgesetzt werden. Einige der im Anhang befindlichen Screens können deshalb noch umgesetzt werden. Dabei sind die Hinweise im Kapitel \ref{chap:mockups} zu beachten.
 		
 		\item Erfassung von Gruppen \\
-		In der Ansicht \glqq Quiz Erstellen – Administration\grqq soll die Möglichkeit bestehen, Gruppen zu erfassen. Wird ein Quiz anschliessend veröffentlicht, so wird diese Gruppe benachrichtigt.
+		In der Ansicht \glqq Quiz Erstellen – Administration\grqq soll die Möglichkeit bestehen, Gruppen zu erfassen. Wird ein Quiz anschliessend veröffentlicht, so soll diese Gruppe benachrichtigt werden.
 		
 		\item Anzeige von wichtigen Quizzes \\
 		Ziel ist es, dass einer Gruppe ein Quiz, beispielsweise als Testat, zugewiesen werden kann. Anschliessend sieht der Teilnehmer auf der Quiz-Übersichts-Seite sofort, welche Quizzes seine sofortige Bearbeitung benötigen.
 		Im Optimalfall sieht der Teilnehmer durch diese Option sowie durch das automatische Setzen des Filters nach seinen Interessen bereits alle Quizzes, welche er benötigt.
 		
 		\item Auswertungs-Darstellung \\
-		Bei der Auswahl der Quiz-Einstellung «nur richtige Anzeigen» wird in der Auswertung bei den falsch beantworteten Fragen ein «?» anstatt die korrekte Antwort angezeigt. Dies verstehen die Studenten nicht. Überlegen, wie man dies besser darstellen kann.
+		Bei der Auswahl der Quiz-Einstellung \glqq nur richtige Anzeigen\grqq wird in der Auswertung bei den falsch beantworteten Fragen ein \glqq ?\grqq anstatt die korrekte Antwort angezeigt. Dies verstehen die Studenten nicht. Es soll überlegt werden, wie man dies besser darstellen kann.
 		
 		\item Ergänzung des Auswertungs-Screens\\
-		In den Auswertungen für den Ersteller soll nebst den totalen Anzahl Stimmen einer Antwort auch der prozentuale Anteil angegeben sein. So kann direkt abgelesen werden, wie viele der Teilnehmer sich der Antwort enthalten haben, also «keine Antwort» angewählt haben.
+		In den Auswertungen für den Ersteller soll nebst den totalen Anzahl Stimmen einer Antwort auch der prozentuale Anteil angegeben sein. So kann direkt abgelesen werden, wie viele der Teilnehmer sich der Antwort enthalten haben, also \glqq keine Antwort\grqq angewählt haben.
 	\end{itemize}
 	
 	\item Automatisch Erfassung von Teilnehmern und Gruppen \\
-	Die Erfassung aller Teilnehmer für eine Vorlesung soll durch den Administrator erfolgen können. Dieser zu Beginn des Semesters alle Studenten via einer Excel-Datei ein, welche er von \url{www.unterricht.hsr.ch} generieren liess. Mobile Quiz erstellt automatisch die Teilnehmer. Auf einer Gruppen-Management-Seite weist der Administrator die Teilnehmern dann den Gruppen zu.
+	Die Erfassung aller Teilnehmer für eine Vorlesung soll durch einen Ersteller erfolgen können. Dieser liest zu Beginn des Semesters alle Studenten via einer Excel-Datei ein, welche er von \url{www.unterricht.hsr.ch} generieren liess. Mobile Quiz erstellt automatisch die Teilnehmer. Auf einer Gruppen-Management-Seite weist der Ersteller die Teilnehmern dann den Gruppen zu.
 	
 	\item Durchführungsbeschränkungen \\
 	Es soll möglich sein zu unterscheiden, ob nur zugewiesene Gruppen ein Quiz durchführen können oder ob das Quiz allen offenstehen soll.
 	
 	\item Umsetzung von Polls \\
 	Zur Umsetzung sind  grundlegende Abklärungen zu erarbeiten.
-	Als Vorlage für die bestehende Lösung durch Patrick Eichler diente \glqq Straw Poll\grqq . \cite{straw_poll} Weitere Informationen zu diesem Thema sind unter folgendem Link erhältlich, welcher von Herr Markus Stolze und Herr Frank Koch zugeschickt wurde. \url{https://dl.dropboxusercontent.com/u/8905964/Breeze/FUM_Tilly_Polling_Tools.pdf}
+	Als Vorlage für die bestehende Lösung durch Patrick Eichler diente \glqq Straw Poll\grqq . \cite{straw_poll}. Weitere Informationen zu diesem Thema sind unter folgendem Link erhältlich, welcher von Herr Markus Stolze und Herr Frank Koch zugeschickt wurde. \url{https://dl.dropboxusercontent.com/u/8905964/Breeze/FUM_Tilly_Polling_Tools.pdf}
 	
 	\item Session pro Benutzer \\
 	Die Session soll pro Benutzer und nicht pro Gerät erstellt werden. Ist ein Benutzer am Computer angemeldet und meldet sich anschliessend auch auf dem Smartphone an, so soll die Computer-Session beendet werden.
 	
 	\item Schlagwörter \\
+	Im Tab Schlagwörter wird momentan nichts angezeigt, die Logik für den Umgang mit Schlagwörtern soll ausgearbeitet und umgesetzt werden.
 	
 	\item Frage-Einreichung von Teilnehmer \\
 	Es gibt eine neue Funktion, mit der Teilnehmer eigene Vorschläge für Fragen und Antworten an den Quiz-Ersteller senden können. Der Ersteller des Quizzes kann dann die Vorschläge annehmen, ablehnen oder anpassen.
 	
 	\item Ursprungsseite beim Melden von Fehlern feststellen \\
-	Beim Beheben von Fehlern wäre es nützlich zu wissen, auf welcher Seite sich der Benutzer befand, bevor er auf auf «Fehler melden» klickte.
+	Beim Beheben von Fehlern wäre es nützlich zu wissen, auf welcher Seite sich der Benutzer befand, bevor er auf auf \glqq Fehler melden\grqq klickte.
 	
 	\item Status-Konzept überarbeiten \\
-	Konzept der Status soll dabei überarbeitet werden: Welche gibt es genau und was verursacht ein Status-Übergang?
+	Konzept der Status soll überarbeitet werden: Welche Status gibt es genau und was verursacht ein Status-Übergang?
 	Bisherige Status: offen (0\%), in Bearbeitung(1-99\%), erledigt(100\%)
 	
 	\item Benachrichtigung der Interessengruppe\\
