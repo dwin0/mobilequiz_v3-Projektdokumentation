@@ -278,6 +278,8 @@ Icons gibt es zwar weiterhin, diese dienen aber dem schnelle Erfassen der Auswah
 \subsection{Fragen mit Bilder}
 
 \subsubsection{Hochladen und Entfernen eines Bildes}
+\label{HochladenUndEntfernenEinesBildes}
+
 Bei jedem Fragetyp ist es neu möglich ein Bild zu hinterlegen. Die Funktion des Bild-Uploads auf den Server bestand bereits, wurde aber erweitert.
 \\
 \\
@@ -319,7 +321,6 @@ Weiter gibt es Grössenbeschränkungen von Apache selbst \cite{stackoverflow_lar
 
 Werden via Excel-Template 10 Fragen mit je einem Bild à 1 Megabyte hochgeladen, so ist dies mit der Standardkonfiguration nicht möglich. Diese wurde deshalb folgendermassen angepasst:
 \begin{itemize}
-	\label{php.ini:neueGroessenbeschraenkungen}
 	\item upload\_max\_filesize: Neu 5 MB. Grössere Dateien benötigen zu lange für den Upload. Allerdings soll der Benutzer nicht nur auf kleine Grössen beschränkt sein, deshalb wurde von der 2MB-Standardgrösse abgewichen.
 	\item post\_max\_size: Neu 25 MB. Bei dieser Grösse beträgt die Uploadzeit bei einer Geschwindigkeit von 10,3 Mbit/s 19,4 Sekunden. Dies ist die Uploadgeschwindigkeit von 80\% der DSL-Messungen, welche beim Speedtest der cnlab AG \cite{cnlab_speedtest} erreicht wurde. Dem Benutzer sollte bewusst sein, dass der Upload bei so vielen Dateien einige Zeit in Anspruch nimmt.
 	Auf der anderen Seite soll der Benutzer aber auch nicht eingeschränkt werden. Es soll möglich sein, gleichzeitig 20 Fragen mit Bildern à 1 MB sowie 1 Frage mit einem grösseren Bild plus das Excel-Template hochzuladen.
