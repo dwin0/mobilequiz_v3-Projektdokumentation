@@ -201,7 +201,10 @@
 	\chapter{Details zur Lösungsfindung}
 	%Details zur Lösungsfindung (z.B. Analyseschritte, Designschritte, umfangreiche Herleitungen, Tabellen, Messergebnisse, Testauswertungen)
 	
-	\includepdf[pages={1-5}, pagecommand={}]{PDFs/Ergebnisse_eigene_Tests.pdf}
+	\includepdf[pages={1}, pagecommand={\label{pdf:eigeneTests}}]{PDFs/Ergebnisse_eigene_Tests.pdf}
+	\includepdf[pages={2-5}, pagecommand={}]{PDFs/Ergebnisse_eigene_Tests.pdf}
+	\includepdf[pages={1}, landscape=true, pagecommand=\thispagestyle{mylandscape}{\label{pdf:webauswertungMatrix}}]{PDFs/WebauswertungMatrix.pdf}
+	\includepdf[pages={2-3}, landscape=true, pagecommand=\thispagestyle{mylandscape}]{PDFs/WebauswertungMatrix.pdf}
 	\includepdf[pages={1-6}, pagecommand={}]{PDFs/Gruppenadministration.pdf}
 	\includepdf[landscape=true]{PDFs/Gruppenadministration_DB.pdf}
 	\includepdf[pages={1-13}, pagecommand={}]{PDFs/Neue_Fragetypen.pdf}
@@ -211,7 +214,8 @@
 	\includepdf[landscape=true]{PDFs/CSV_Template.pdf}
 	\includepdf[landscape=true]{PDFs/socrativeQuizTemplate.pdf}
 	\includepdf[landscape=true]{PDFs/Excel-Frage-Template.pdf}
-	\includepdf[pages={1-3}, pagecommand={}]{PDFs/Recherchetipps_book-a-librarian.pdf}
+	\includepdf[pages={1}, pagecommand={\label{pdf:recherchetipps}}]{PDFs/Recherchetipps_book-a-librarian.pdf}
+	\includepdf[pages={2-3}, pagecommand={}]{PDFs/Recherchetipps_book-a-librarian.pdf}
 	
 	
 	\chapter{Mockups}
